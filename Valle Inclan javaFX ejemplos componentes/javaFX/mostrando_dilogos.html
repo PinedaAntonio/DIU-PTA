@@ -1,0 +1,457 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="es" xml:lang="es" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="stylesheet" type="text/css" href="base.css" />
+<link rel="stylesheet" type="text/css" href="exe_highlighter.css" />
+<link rel="stylesheet" type="text/css" href="content.css" />
+<link rel="stylesheet" type="text/css" href="nav.css" />
+<meta http-equiv="content-type" content="text/html;  charset=utf-8" />
+<title>Mostrando diálogos | JavaFX </title>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<meta http-equiv="content-language" content="es" />
+<meta name="author" content="José Ramón Jiménez Reyes" />
+<meta name="generator" content="eXeLearning 2.1 - exelearning.net" />
+<script type="text/javascript" src="exe_jquery.js"></script>
+<script type="text/javascript" src="exe_highlighter.js"></script>
+<script type="text/javascript">$exe_i18n={previous:"Anterior",next:"Siguiente",show:"Mostrar",hide:"Ocultar",showFeedback:"Mostrar retroalimentación",hideFeedback:"Ocultar retroalimentación",correct:"Correcto",incorrect:"Incorrecto",menu:"Menú",print:"Imprimir"}</script>
+<script type="text/javascript" src="common.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" /></head>
+<body class="exe-web-site"><script type="text/javascript">document.body.className+=" js"</script>
+<div id="content">
+<p id="skipNav"><a href="#main" class="sr-av">Saltar la navegación</a></p>
+<div id="header" ><div id="headerContent">JavaFX</div></div>
+<div id="siteNav">
+<ul>
+   <li><a href="index.html" class="daddy main-node">JavaFX</a></li>
+   <li><a href="diseo_de_interfaces.html" class="daddy">Diseño de interfaces</a>
+   <ul class="other-section">
+      <li><a href="controles.html" class="daddy">Controles</a>
+      <ul class="other-section">
+         <li><a href="etiquetas.html" class="no-ch">Etiquetas</a></li>
+         <li><a href="hiperenlaces.html" class="no-ch">Hiperenlaces</a></li>
+         <li><a href="campos_de_texto.html" class="no-ch">Campos de texto</a></li>
+         <li><a href="campos_de_contrasea.html" class="no-ch">Campos de contraseña</a></li>
+         <li><a href="botones.html" class="no-ch">Botones</a></li>
+         <li><a href="botones_de_activacin.html" class="no-ch">Botones de activación</a></li>
+         <li><a href="radio_botones.html" class="no-ch">Radio botones</a></li>
+         <li><a href="casillas_de_verificacin.html" class="no-ch">Casillas de verificación</a></li>
+         <li><a href="cajas_de_eleccin.html" class="no-ch">Cajas de elección</a></li>
+         <li><a href="cajas_combinadas.html" class="no-ch">Cajas combinadas</a></li>
+         <li><a href="separador.html" class="no-ch">Separador</a></li>
+         <li><a href="barras_de_desplazamiento_y_paneles_de_desplazamiento.html" class="no-ch">Barras de desplazamiento y paneles de desplazamiento</a></li>
+         <li><a href="deslizador.html" class="no-ch">Deslizador</a></li>
+         <li><a href="barras_e_indicadores_de_progreso.html" class="no-ch">Barras e indicadores de progreso</a></li>
+         <li><a href="vista_de_lista.html" class="no-ch">Vista de lista</a></li>
+         <li><a href="vista_de_tabla.html" class="no-ch">Vista de tabla</a></li>
+         <li><a href="vista_de_rbol.html" class="no-ch">Vista de árbol</a></li>
+         <li><a href="vista_de_tabla_en_rbol.html" class="no-ch">Vista de tabla en árbol</a></li>
+         <li><a href="editor_html.html" class="no-ch">Editor HTML</a></li>
+         <li><a href="informacin_contextual.html" class="no-ch">Información contextual</a></li>
+         <li><a href="mens.html" class="no-ch">Menús</a></li>
+         <li><a href="paneles_con_ttulo_y_acordeones.html" class="no-ch">Paneles con título y acordeones</a></li>
+         <li><a href="paginacin.html" class="no-ch">Paginación</a></li>
+         <li><a href="selector_de_color.html" class="no-ch">Selector de color</a></li>
+         <li><a href="selector_de_fecha.html" class="no-ch">Selector de fecha</a></li>
+         <li><a href="selector_de_ficheros.html" class="no-ch">Selector de ficheros</a></li>
+      </ul>
+      </li>
+      <li><a href="paneles_de_diseo.html" class="no-ch">Paneles de diseño</a></li>
+      <li><a href="personalizacin_de_interfaces.html" class="no-ch">Personalización de interfaces</a></li>
+   </ul>
+   </li>
+   <li class="current-page-parent"><a href="interaccionando_con_el_usuario.html" class="current-page-parent daddy">Interaccionando con el usuario</a>
+   <ul>
+      <li><a href="contador_de_pulsaciones.html" class="no-ch">Contador de pulsaciones</a></li>
+      <li><a href="qu_botn_hemos_pulsado.html" class="no-ch">¿Qué botón hemos pulsado?</a></li>
+      <li><a href="campo_de_texto_con_una_longitud_mxima.html" class="no-ch">Campo de texto con una longitud máxima</a></li>
+      <li><a href="campo_de_texto_numrico.html" class="no-ch">Campo de texto numérico</a></li>
+      <li><a href="qu_radio_botn_hemos_seleccionado.html" class="no-ch">¿Qué radio botón hemos seleccionado?</a></li>
+      <li><a href="qu_opcin_hemos_escojido_de_una_caja_de_eleccin.html" class="no-ch">¿Qué opción hemos escojido de una caja de elección?</a></li>
+      <li><a href="elige_las_imgenes_a_mostrar.html" class="no-ch">Elige las imágenes a mostrar</a></li>
+      <li><a href="posicin_del_ratn.html" class="no-ch">Posición del ratón</a></li>
+      <li><a href="cmo_cambia_el_valor_de_un_deslizador.html" class="no-ch">¿Cómo cambia el valor de un deslizador?</a></li>
+      <li><a href="interaccionando_con_una_lista.html" class="no-ch">Interaccionando con una lista</a></li>
+      <li id="active"><a href="mostrando_dilogos.html" class="active no-ch">Mostrando diálogos</a></li>
+      <li><a href="trabajando_con_tablas.html" class="no-ch">Trabajando con tablas</a></li>
+   </ul>
+   </li>
+   <li><a href="jxml.html" class="daddy">JXML</a>
+   <ul class="other-section">
+      <li><a href="scenebuilder.html" class="no-ch">SceneBuilder</a></li>
+   </ul>
+   </li>
+   <li><a href="cdigo_de_los_ejemplos.html" class="no-ch">Código de los ejemplos</a></li>
+</ul>
+</div>
+<div id='topPagination'>
+<div class="pagination noprt">
+<a href="interaccionando_con_una_lista.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="trabajando_con_tablas.html" class="next"><span>Siguiente<span> &raquo;</span></span></a>
+</div>
+</div>
+<div id="main-wrapper">
+<div id="main"><a name="main"></a>
+<div id="nodeDecoration"><h1 id="nodeTitle">Mostrando diálogos</h1></div>
+<div class="iDevice_wrapper FreeTextfpdIdevice" id="id43">
+<div class="iDevice emphasis0">
+<div id="ta43_154" class="block iDevice_content">
+<p>Este ejemplo muestra el uso de los diálogos para consultar al usuario. La interfaz de la aplicación muestra una serie de radio botones agrupados y un botón para mostrar el diálogo asociado.</p>
+<p><img src="Captura_de_pantalla_de_2018-04-15_19-38-03.png" style="display: block; margin-left: auto; margin-right: auto;" width="400" height="436" /></p>
+<p>A continuación os muestro el aspecto de los diferentes diálogos que nos muestra. Hacer especial hincapié en el diálogo personalizado que nos permite recoger los datos de un personaje con controles personalizados. Además hemos registrado para el escenario principal de la aplicación un manejador para el evento de cerrar ventana mediante el método <strong>setOnCloseRequest</strong> que nos muestra un diálogo preguntándonos si estamos seguros de que queremos salir.</p>
+<p style="text-align: center;"><img src="Captura_de_pantalla_de_2018-04-15_19-38-08.png" width="433" height="188" /></p>
+<p style="text-align: center;"><img src="Captura_de_pantalla_de_2018-04-15_19-38-40.png" width="419" height="143" /></p>
+<p style="text-align: center;"><img src="Captura_de_pantalla_de_2018-04-15_19-38-49.png" width="419" height="143" /></p>
+<p style="text-align: center;"><img src="Captura_de_pantalla_de_2018-04-15_19-38-57.png" width="419" height="143" /></p>
+<p style="text-align: center;"><img src="Captura_de_pantalla_de_2018-04-15_19-39-05.png" width="419" height="143" /></p>
+<p style="text-align: center;"><img src="Captura_de_pantalla_de_2018-04-15_19-39-10.png" width="471" height="143" /></p>
+<p style="text-align: center;"><img src="Captura_de_pantalla_de_2018-04-15_19-39-16.png" width="439" height="143" /></p>
+<p style="text-align: center;"><img src="Captura_de_pantalla_de_2018-04-15_19-39-21.png" width="418" height="143" /></p>
+<p style="text-align: center;"><img src="Captura_de_pantalla_de_2018-04-15_19-39-44.png" width="474" height="281" /></p>
+<p style="text-align: center;"><img src="Captura_de_pantalla_de_2018-04-15_19-39-54.png" width="419" height="143" /></p>
+<p>El código de la aplicación es el que sigue.</p>
+<div class="highlighted-code language-java">
+<div>
+<pre><code>package javafx.eventos;
+
+import java.awt.Toolkit;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.eventos.Personaje.Estrategia;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Node;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar.ButtonData;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ChoiceDialog;
+import javafx.scene.control.Dialog;
+import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputDialog;
+import javafx.scene.control.ToggleGroup;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
+
+public class Dialogos extends Application {
+	
+	private RadioButton rbInformacion, rbInformacionSinCabecera, rbAdvertencia, rbError, 
+	rbConfirmacion, rbConfirmacionPersonalizado, rbEntradaTexto, rbEleccion, rbPersonalizado;
+	private Label lbElige;
+	private ToggleGroup grupo;
+	private Button btMostrar;
+	private TextField tfPoder;
+	
+	private void mostrarDialogoInformacion() {
+		Alert dialogo = new Alert(AlertType.INFORMATION);
+		dialogo.setTitle("Diálogo información");
+		dialogo.setHeaderText("Esta es la vista de un diálogo de información");
+		dialogo.setContentText("Aquí informamos al usuario de algo");
+
+		dialogo.showAndWait();
+	}
+	
+	private void mostrarDialogoInformacionSinCabecera() {
+		Alert dialogo = new Alert(AlertType.INFORMATION);
+		dialogo.setTitle("Diálogo información");
+		dialogo.setHeaderText(null);
+		dialogo.setContentText("Aquí informamos al usuario de algo");
+
+		dialogo.showAndWait();
+	}
+	
+	private void mostrarDialogoAdvertencia() {
+		Alert alerta = new Alert(AlertType.WARNING);
+		alerta.setTitle("Diálogo advertencia");
+		alerta.setHeaderText(null);
+		alerta.setContentText("Aquí advertimos al usuario de algo");
+
+		alerta.showAndWait();
+	}
+	
+	private void mostrarDialogError() {
+		Alert dialogo = new Alert(AlertType.ERROR);
+		dialogo.setTitle("Diálogo error");
+		dialogo.setHeaderText(null);
+		dialogo.setContentText("Advertimos al usuario de algún error");
+
+		dialogo.showAndWait();
+	}
+	
+	private void mostrarDialogoConfirmacion() {
+		Alert dialogo = new Alert(AlertType.CONFIRMATION);
+		dialogo.setTitle("Diálogo de confirmación");
+		dialogo.setHeaderText(null);
+		dialogo.setContentText("¿Estás seguro?");
+
+		Optional&lt;ButtonType&gt; respuesta = dialogo.showAndWait();
+		if (respuesta.get() == ButtonType.OK){
+		    System.out.println("Has aceptado el diálogo de confirmación");
+		} else {
+		    System.out.println("Has cancelado el diálogo de confirmación");
+		}
+	}
+	
+	private void mostrarDialogoConfirmacionPersonalizado() {
+		Alert dialogo = new Alert(AlertType.CONFIRMATION);
+		dialogo.setTitle("Diálogo de confirmación personalizado");
+		dialogo.setHeaderText(null);
+		dialogo.setContentText("Elige una de las opciones");
+		
+		ButtonType bttUno = new ButtonType("Opción 1");
+		ButtonType bttDos = new ButtonType("Opción 2");
+		ButtonType bttTres = new ButtonType("Opción 3");
+		ButtonType bttCancelar = new ButtonType("Cancelar", ButtonData.CANCEL_CLOSE);
+		
+		dialogo.getButtonTypes().setAll(bttUno, bttDos, bttTres, bttCancelar);
+
+		Optional&lt;ButtonType&gt; respuesta = dialogo.showAndWait();
+		if (respuesta.get() == bttUno) 
+		    System.out.println("Has elegido la opción 1 del diálogo de confirmación personalizado");
+		else if (respuesta.get() == bttDos) 
+		    System.out.println("Has elegido la opción 2 del diálogo de confirmación personalizado");
+		else if (respuesta.get() == bttTres) 
+		    System.out.println("Has elegido la opción 3 del diálogo de confirmación personalizado");
+		else 
+		    System.out.println("Has cancelado el diálogo de confirmación personalizado");
+	}
+	
+	private void mostrarDialogoEntradaTexto() {
+		TextInputDialog dialogo = new TextInputDialog("Bob Esponja");
+		dialogo.setTitle("Diálogo de entrada de texto");
+		dialogo.setHeaderText(null);
+		dialogo.setContentText("Elige tu personaje favorito:");
+
+		Optional&lt;String&gt; respuesta = dialogo.showAndWait();
+		if (respuesta.isPresent())
+		    System.out.println("Tu personaje favorito es: " + respuesta.get());
+		else 
+			System.out.println("Has cancelado el diálogo de entrada de texto");
+	}
+	
+	private void mostrarDialogoEleccion() {
+		List&lt;String&gt; opciones = new ArrayList&lt;&gt;();
+		opciones.add("Bob Esponja");
+		opciones.add("Patricio");
+		opciones.add("Calamardo");
+
+		ChoiceDialog&lt;String&gt; dialogo = new ChoiceDialog&lt;&gt;("Bob Esponja", opciones);
+		dialogo.setTitle("Diálogo de elección");
+		dialogo.setHeaderText(null);
+		dialogo.setContentText("Elige tu personaje favorito:");
+
+		Optional&lt;String&gt; respuesta = dialogo.showAndWait();
+		if (respuesta.isPresent())
+		    System.out.println("Tu personaje favorito es: " + respuesta.get());
+		else 
+			System.out.println("Has cancelado el diálogo de elección");
+	}
+	
+	private void mostrarDialogoPersonalizado() {
+		Dialog&lt;Personaje&gt; dialogo = new Dialog&lt;&gt;();
+		dialogo.setTitle("Nuevo personaje");
+		dialogo.setHeaderText("Introduce los datos del nuevo personaje");
+
+		ButtonType bttAnadir = new ButtonType("Añadir", ButtonData.OK_DONE);
+		dialogo.getDialogPane().getButtonTypes().addAll(bttAnadir, ButtonType.CANCEL);
+
+		GridPane gpDatosPersonaje = new GridPane();
+		gpDatosPersonaje.setHgap(10);
+		gpDatosPersonaje.setVgap(10);
+		gpDatosPersonaje.setPadding(new Insets(20, 150, 10, 10));
+
+		TextField tfNombre = new TextField();
+		tfPoder = new TextField("0");
+		tfPoder.textProperty().addListener((observable, oldValue, newValue) -&gt; compruebaNumero(oldValue));
+		CheckBox cbSuperpoder = new CheckBox();
+		ChoiceBox&lt;Estrategia&gt; cbEstrategia = 
+				new ChoiceBox&lt;Estrategia&gt;(FXCollections.observableArrayList(Estrategia.values()));
+		cbEstrategia.getSelectionModel().select(0);
+
+		gpDatosPersonaje.add(new Label("Nombre:"), 0, 0);
+		gpDatosPersonaje.add(tfNombre, 1, 0);
+		gpDatosPersonaje.add(new Label("Poder:"), 0, 1);
+		gpDatosPersonaje.add(tfPoder, 1, 1);
+		gpDatosPersonaje.add(new Label("¿Tiene superpoder?:"), 0, 2);
+		gpDatosPersonaje.add(cbSuperpoder, 1, 2);
+		gpDatosPersonaje.add(new Label("Estrategia:"), 0, 3);
+		gpDatosPersonaje.add(cbEstrategia, 1, 3);
+
+		Node btAnadir = dialogo.getDialogPane().lookupButton(bttAnadir);
+		btAnadir.setDisable(true);
+
+		tfNombre.textProperty().addListener((ov, oldValue, newValue) -&gt; {
+		    btAnadir.setDisable(newValue.trim().isEmpty());
+		});
+
+		dialogo.getDialogPane().setContent(gpDatosPersonaje);
+
+		Platform.runLater(() -&gt; tfNombre.requestFocus());
+
+		dialogo.setResultConverter(botonPulsado -&gt; {
+		    if (botonPulsado == bttAnadir) {
+		    	String poder = tfPoder.getText();
+		    	poder = (poder.equals("")) ? "0" : poder;
+		    	Personaje personaje = new Personaje(
+		    			tfNombre.getText(), Integer.valueOf(poder), cbSuperpoder.isSelected(), cbEstrategia.getValue()		    			);
+		        return personaje;
+		    }
+		    return null;
+		});
+
+		Optional&lt;Personaje&gt; respuesta = dialogo.showAndWait();
+
+		if (respuesta.isPresent()) {
+			Personaje personaje = respuesta.get();
+		    System.out.println("Nombre=" + personaje.getNombre() + 
+		    		", Poder=" + personaje.getPoder() +
+		    		", Superpoder=" + personaje.isSuperpoder() +
+		    		", Estrategia=" + personaje.getEstrategia());
+		} else {
+			System.out.println("Has cancelado el diálogo personalizado");
+		}
+	}
+	
+	private void compruebaNumero(String viejoPoder) {	
+		String texto = tfPoder.getText();
+		if (texto.matches("[0-9]*(\\.[0-9]*)?")) {
+			if (!texto.equals("")) {
+			int poder = Integer.valueOf(texto).intValue();
+			if (poder &lt; 0 || poder &gt; 100) {
+				tfPoder.setText(viejoPoder);
+				Toolkit.getDefaultToolkit().beep();
+			}
+			}
+		} else {
+			tfPoder.setText(viejoPoder);
+			Toolkit.getDefaultToolkit().beep();
+		}
+	}
+	
+	private void mostrarDialogo() {
+		RadioButton rbSeleccionado = (RadioButton)grupo.getSelectedToggle();
+		if (rbSeleccionado == rbInformacion) 
+			mostrarDialogoInformacion();
+		else if (rbSeleccionado == rbInformacionSinCabecera)
+			mostrarDialogoInformacionSinCabecera();
+		else if (rbSeleccionado == rbAdvertencia)
+			mostrarDialogoAdvertencia();
+		else if (rbSeleccionado == rbError)
+			mostrarDialogError();
+		else if (rbSeleccionado == rbConfirmacion)
+			mostrarDialogoConfirmacion();
+		else if (rbSeleccionado == rbConfirmacionPersonalizado)
+			mostrarDialogoConfirmacionPersonalizado();
+		else if (rbSeleccionado == rbEntradaTexto)
+			mostrarDialogoEntradaTexto();
+		else if (rbSeleccionado == rbEleccion)
+			mostrarDialogoEleccion();
+		else if (rbSeleccionado == rbPersonalizado)
+			mostrarDialogoPersonalizado();
+	}
+	
+	private void mostrarDialogoSalir(Stage escenario, WindowEvent e) {
+		Alert dialogo = new Alert(AlertType.CONFIRMATION);
+		dialogo.setTitle("Salir de la aplicación");
+		dialogo.setHeaderText(null);
+		dialogo.setContentText("¿Estás seguro de que deseas salir?");
+
+		Optional&lt;ButtonType&gt; respuesta = dialogo.showAndWait();
+		if (respuesta.get() == ButtonType.OK){
+		    escenario.close();
+		} else {
+			e.consume();
+		}
+	}
+
+	@Override
+	public void start(Stage escenarioPrincipal) {
+		try {
+			VBox raiz = new VBox(20);
+			raiz.setPadding(new Insets(20));
+			raiz.setAlignment(Pos.CENTER);
+			
+			VBox vbOpciones =new VBox(10);
+			vbOpciones.setPadding(new Insets(10));
+			
+			lbElige = new Label("Elige el tipo de diálogo a mostrar:");
+			lbElige.setFont(Font.font(20));
+			rbInformacion = new RadioButton("Información");
+			rbInformacion.setSelected(true);
+			rbInformacionSinCabecera = new RadioButton("Información sin cabecera");
+			rbAdvertencia = new RadioButton("Advertencia");
+			rbError = new RadioButton("Error");
+			rbConfirmacion = new RadioButton("Confirmación");
+			rbConfirmacionPersonalizado = new RadioButton("Confirmación personalizado");
+			rbEntradaTexto = new RadioButton("Entrada Texto");
+			rbEleccion = new RadioButton("Elección");
+			rbPersonalizado = new RadioButton("Personalizado");
+			Insets margen = new Insets(0, 0, 0, 20);
+			VBox.setMargin(rbInformacion, margen);
+			VBox.setMargin(rbInformacionSinCabecera, margen);
+			VBox.setMargin(rbAdvertencia, margen);
+			VBox.setMargin(rbError, margen);
+			VBox.setMargin(rbConfirmacion, margen);
+			VBox.setMargin(rbConfirmacionPersonalizado, margen);
+			VBox.setMargin(rbEntradaTexto, margen);
+			VBox.setMargin(rbEleccion, margen);
+			VBox.setMargin(rbPersonalizado, margen);
+			grupo = new ToggleGroup();
+			rbInformacion.setToggleGroup(grupo);
+			rbInformacionSinCabecera.setToggleGroup(grupo);
+			rbAdvertencia.setToggleGroup(grupo);
+			rbError.setToggleGroup(grupo);
+			rbConfirmacion.setToggleGroup(grupo);
+			rbConfirmacionPersonalizado.setToggleGroup(grupo);
+			rbEntradaTexto.setToggleGroup(grupo);
+			rbEleccion.setToggleGroup(grupo);
+			rbPersonalizado.setToggleGroup(grupo);
+			vbOpciones.getChildren().addAll(lbElige, rbInformacion, rbInformacionSinCabecera, rbAdvertencia, 
+					rbError, rbConfirmacion, rbConfirmacionPersonalizado, rbEntradaTexto, rbEleccion, rbPersonalizado);
+			
+			btMostrar = new Button("Mostrar diálogo");
+			btMostrar.setStyle("-fx-font: 22 arial; -fx-base: #b6e7c9;");
+			btMostrar.setOnAction(e -&gt; mostrarDialogo());
+			
+			raiz.getChildren().addAll(vbOpciones, btMostrar);
+			
+			Scene escena = new Scene(raiz, 400, 400);
+			escenarioPrincipal.setOnCloseRequest(e -&gt; mostrarDialogoSalir(escenarioPrincipal, e));
+			escenarioPrincipal.setTitle("Mostrar diálogo");
+			escenarioPrincipal.setScene(escena);
+			escenarioPrincipal.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void main(String[] args) {
+		launch(args);
+	}
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id='bottomPagination'>
+<div class="pagination noprt">
+<a href="interaccionando_con_una_lista.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="trabajando_con_tablas.html" class="next"><span>Siguiente<span> &raquo;</span></span></a>
+</div>
+</div>
+<div id="siteFooter"><p style="text-align: center; font-size: large;">CC by-nc - <strong>José Ramón Jiménez Reyes </strong>- IES Al-Ándalus</p></div></div>
+<script type="text/javascript" src="_fpd_js.js"></script></body></html>

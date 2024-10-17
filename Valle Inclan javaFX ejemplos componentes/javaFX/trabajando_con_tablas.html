@@ -1,0 +1,591 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="es" xml:lang="es" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="stylesheet" type="text/css" href="base.css" />
+<link rel="stylesheet" type="text/css" href="exe_highlighter.css" />
+<link rel="stylesheet" type="text/css" href="content.css" />
+<link rel="stylesheet" type="text/css" href="nav.css" />
+<meta http-equiv="content-type" content="text/html;  charset=utf-8" />
+<title>Trabajando con tablas | JavaFX </title>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<meta http-equiv="content-language" content="es" />
+<meta name="author" content="José Ramón Jiménez Reyes" />
+<meta name="generator" content="eXeLearning 2.1 - exelearning.net" />
+<script type="text/javascript" src="exe_jquery.js"></script>
+<script type="text/javascript" src="exe_highlighter.js"></script>
+<script type="text/javascript">$exe_i18n={previous:"Anterior",next:"Siguiente",show:"Mostrar",hide:"Ocultar",showFeedback:"Mostrar retroalimentación",hideFeedback:"Ocultar retroalimentación",correct:"Correcto",incorrect:"Incorrecto",menu:"Menú",print:"Imprimir"}</script>
+<script type="text/javascript" src="common.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" /></head>
+<body class="exe-web-site"><script type="text/javascript">document.body.className+=" js"</script>
+<div id="content">
+<p id="skipNav"><a href="#main" class="sr-av">Saltar la navegación</a></p>
+<div id="header" ><div id="headerContent">JavaFX</div></div>
+<div id="siteNav">
+<ul>
+   <li><a href="index.html" class="daddy main-node">JavaFX</a></li>
+   <li><a href="diseo_de_interfaces.html" class="daddy">Diseño de interfaces</a>
+   <ul class="other-section">
+      <li><a href="controles.html" class="daddy">Controles</a>
+      <ul class="other-section">
+         <li><a href="etiquetas.html" class="no-ch">Etiquetas</a></li>
+         <li><a href="hiperenlaces.html" class="no-ch">Hiperenlaces</a></li>
+         <li><a href="campos_de_texto.html" class="no-ch">Campos de texto</a></li>
+         <li><a href="campos_de_contrasea.html" class="no-ch">Campos de contraseña</a></li>
+         <li><a href="botones.html" class="no-ch">Botones</a></li>
+         <li><a href="botones_de_activacin.html" class="no-ch">Botones de activación</a></li>
+         <li><a href="radio_botones.html" class="no-ch">Radio botones</a></li>
+         <li><a href="casillas_de_verificacin.html" class="no-ch">Casillas de verificación</a></li>
+         <li><a href="cajas_de_eleccin.html" class="no-ch">Cajas de elección</a></li>
+         <li><a href="cajas_combinadas.html" class="no-ch">Cajas combinadas</a></li>
+         <li><a href="separador.html" class="no-ch">Separador</a></li>
+         <li><a href="barras_de_desplazamiento_y_paneles_de_desplazamiento.html" class="no-ch">Barras de desplazamiento y paneles de desplazamiento</a></li>
+         <li><a href="deslizador.html" class="no-ch">Deslizador</a></li>
+         <li><a href="barras_e_indicadores_de_progreso.html" class="no-ch">Barras e indicadores de progreso</a></li>
+         <li><a href="vista_de_lista.html" class="no-ch">Vista de lista</a></li>
+         <li><a href="vista_de_tabla.html" class="no-ch">Vista de tabla</a></li>
+         <li><a href="vista_de_rbol.html" class="no-ch">Vista de árbol</a></li>
+         <li><a href="vista_de_tabla_en_rbol.html" class="no-ch">Vista de tabla en árbol</a></li>
+         <li><a href="editor_html.html" class="no-ch">Editor HTML</a></li>
+         <li><a href="informacin_contextual.html" class="no-ch">Información contextual</a></li>
+         <li><a href="mens.html" class="no-ch">Menús</a></li>
+         <li><a href="paneles_con_ttulo_y_acordeones.html" class="no-ch">Paneles con título y acordeones</a></li>
+         <li><a href="paginacin.html" class="no-ch">Paginación</a></li>
+         <li><a href="selector_de_color.html" class="no-ch">Selector de color</a></li>
+         <li><a href="selector_de_fecha.html" class="no-ch">Selector de fecha</a></li>
+         <li><a href="selector_de_ficheros.html" class="no-ch">Selector de ficheros</a></li>
+      </ul>
+      </li>
+      <li><a href="paneles_de_diseo.html" class="no-ch">Paneles de diseño</a></li>
+      <li><a href="personalizacin_de_interfaces.html" class="no-ch">Personalización de interfaces</a></li>
+   </ul>
+   </li>
+   <li class="current-page-parent"><a href="interaccionando_con_el_usuario.html" class="current-page-parent daddy">Interaccionando con el usuario</a>
+   <ul>
+      <li><a href="contador_de_pulsaciones.html" class="no-ch">Contador de pulsaciones</a></li>
+      <li><a href="qu_botn_hemos_pulsado.html" class="no-ch">¿Qué botón hemos pulsado?</a></li>
+      <li><a href="campo_de_texto_con_una_longitud_mxima.html" class="no-ch">Campo de texto con una longitud máxima</a></li>
+      <li><a href="campo_de_texto_numrico.html" class="no-ch">Campo de texto numérico</a></li>
+      <li><a href="qu_radio_botn_hemos_seleccionado.html" class="no-ch">¿Qué radio botón hemos seleccionado?</a></li>
+      <li><a href="qu_opcin_hemos_escojido_de_una_caja_de_eleccin.html" class="no-ch">¿Qué opción hemos escojido de una caja de elección?</a></li>
+      <li><a href="elige_las_imgenes_a_mostrar.html" class="no-ch">Elige las imágenes a mostrar</a></li>
+      <li><a href="posicin_del_ratn.html" class="no-ch">Posición del ratón</a></li>
+      <li><a href="cmo_cambia_el_valor_de_un_deslizador.html" class="no-ch">¿Cómo cambia el valor de un deslizador?</a></li>
+      <li><a href="interaccionando_con_una_lista.html" class="no-ch">Interaccionando con una lista</a></li>
+      <li><a href="mostrando_dilogos.html" class="no-ch">Mostrando diálogos</a></li>
+      <li id="active"><a href="trabajando_con_tablas.html" class="active no-ch">Trabajando con tablas</a></li>
+   </ul>
+   </li>
+   <li><a href="jxml.html" class="daddy">JXML</a>
+   <ul class="other-section">
+      <li><a href="scenebuilder.html" class="no-ch">SceneBuilder</a></li>
+   </ul>
+   </li>
+   <li><a href="cdigo_de_los_ejemplos.html" class="no-ch">Código de los ejemplos</a></li>
+</ul>
+</div>
+<div id='topPagination'>
+<div class="pagination noprt">
+<a href="mostrando_dilogos.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="jxml.html" class="next"><span>Siguiente<span> &raquo;</span></span></a>
+</div>
+</div>
+<div id="main-wrapper">
+<div id="main"><a name="main"></a>
+<div id="nodeDecoration"><h1 id="nodeTitle">Trabajando con tablas</h1></div>
+<div class="iDevice_wrapper FreeTextfpdIdevice" id="id44">
+<div class="iDevice emphasis0">
+<div id="ta44_154" class="block iDevice_content">
+<p>En los siguientes ejemplos veremos cómo interaccionar con una tabla de objetos. Para ello he creado una clase denominada <strong>Personaje</strong> que contiene atributos de los tipos más comunes para ver cómo podemos personalizar su visualización y su edición. La clase <strong>Personaje</strong> es la que muestro a continuación. Como puedes ver para el acceso a los atributos he seguido la convención de nombrar los métodos como <strong>setNombre</strong>, <strong>getNombre</strong> y <strong>isNombre</strong> para los valores lógicos.</p>
+<div class="highlighted-code language-java">
+<div>
+<pre><code>package javafx.eventos;
+
+public class Personaje {
+	public enum Estrategia {
+		RISA,
+		MALHUMOR,
+		ATAQUE
+	};
+	
+	private String nombre;
+	private int poder;
+	private boolean superpoder;
+	private Estrategia estrategia;
+	
+	public Personaje(String nombre, int poder, boolean superpoder, Estrategia estrategia) {
+		this.nombre = nombre;
+		this.poder = poder;
+		this.superpoder = superpoder;
+		this.estrategia = estrategia;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+	
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	
+	public int getPoder() {
+		return poder;
+	}
+	
+	public void setPoder(int poder) {
+		this.poder = poder;
+	}
+	
+	public boolean isSuperpoder() {
+		return superpoder;
+	}
+	
+	public void setSuperpoder(boolean superpoder) {
+		this.superpoder = superpoder;
+	}
+	
+	public Estrategia getEstrategia() {
+		return estrategia;
+	}
+	
+	public void setEstrategia(Estrategia estrategia) {
+		this.estrategia = estrategia;
+	}
+	
+	public String toString() {
+		String personajeStr = String.format("Nombre: %s, Poder: %d, Superpoder: %b, Estrategia: %s",
+				nombre, poder, superpoder, estrategia);
+		return personajeStr;
+	}
+}</code></pre>
+</div>
+</div>
+<p>El primer ejemplo muestra cómo construir una tabla para una lista de personajes. Para indicar cómo se muestra cada uno de los campos se utiliza el método <strong>setCellValueFactory</strong> para la columna dada. Este es el ejemplo más simple y su interfaz es la que sigue.</p>
+<p><img src="Captura_de_pantalla_de_2018-04-15_20-10-05.png" style="display: block; margin-left: auto; margin-right: auto;" width="455" height="286" /></p>
+<p>El segundo ejemplo, muestra cómo podemos hacer que la tabla sea editable personalizando cómo editar cada uno de los campos según su valor. Para ello utilizamos el método <strong>setCellFactory</strong> para cada columna. Prestar especial atención a la edición del atributo <strong>poder</strong> que es entero y que sólo acepta valores entre 0 y 100, para lo cuál he creado mi propio convertidor de cadenas a enteros heredando de la clase <strong>IntegerStringConverter</strong> sobreescribiendo el método <strong>fromString</strong>. Finalmente le hemos indicado a la columna que queremos escuchar los eventos que se produzcan cuando se termine de editar una celda para así actuar en consecuencia, mediante el método <strong>setOnEditCommit</strong>.</p>
+<p><img src="Captura_de_pantalla_de_2018-04-15_20-10-22.png" style="display: block; margin-left: auto; margin-right: auto;" width="455" height="286" /></p>
+<p>El tercer ejemplo es el más completo ya que además de la tabla muestra una lista con el mismo modelo que el de la tabla. En este ejemplo los cambios realizados en la tabla se propagan directamente a la lista. Además cada elemento seleccionado en la tabla también se selecciona en la lista. Por último nos permite borrar filas y añadir filas vacías que luego podremos modificar. Simplemente comentar que dado que el control <strong>ChoiceBoxTableCell</strong> no nos informa de los cambios, he tenido que crear un editor de celdas personalizado para que podamos enterarnos de los cambios, para lo que he creado una clase interna que hereda de <strong>TableCell</strong> e implementa el constructor y el método <strong>updateItem</strong>.</p>
+<p><img src="Captura_de_pantalla_de_2018-04-15_20-10-48.png" style="display: block; margin-left: auto; margin-right: auto;" width="950" height="486" /></p>
+<p>El código de los tres ejemplos es el que se muestra a continuación.</p>
+<h2 style="text-align: center;">TablaPersonajes.java</h2>
+<div class="highlighted-code language-java">
+<div>
+<pre><code>package javafx.eventos;
+
+import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.eventos.Personaje.Estrategia;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.stage.Stage;
+
+public class TablaPersonajes extends Application {
+	
+	private TableView&lt;Personaje&gt; tvPersonajes;
+	final ObservableList&lt;Personaje&gt; personajes = FXCollections.observableArrayList(
+			new Personaje("Bob Esponja", 10, false, Estrategia.RISA),
+			new Personaje("Mortadelo", 60, true, Estrategia.RISA),
+			new Personaje("Goku", 90, true, Estrategia.ATAQUE),
+			new Personaje("El Malo", 0, false, Estrategia.MALHUMOR),
+			new Personaje("Gro", 100, false, Estrategia.RISA));
+	
+	TableColumn&lt;Personaje, String&gt; cNombre = new TableColumn&lt;Personaje, String&gt;("Nombre");
+	TableColumn&lt;Personaje, Integer&gt; cPoder = new TableColumn&lt;Personaje, Integer&gt;("Poder");
+	TableColumn&lt;Personaje, Boolean&gt; cSuperpoder = new TableColumn&lt;Personaje, Boolean&gt;("Super Poder");
+	TableColumn&lt;Personaje, Estrategia&gt; cEstrategia = new TableColumn&lt;Personaje, Estrategia&gt;("Estrategia");
+
+	@Override
+	public void start(Stage escenarioPrincipal) {
+		try {
+			VBox raiz = new VBox();
+			raiz.setPadding(new Insets(40));
+			raiz.setSpacing(10);
+			raiz.setAlignment(Pos.CENTER);
+			
+			Label lbPersonajes = new Label("Personajes");
+			lbPersonajes.setFont(Font.font(20));
+			tvPersonajes = new TableView&lt;Personaje&gt;();
+			tvPersonajes.getColumns().add(cNombre);
+			tvPersonajes.getColumns().add(cPoder);
+			tvPersonajes.getColumns().add(cSuperpoder);
+			tvPersonajes.getColumns().add(cEstrategia);
+			cNombre.setMinWidth(100);
+			cNombre.setCellValueFactory(new PropertyValueFactory&lt;Personaje, String&gt;("nombre"));
+			cPoder.setMinWidth(20);
+			cPoder.setCellValueFactory(new PropertyValueFactory&lt;Personaje, Integer&gt;("poder"));
+			cSuperpoder.setMinWidth(40);
+			cSuperpoder.setCellValueFactory(new PropertyValueFactory&lt;Personaje, Boolean&gt;("superpoder"));
+			cEstrategia.setMinWidth(60);
+			cEstrategia.setCellValueFactory(new PropertyValueFactory&lt;Personaje, Estrategia&gt;("estrategia"));
+
+			tvPersonajes.setItems(personajes);
+			
+			raiz.getChildren().addAll(lbPersonajes, tvPersonajes);
+			
+			Scene escena = new Scene(raiz, 455, 250);
+			escenarioPrincipal.setTitle("Tabla personajes");
+			escenarioPrincipal.setScene(escena);
+			escenarioPrincipal.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void main(String[] args) {
+		launch(args);
+	}
+
+}</code></pre>
+</div>
+</div>
+<h2 style="text-align: center;">TablaPersonajesPersonalizada.java</h2>
+<div class="highlighted-code language-java">
+<div>
+<pre><code>package javafx.eventos;
+
+import javafx.application.Application;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.eventos.Personaje.Estrategia;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableColumn.CellEditEvent;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.CheckBoxTableCell;
+import javafx.scene.control.cell.ChoiceBoxTableCell;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.stage.Stage;
+import javafx.util.converter.IntegerStringConverter;
+
+public class TablaPersonajesPersonalizada extends Application {
+	
+	private class ConvierteEnteroCadena extends IntegerStringConverter  {
+		@Override
+		public Integer fromString(String value) {
+			try {
+				return Integer.valueOf(value);
+			} catch (Exception e) {
+				return Integer.MIN_VALUE;
+			}
+		}
+    }
+	
+	private TableView&lt;Personaje&gt; tvPersonajes;
+	final ObservableList&lt;Personaje&gt; personajes = FXCollections.observableArrayList(
+			new Personaje("Bob Esponja", 10, false, Estrategia.RISA),
+			new Personaje("Mortadelo", 60, true, Estrategia.RISA),
+			new Personaje("Goku", 90, true, Estrategia.ATAQUE),
+			new Personaje("El Malo", 0, false, Estrategia.MALHUMOR),
+			new Personaje("Gro", 100, false, Estrategia.RISA));
+	
+	TableColumn&lt;Personaje, String&gt; cNombre = new TableColumn&lt;Personaje, String&gt;("Nombre");
+	TableColumn&lt;Personaje, Integer&gt; cPoder = new TableColumn&lt;Personaje, Integer&gt;("Poder");
+	TableColumn&lt;Personaje, Boolean&gt; cSuperpoder = new TableColumn&lt;Personaje, Boolean&gt;("Super Poder");
+	TableColumn&lt;Personaje, Estrategia&gt; cEstrategia = new TableColumn&lt;Personaje, Estrategia&gt;("Estrategia");
+	
+	private void modificaPoder(CellEditEvent&lt;Personaje, Integer&gt; t) {
+		int poder;
+		try {
+			poder = Integer.valueOf(t.getNewValue().toString());
+			poder = (poder &gt;= 0 &amp;&amp; poder &lt;= 100) ? poder : Integer.valueOf(t.getOldValue());
+		} catch (Exception e) {
+			poder = Integer.valueOf(t.getOldValue());
+		}
+		int indice = t.getTablePosition().getRow();
+		Personaje personaje = (Personaje)t.getTableView().getItems().get(indice);
+		personaje.setPoder(poder);
+		tvPersonajes.refresh();
+	}
+
+	@Override
+	public void start(Stage escenarioPrincipal) {
+		try {
+			VBox raiz = new VBox();
+			raiz.setPadding(new Insets(40));
+			raiz.setSpacing(10);
+			raiz.setAlignment(Pos.CENTER);
+			
+			Label lbPersonajes = new Label("Personajes");
+			lbPersonajes.setFont(Font.font(20));
+			tvPersonajes = new TableView&lt;Personaje&gt;();
+			tvPersonajes.getColumns().add(cNombre);
+			tvPersonajes.getColumns().add(cPoder);
+			tvPersonajes.getColumns().add(cSuperpoder);
+			tvPersonajes.getColumns().add(cEstrategia);
+			tvPersonajes.setEditable(true);
+			cNombre.setMinWidth(100);
+			cNombre.setCellValueFactory(new PropertyValueFactory&lt;Personaje, String&gt;("nombre"));
+			cNombre.setCellFactory(TextFieldTableCell.forTableColumn());
+			cPoder.setMinWidth(20);
+			cPoder.setCellValueFactory(new PropertyValueFactory&lt;Personaje, Integer&gt;("poder"));
+			cPoder.setCellFactory(TextFieldTableCell.&lt;Personaje, Integer&gt;forTableColumn(new ConvierteEnteroCadena()));
+			cPoder.setOnEditCommit(poder -&gt; modificaPoder(poder));
+			cSuperpoder.setMinWidth(40);
+			cSuperpoder.setCellValueFactory(superPoder -&gt; new SimpleBooleanProperty(superPoder.getValue().isSuperpoder()));
+			cSuperpoder.setCellFactory(superPoder -&gt; new CheckBoxTableCell&lt;&gt;());
+			cEstrategia.setMinWidth(60);
+			cEstrategia.setCellValueFactory(new PropertyValueFactory&lt;Personaje, Estrategia&gt;("estrategia"));
+			cEstrategia.setCellFactory(estrategia -&gt; new ChoiceBoxTableCell&lt;Personaje, Estrategia&gt;(Estrategia.values()));
+
+			tvPersonajes.setItems(personajes);
+			
+			raiz.getChildren().addAll(lbPersonajes, tvPersonajes);
+			
+			Scene escena = new Scene(raiz, 455, 250);
+			escenarioPrincipal.setTitle("Tabla personajes");
+			escenarioPrincipal.setScene(escena);
+			escenarioPrincipal.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void main(String[] args) {
+		launch(args);
+	}
+
+}</code></pre>
+</div>
+</div>
+<h2 style="text-align: center;">TablaPersonajesCompleta.java</h2>
+<div class="highlighted-code language-java">
+<div>
+<pre><code>package javafx.eventos;
+
+import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.eventos.Personaje.Estrategia;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TableCell;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableColumn.CellEditEvent;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.ChoiceBoxTableCell;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.stage.Stage;
+import javafx.util.converter.IntegerStringConverter;
+
+public class TablaPersonajesCompleta extends Application {
+	
+	class CeldaSuperpoder extends TableCell&lt;Personaje, Boolean&gt; {
+		
+		private CheckBox superpoderMostrado = new CheckBox();
+		
+		public CeldaSuperpoder() {
+			super();
+			superpoderMostrado.selectedProperty().addListener((ov, oldValue, newValue) -&gt; {
+				if (getTableRow() != null) {
+					Personaje personaje = (Personaje)getTableRow().getItem();
+					if (personaje != null) {
+						personaje.setSuperpoder(newValue);
+						filaCambiada(personaje);
+					}
+				}
+			});
+			setAlignment(Pos.CENTER);
+		}
+		
+        @Override
+        public void updateItem(Boolean superpoder, boolean vacio) {
+            super.updateItem(superpoder, vacio);
+            
+            if (superpoder != null) {
+            	superpoderMostrado.setSelected(superpoder);
+                setGraphic(superpoderMostrado);
+            } else {
+            	setGraphic(null);
+            }
+        }
+        
+    }
+	
+	private class ConvierteEnteroCadena extends IntegerStringConverter  {
+		@Override
+		public Integer fromString(String value) {
+			try {
+				return Integer.valueOf(value);
+			} catch (Exception e) {
+				return Integer.MIN_VALUE;
+			}
+		}
+    }
+	
+	private TableView&lt;Personaje&gt; tvPersonajes;
+	private ListView&lt;Personaje&gt; lvPersonajes;
+	private Button btBorrar, btAnadir;
+
+	final ObservableList&lt;Personaje&gt; personajes = FXCollections.observableArrayList(
+			new Personaje("Bob Esponja", 10, false, Estrategia.RISA),
+			new Personaje("Mortadelo", 60, true, Estrategia.RISA),
+			new Personaje("Goku", 90, true, Estrategia.ATAQUE),
+			new Personaje("El Malo", 0, false, Estrategia.MALHUMOR),
+			new Personaje("Gro", 100, false, Estrategia.RISA));
+	
+	TableColumn&lt;Personaje, String&gt; cNombre = new TableColumn&lt;Personaje, String&gt;("Nombre");
+	TableColumn&lt;Personaje, Integer&gt; cPoder = new TableColumn&lt;Personaje, Integer&gt;("Poder");
+	TableColumn&lt;Personaje, Boolean&gt; cSuperpoder = new TableColumn&lt;Personaje, Boolean&gt;("Super Poder");
+	TableColumn&lt;Personaje, Estrategia&gt; cEstrategia = new TableColumn&lt;Personaje, Estrategia&gt;("Estrategia");
+	
+	private void modificaNombre(CellEditEvent&lt;Personaje, String&gt; t) {
+		int indice = t.getTablePosition().getRow();
+		Personaje personaje = (Personaje)t.getTableView().getItems().get(indice);
+		personaje.setNombre(t.getNewValue());
+		filaCambiada(personaje);
+	}
+	
+	private void modificaPoder(CellEditEvent&lt;Personaje, Integer&gt; t) {
+		int poder;
+		try {
+			poder = Integer.valueOf(t.getNewValue().toString());
+			poder = (poder &gt;= 0 &amp;&amp; poder &lt;= 100) ? poder : Integer.valueOf(t.getOldValue());
+		} catch (Exception e) {
+			poder = Integer.valueOf(t.getOldValue());
+		}
+		int indice = t.getTablePosition().getRow();
+		Personaje personaje = (Personaje)t.getTableView().getItems().get(indice);
+		personaje.setPoder(poder);
+		t.getTableView().getItems().set(indice, personaje);
+		filaCambiada(personaje);
+	}
+	
+	private void modificaEstrategia(CellEditEvent&lt;Personaje, Estrategia&gt; t) {
+		int indice = t.getTablePosition().getRow();
+		Personaje personaje = (Personaje)t.getTableView().getItems().get(indice);
+		personaje.setEstrategia(t.getNewValue());
+		filaCambiada(personaje);
+	}
+	
+	private void filaCambiada(Personaje personaje) {
+		if (personaje != null) {
+			lvPersonajes.refresh();
+			System.out.println("Fila cambiada: " + personaje);
+		}
+	}
+	
+	private void filaSeleccionada(Personaje personaje) {
+		if (personaje != null) {
+			lvPersonajes.getSelectionModel().select(personaje);
+			System.out.println("Fila seleccionada: " + personaje);
+		}
+	}
+	
+	private void borrarFilaSeleccionada() {
+		Personaje personaje = tvPersonajes.getSelectionModel().getSelectedItem();
+		if (personaje != null) {
+			personajes.remove(personaje);
+			System.out.println("Fila borrada: " + personaje);
+		}
+	}
+	
+	private void anadirPersonajeVacio() {
+		Personaje personaje = new Personaje("Cámbiame", 0, false, Estrategia.MALHUMOR);
+		personajes.add(personaje);
+		System.out.println("Personaje vacío añadido: " + personaje);
+	}
+
+	@Override
+	public void start(Stage escenarioPrincipal) {
+		try {
+			VBox raiz = new VBox(10);
+			raiz.setPadding(new Insets(20));
+			raiz.setAlignment(Pos.CENTER);
+			
+			Label lbPersonajes = new Label("Personajes");
+			lbPersonajes.setFont(Font.font("Arial", 30));
+			
+			HBox hbPersonajes = new HBox(20);
+			hbPersonajes.setPadding(new Insets(10));
+			
+			tvPersonajes = new TableView&lt;Personaje&gt;();
+			tvPersonajes.getColumns().add(cNombre);
+			tvPersonajes.getColumns().add(cPoder);
+			tvPersonajes.getColumns().add(cSuperpoder);
+			tvPersonajes.getColumns().add(cEstrategia);
+			tvPersonajes.setEditable(true);
+			tvPersonajes.setMinWidth(360);
+			cNombre.setMinWidth(100);
+			cNombre.setCellValueFactory(new PropertyValueFactory&lt;Personaje, String&gt;("nombre"));
+			cNombre.setCellFactory(TextFieldTableCell.forTableColumn());
+			cNombre.setOnEditCommit(nombre-&gt; modificaNombre(nombre));
+			cPoder.setMinWidth(20);
+			cPoder.setCellValueFactory(new PropertyValueFactory&lt;Personaje, Integer&gt;("poder"));
+			cPoder.setCellFactory(TextFieldTableCell.&lt;Personaje, Integer&gt;forTableColumn(new ConvierteEnteroCadena()));
+			cPoder.setOnEditCommit(poder -&gt; modificaPoder(poder));
+			cSuperpoder.setMinWidth(40);
+			cSuperpoder.setCellValueFactory(new PropertyValueFactory&lt;Personaje, Boolean&gt;("superpoder"));
+			cSuperpoder.setCellFactory(superPoder -&gt; new CeldaSuperpoder());
+			cEstrategia.setMinWidth(60);
+			cEstrategia.setCellValueFactory(new PropertyValueFactory&lt;Personaje, Estrategia&gt;("estrategia"));
+			cEstrategia.setCellFactory(estrategia -&gt; new ChoiceBoxTableCell&lt;Personaje, Estrategia&gt;(Estrategia.values()));
+			cEstrategia.setOnEditCommit(estrategia -&gt; modificaEstrategia(estrategia));
+			tvPersonajes.setItems(personajes);
+			tvPersonajes.getSelectionModel().selectedItemProperty().addListener(
+					(ov, oldValue, newValue) -&gt; filaSeleccionada(ov.getValue()));
+			
+			
+			lvPersonajes = new ListView&lt;Personaje&gt;(personajes);
+			lvPersonajes.setMinWidth(500);
+
+			hbPersonajes.getChildren().addAll(tvPersonajes, lvPersonajes);
+			
+			btBorrar = new Button("Borrar fila seleccionada");
+			btBorrar.setStyle("-fx-font: 20 arial; -fx-base: #dc143c;");
+			btBorrar.setOnAction(e -&gt; borrarFilaSeleccionada());
+			btAnadir = new Button("Añadir personaje");
+			btAnadir.setStyle("-fx-font: 22 arial; -fx-base: #b6e7c9;");
+			btAnadir.setOnAction(e -&gt; anadirPersonajeVacio());
+			
+			raiz.getChildren().addAll(lbPersonajes, hbPersonajes, btBorrar, btAnadir);
+			
+			Scene escena = new Scene(raiz, 950, 450);
+			escenarioPrincipal.setTitle("Tabla personajes completa");
+			escenarioPrincipal.setScene(escena);
+			escenarioPrincipal.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void main(String[] args) {
+		launch(args);
+	}
+
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id='bottomPagination'>
+<div class="pagination noprt">
+<a href="mostrando_dilogos.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="jxml.html" class="next"><span>Siguiente<span> &raquo;</span></span></a>
+</div>
+</div>
+<div id="siteFooter"><p style="text-align: center; font-size: large;">CC by-nc - <strong>José Ramón Jiménez Reyes </strong>- IES Al-Ándalus</p></div></div>
+<script type="text/javascript" src="_fpd_js.js"></script></body></html>

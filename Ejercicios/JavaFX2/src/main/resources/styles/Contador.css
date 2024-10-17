@@ -1,0 +1,10 @@
+.raiz{
+    -fx-background-color: red;
+}
+.contador{
+    -fx-text-fill: blue;
+}
+
+.boton{
+    -fx-background-color: black;
+}

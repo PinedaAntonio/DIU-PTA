@@ -1,0 +1,255 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="es" xml:lang="es" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="stylesheet" type="text/css" href="base.css" />
+<link rel="stylesheet" type="text/css" href="exe_highlighter.css" />
+<link rel="stylesheet" type="text/css" href="content.css" />
+<link rel="stylesheet" type="text/css" href="nav.css" />
+<meta http-equiv="content-type" content="text/html;  charset=utf-8" />
+<title>Personalización de interfaces | JavaFX </title>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<meta http-equiv="content-language" content="es" />
+<meta name="author" content="José Ramón Jiménez Reyes" />
+<meta name="generator" content="eXeLearning 2.1 - exelearning.net" />
+<script type="text/javascript" src="exe_jquery.js"></script>
+<script type="text/javascript" src="exe_highlighter.js"></script>
+<script type="text/javascript">$exe_i18n={previous:"Anterior",next:"Siguiente",show:"Mostrar",hide:"Ocultar",showFeedback:"Mostrar retroalimentación",hideFeedback:"Ocultar retroalimentación",correct:"Correcto",incorrect:"Incorrecto",menu:"Menú",print:"Imprimir"}</script>
+<script type="text/javascript" src="common.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" /></head>
+<body class="exe-web-site"><script type="text/javascript">document.body.className+=" js"</script>
+<div id="content">
+<p id="skipNav"><a href="#main" class="sr-av">Saltar la navegación</a></p>
+<div id="header" ><div id="headerContent">JavaFX</div></div>
+<div id="siteNav">
+<ul>
+   <li><a href="index.html" class="daddy main-node">JavaFX</a></li>
+   <li class="current-page-parent"><a href="diseo_de_interfaces.html" class="current-page-parent daddy">Diseño de interfaces</a>
+   <ul>
+      <li><a href="controles.html" class="daddy">Controles</a>
+      <ul class="other-section">
+         <li><a href="etiquetas.html" class="no-ch">Etiquetas</a></li>
+         <li><a href="hiperenlaces.html" class="no-ch">Hiperenlaces</a></li>
+         <li><a href="campos_de_texto.html" class="no-ch">Campos de texto</a></li>
+         <li><a href="campos_de_contrasea.html" class="no-ch">Campos de contraseña</a></li>
+         <li><a href="botones.html" class="no-ch">Botones</a></li>
+         <li><a href="botones_de_activacin.html" class="no-ch">Botones de activación</a></li>
+         <li><a href="radio_botones.html" class="no-ch">Radio botones</a></li>
+         <li><a href="casillas_de_verificacin.html" class="no-ch">Casillas de verificación</a></li>
+         <li><a href="cajas_de_eleccin.html" class="no-ch">Cajas de elección</a></li>
+         <li><a href="cajas_combinadas.html" class="no-ch">Cajas combinadas</a></li>
+         <li><a href="separador.html" class="no-ch">Separador</a></li>
+         <li><a href="barras_de_desplazamiento_y_paneles_de_desplazamiento.html" class="no-ch">Barras de desplazamiento y paneles de desplazamiento</a></li>
+         <li><a href="deslizador.html" class="no-ch">Deslizador</a></li>
+         <li><a href="barras_e_indicadores_de_progreso.html" class="no-ch">Barras e indicadores de progreso</a></li>
+         <li><a href="vista_de_lista.html" class="no-ch">Vista de lista</a></li>
+         <li><a href="vista_de_tabla.html" class="no-ch">Vista de tabla</a></li>
+         <li><a href="vista_de_rbol.html" class="no-ch">Vista de árbol</a></li>
+         <li><a href="vista_de_tabla_en_rbol.html" class="no-ch">Vista de tabla en árbol</a></li>
+         <li><a href="editor_html.html" class="no-ch">Editor HTML</a></li>
+         <li><a href="informacin_contextual.html" class="no-ch">Información contextual</a></li>
+         <li><a href="mens.html" class="no-ch">Menús</a></li>
+         <li><a href="paneles_con_ttulo_y_acordeones.html" class="no-ch">Paneles con título y acordeones</a></li>
+         <li><a href="paginacin.html" class="no-ch">Paginación</a></li>
+         <li><a href="selector_de_color.html" class="no-ch">Selector de color</a></li>
+         <li><a href="selector_de_fecha.html" class="no-ch">Selector de fecha</a></li>
+         <li><a href="selector_de_ficheros.html" class="no-ch">Selector de ficheros</a></li>
+      </ul>
+      </li>
+      <li><a href="paneles_de_diseo.html" class="no-ch">Paneles de diseño</a></li>
+      <li id="active"><a href="personalizacin_de_interfaces.html" class="active no-ch">Personalización de interfaces</a></li>
+   </ul>
+   </li>
+   <li><a href="interaccionando_con_el_usuario.html" class="daddy">Interaccionando con el usuario</a>
+   <ul class="other-section">
+      <li><a href="contador_de_pulsaciones.html" class="no-ch">Contador de pulsaciones</a></li>
+      <li><a href="qu_botn_hemos_pulsado.html" class="no-ch">¿Qué botón hemos pulsado?</a></li>
+      <li><a href="campo_de_texto_con_una_longitud_mxima.html" class="no-ch">Campo de texto con una longitud máxima</a></li>
+      <li><a href="campo_de_texto_numrico.html" class="no-ch">Campo de texto numérico</a></li>
+      <li><a href="qu_radio_botn_hemos_seleccionado.html" class="no-ch">¿Qué radio botón hemos seleccionado?</a></li>
+      <li><a href="qu_opcin_hemos_escojido_de_una_caja_de_eleccin.html" class="no-ch">¿Qué opción hemos escojido de una caja de elección?</a></li>
+      <li><a href="elige_las_imgenes_a_mostrar.html" class="no-ch">Elige las imágenes a mostrar</a></li>
+      <li><a href="posicin_del_ratn.html" class="no-ch">Posición del ratón</a></li>
+      <li><a href="cmo_cambia_el_valor_de_un_deslizador.html" class="no-ch">¿Cómo cambia el valor de un deslizador?</a></li>
+      <li><a href="interaccionando_con_una_lista.html" class="no-ch">Interaccionando con una lista</a></li>
+      <li><a href="mostrando_dilogos.html" class="no-ch">Mostrando diálogos</a></li>
+      <li><a href="trabajando_con_tablas.html" class="no-ch">Trabajando con tablas</a></li>
+   </ul>
+   </li>
+   <li><a href="jxml.html" class="daddy">JXML</a>
+   <ul class="other-section">
+      <li><a href="scenebuilder.html" class="no-ch">SceneBuilder</a></li>
+   </ul>
+   </li>
+   <li><a href="cdigo_de_los_ejemplos.html" class="no-ch">Código de los ejemplos</a></li>
+</ul>
+</div>
+<div id='topPagination'>
+<div class="pagination noprt">
+<a href="paneles_de_diseo.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="interaccionando_con_el_usuario.html" class="next"><span>Siguiente<span> &raquo;</span></span></a>
+</div>
+</div>
+<div id="main-wrapper">
+<div id="main"><a name="main"></a>
+<div id="nodeDecoration"><h1 id="nodeTitle">Personalización de interfaces</h1></div>
+<div class="iDevice_wrapper FreeTextfpdIdevice" id="id30">
+<div class="iDevice emphasis0">
+<div id="ta30_154" class="block iDevice_content">
+<p>Como habéis podido observar, las interfaces creadas con JavaFX tienen un aspecto común que, por cierto, es bastante amigable.</p>
+<p>Pero JavaFX nos permite tener un control total a la hora de personalizar nuestras interfaces mediante el uso hojas de estilo CSS. No pretendo mostrar en qué consiste CSS o todas las posibilidades que ofrece JavaFX para ello, pero sí que lo conozcáis y su uso básico. Si os veis en la necesidad de utilizarlo os animo a consultar la documentación que ofrece Oracle o cualquier otra fuente ya que hay mucha documentación al respecto en la web.</p>
+<p>Si queremos modificar el aspecto de nodos particulares podemos usar el método <strong>setStyle</strong> pasándole una cadena con las diferentes propiedades CSS que queremos modificar..</p>
+<p>Por ejemplo, en la siguiente interfaz he cambiado el aspecto de los botones y del fondo, con el siguiente resultado.</p>
+<p><img src="Captura_de_pantalla_de_2018-04-12_12-59-24.png" style="display: block; margin-left: auto; margin-right: auto;" width="500" height="536" /></p>
+<p>El código utilizado para ello es el siguiente:</p>
+<div class="highlighted-code language-java">
+<div>
+<pre><code>package javafx.personalizacion;
+
+import javafx.application.Application;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.stage.Stage;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+
+
+public class EstilosNodos extends Application {
+	@Override
+	public void start(Stage escenarioPrincipal) {
+		try {
+			BorderPane raiz = new BorderPane();
+			raiz.setStyle("-fx-base: #ffe4c4;"
+					+ " -fx-background-image: url('/javafx/imagenes/logo-ies3.png'); "
+					+ "-fx-background-position: center;"
+					+ "-fx-background-repeat: no-repeat;");
+			
+			HBox hbBotones = new HBox(10);
+			hbBotones.setPadding(new Insets(10));
+			hbBotones.setAlignment(Pos.CENTER_RIGHT);
+			Button btAceptar, btCancelar;
+			btAceptar = new Button("Aceptar");
+			btAceptar.setStyle("-fx-font: 22 arial; -fx-base: #b6e7c9;");
+			btCancelar = new Button("Cancelar");
+			btCancelar.setStyle("-fx-font: 20 arial; -fx-base: #dc143c;");
+			hbBotones.getChildren().addAll(btAceptar, btCancelar);
+			
+			raiz.setBottom(hbBotones);			
+			
+			Scene escena = new Scene(raiz, 500, 500);
+			escenarioPrincipal.setTitle("Estilos de nodos");
+			escenarioPrincipal.setScene(escena);
+			escenarioPrincipal.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void main(String[] args) {
+		launch(args);
+	}
+}</code></pre>
+</div>
+</div>
+<p>También podemos utilizar una hoja de estilos externa de la siguiente forma:</p>
+<div class="highlighted-code language-java">
+<div>
+<pre><code>escena.getStylesheets().add(getClass().getResource("aplicacion.css").toExternalForm());</code></pre>
+</div>
+</div>
+<p>En dicha hoja de estilos podremos utilizar los selectores de clase o de identificador habituales en CSS. Una vez definidos los estilos para cada uno de los selectores podremos aplicar una clase o un identificador a un nodo dado.</p>
+<div class="highlighted-code language-java">
+<div>
+<pre><code>//Aplicar clase
+btAceptar.getStyleClass().add("btAceptar");
+
+//Aplicar identificador
+btAceptar.setId("btAceptar");</code></pre>
+</div>
+</div>
+<p>Si asignamos una clase, en la hoja de estilos utilizaremos el selector <strong>.btAcepta</strong>r. Si asignamos un identificador, en la hoja de estilos utilizaremos el selector <strong>#btAceptar</strong>.</p>
+<p>Podemos conseguir el mismo resultado que la imagen anterior utilizando la siguiente hoja de estilos, nombrada como <strong>aplicacion.css</strong>:</p>
+<div class="highlighted-code language-css">
+<div>
+<pre><code>.raiz {
+	-fx-base: #ffe4c4;
+	-fx-background-image: url('/javafx/imagenes/logo-ies3.png');
+	-fx-background-position: center;
+	-fx-background-repeat: no-repeat;
+}
+
+#btAceptar {
+	-fx-font: 22 arial;
+	-fx-base: #b6e7c9;
+}
+
+#btCancelar {
+	-fx-font: 20 arial;
+	-fx-base: #dc143c;
+}</code></pre>
+</div>
+</div>
+<p>Y el siguiente código:</p>
+<div class="highlighted-code language-java">
+<div>
+<pre><code>package javafx.personalizacion;
+
+import javafx.application.Application;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.stage.Stage;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+
+
+public class EstilosHojaExterna extends Application {
+	@Override
+	public void start(Stage escenarioPrincipal) {
+		try {
+			BorderPane raiz = new BorderPane();
+			raiz.getStyleClass().add("raiz");
+			
+			HBox hbBotones = new HBox(10);
+			hbBotones.setPadding(new Insets(10));
+			hbBotones.setAlignment(Pos.CENTER_RIGHT);
+			Button btAceptar, btCancelar;
+			btAceptar = new Button("Aceptar");
+			btAceptar.setId("btAceptar");
+			btCancelar = new Button("Cancelar");
+			btCancelar.setId("btCancelar");
+			hbBotones.getChildren().addAll(btAceptar, btCancelar);
+			
+			raiz.setBottom(hbBotones);			
+			
+			Scene escena = new Scene(raiz, 500, 500);
+			escena.getStylesheets().add(getClass().getResource("aplicacion.css").toExternalForm());
+			escenarioPrincipal.setTitle("Estilos Hoja Estilos Externa");
+			escenarioPrincipal.setScene(escena);
+			escenarioPrincipal.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void main(String[] args) {
+		launch(args);
+	}
+}</code></pre>
+</div>
+</div>
+<p>Utilizando las características de personalización mediante estilos CSS de JavaFX podemos llegar a crear interfaces tan vistosas, a mi parecer, y tan poco habituales, como la siguiente que os muestro. Es la interfaz que he creado para una calculadora, que analizaremos en clase y que luego os compartiré.</p>
+<p><img src="Captura_de_pantalla_de_2018-04-13_00-29-37.png" style="display: block; margin-left: auto; margin-right: auto;" width="299" height="398" /></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id='bottomPagination'>
+<div class="pagination noprt">
+<a href="paneles_de_diseo.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="interaccionando_con_el_usuario.html" class="next"><span>Siguiente<span> &raquo;</span></span></a>
+</div>
+</div>
+<div id="siteFooter"><p style="text-align: center; font-size: large;">CC by-nc - <strong>José Ramón Jiménez Reyes </strong>- IES Al-Ándalus</p></div></div>
+<script type="text/javascript" src="_fpd_js.js"></script></body></html>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+
+<Pane id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="raiz" stylesheets="@../../../styles/Contador.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.contador_sb.controller.ContadorController">
+    <children>
+        <Button fx:id="btsuma" layoutX="254.0" layoutY="48.0" mnemonicParsing="false" onAction="#sumar" prefHeight="45.0" prefWidth="93.0" text="+">
+         <font>
+            <Font size="25.0" />
+         </font></Button>
+        <Button fx:id="btresta" layoutX="61.0" layoutY="48.0" mnemonicParsing="false" onAction="#restar" prefHeight="45.0" prefWidth="93.0" text="-">
+         <font>
+            <Font size="25.0" />
+         </font></Button>
+        <Button fx:id="bt0" layoutX="455.0" layoutY="48.0" mnemonicParsing="false" onAction="#cero" prefHeight="45.0" prefWidth="93.0" styleClass="boton" stylesheets="@../../../styles/Contador.css" text="0" textFill="WHITE">
+         <font>
+            <Font size="25.0" />
+         </font></Button>
+        <Label fx:id="cont" alignment="CENTER" contentDisplay="CENTER" layoutX="289.0" layoutY="142.0" styleClass="contador" stylesheets="@../../../styles/Contador.css" text="0">
+            <font>
+                <Font size="40.0" />
+            </font>
+        </Label>
+        <TextField fx:id="actCont" layoutX="210.0" layoutY="224.0" onAction="#cambiar" prefHeight="29.0" prefWidth="180.0" />
+        <ProgressBar fx:id="progreso" layoutX="55.0" layoutY="301.0" prefHeight="29.0" prefWidth="492.0" progress="0.0" />
+    </children>
+</Pane>

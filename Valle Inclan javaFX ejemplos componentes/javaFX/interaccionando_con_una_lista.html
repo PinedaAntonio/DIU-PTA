@@ -1,0 +1,415 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="es" xml:lang="es" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="stylesheet" type="text/css" href="base.css" />
+<link rel="stylesheet" type="text/css" href="exe_highlighter.css" />
+<link rel="stylesheet" type="text/css" href="content.css" />
+<link rel="stylesheet" type="text/css" href="nav.css" />
+<meta http-equiv="content-type" content="text/html;  charset=utf-8" />
+<title>Interaccionando con una lista | JavaFX </title>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<meta http-equiv="content-language" content="es" />
+<meta name="author" content="José Ramón Jiménez Reyes" />
+<meta name="generator" content="eXeLearning 2.1 - exelearning.net" />
+<script type="text/javascript" src="exe_jquery.js"></script>
+<script type="text/javascript" src="exe_highlighter.js"></script>
+<script type="text/javascript">$exe_i18n={previous:"Anterior",next:"Siguiente",show:"Mostrar",hide:"Ocultar",showFeedback:"Mostrar retroalimentación",hideFeedback:"Ocultar retroalimentación",correct:"Correcto",incorrect:"Incorrecto",menu:"Menú",print:"Imprimir"}</script>
+<script type="text/javascript" src="common.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" /></head>
+<body class="exe-web-site"><script type="text/javascript">document.body.className+=" js"</script>
+<div id="content">
+<p id="skipNav"><a href="#main" class="sr-av">Saltar la navegación</a></p>
+<div id="header" ><div id="headerContent">JavaFX</div></div>
+<div id="siteNav">
+<ul>
+   <li><a href="index.html" class="daddy main-node">JavaFX</a></li>
+   <li><a href="diseo_de_interfaces.html" class="daddy">Diseño de interfaces</a>
+   <ul class="other-section">
+      <li><a href="controles.html" class="daddy">Controles</a>
+      <ul class="other-section">
+         <li><a href="etiquetas.html" class="no-ch">Etiquetas</a></li>
+         <li><a href="hiperenlaces.html" class="no-ch">Hiperenlaces</a></li>
+         <li><a href="campos_de_texto.html" class="no-ch">Campos de texto</a></li>
+         <li><a href="campos_de_contrasea.html" class="no-ch">Campos de contraseña</a></li>
+         <li><a href="botones.html" class="no-ch">Botones</a></li>
+         <li><a href="botones_de_activacin.html" class="no-ch">Botones de activación</a></li>
+         <li><a href="radio_botones.html" class="no-ch">Radio botones</a></li>
+         <li><a href="casillas_de_verificacin.html" class="no-ch">Casillas de verificación</a></li>
+         <li><a href="cajas_de_eleccin.html" class="no-ch">Cajas de elección</a></li>
+         <li><a href="cajas_combinadas.html" class="no-ch">Cajas combinadas</a></li>
+         <li><a href="separador.html" class="no-ch">Separador</a></li>
+         <li><a href="barras_de_desplazamiento_y_paneles_de_desplazamiento.html" class="no-ch">Barras de desplazamiento y paneles de desplazamiento</a></li>
+         <li><a href="deslizador.html" class="no-ch">Deslizador</a></li>
+         <li><a href="barras_e_indicadores_de_progreso.html" class="no-ch">Barras e indicadores de progreso</a></li>
+         <li><a href="vista_de_lista.html" class="no-ch">Vista de lista</a></li>
+         <li><a href="vista_de_tabla.html" class="no-ch">Vista de tabla</a></li>
+         <li><a href="vista_de_rbol.html" class="no-ch">Vista de árbol</a></li>
+         <li><a href="vista_de_tabla_en_rbol.html" class="no-ch">Vista de tabla en árbol</a></li>
+         <li><a href="editor_html.html" class="no-ch">Editor HTML</a></li>
+         <li><a href="informacin_contextual.html" class="no-ch">Información contextual</a></li>
+         <li><a href="mens.html" class="no-ch">Menús</a></li>
+         <li><a href="paneles_con_ttulo_y_acordeones.html" class="no-ch">Paneles con título y acordeones</a></li>
+         <li><a href="paginacin.html" class="no-ch">Paginación</a></li>
+         <li><a href="selector_de_color.html" class="no-ch">Selector de color</a></li>
+         <li><a href="selector_de_fecha.html" class="no-ch">Selector de fecha</a></li>
+         <li><a href="selector_de_ficheros.html" class="no-ch">Selector de ficheros</a></li>
+      </ul>
+      </li>
+      <li><a href="paneles_de_diseo.html" class="no-ch">Paneles de diseño</a></li>
+      <li><a href="personalizacin_de_interfaces.html" class="no-ch">Personalización de interfaces</a></li>
+   </ul>
+   </li>
+   <li class="current-page-parent"><a href="interaccionando_con_el_usuario.html" class="current-page-parent daddy">Interaccionando con el usuario</a>
+   <ul>
+      <li><a href="contador_de_pulsaciones.html" class="no-ch">Contador de pulsaciones</a></li>
+      <li><a href="qu_botn_hemos_pulsado.html" class="no-ch">¿Qué botón hemos pulsado?</a></li>
+      <li><a href="campo_de_texto_con_una_longitud_mxima.html" class="no-ch">Campo de texto con una longitud máxima</a></li>
+      <li><a href="campo_de_texto_numrico.html" class="no-ch">Campo de texto numérico</a></li>
+      <li><a href="qu_radio_botn_hemos_seleccionado.html" class="no-ch">¿Qué radio botón hemos seleccionado?</a></li>
+      <li><a href="qu_opcin_hemos_escojido_de_una_caja_de_eleccin.html" class="no-ch">¿Qué opción hemos escojido de una caja de elección?</a></li>
+      <li><a href="elige_las_imgenes_a_mostrar.html" class="no-ch">Elige las imágenes a mostrar</a></li>
+      <li><a href="posicin_del_ratn.html" class="no-ch">Posición del ratón</a></li>
+      <li><a href="cmo_cambia_el_valor_de_un_deslizador.html" class="no-ch">¿Cómo cambia el valor de un deslizador?</a></li>
+      <li id="active"><a href="interaccionando_con_una_lista.html" class="active no-ch">Interaccionando con una lista</a></li>
+      <li><a href="mostrando_dilogos.html" class="no-ch">Mostrando diálogos</a></li>
+      <li><a href="trabajando_con_tablas.html" class="no-ch">Trabajando con tablas</a></li>
+   </ul>
+   </li>
+   <li><a href="jxml.html" class="daddy">JXML</a>
+   <ul class="other-section">
+      <li><a href="scenebuilder.html" class="no-ch">SceneBuilder</a></li>
+   </ul>
+   </li>
+   <li><a href="cdigo_de_los_ejemplos.html" class="no-ch">Código de los ejemplos</a></li>
+</ul>
+</div>
+<div id='topPagination'>
+<div class="pagination noprt">
+<a href="cmo_cambia_el_valor_de_un_deslizador.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="mostrando_dilogos.html" class="next"><span>Siguiente<span> &raquo;</span></span></a>
+</div>
+</div>
+<div id="main-wrapper">
+<div id="main"><a name="main"></a>
+<div id="nodeDecoration"><h1 id="nodeTitle">Interaccionando con una lista</h1></div>
+<div class="iDevice_wrapper FreeTextfpdIdevice" id="id42">
+<div class="iDevice emphasis0">
+<div id="ta42_154" class="block iDevice_content">
+<p>En los ejemplos de este apartado vamos a interaccionar con una lista y personalizarla.</p>
+<p>El primer ejemplo muestra una lista de colores que al seleccionar uno de ellos lo muestra como color de fondo de un panel que se muestra a su derecha. Para ello se escucha para los cambios en el elemento seleccionado de la lista. Para ello nos quedamos con el modelo de selección asociado a la lista mediante el método <strong>getSelectionModel().selectedItemProperty()</strong> al cuál le añadimos un <strong>ChangeListener</strong> mediante el método <strong>addListener</strong> que ya conocemos y así poder mostrar el color de fondo del panel con el valor del elemento seleccionado en la lista. La interfaz para este ejemplo es la siguiente.</p>
+<p><img src="Captura_de_pantalla_de_2018-04-15_19-18-04.png" style="display: block; margin-left: auto; margin-right: auto;" width="430" height="236" /></p>
+<p>El segundo ejemplo hace lo mismo, pero personalizamos la forma en la que los elementos de la lista son visualizados, mostrando un rectángulo redondeado del color asociado a cada uno de los elementos. Para ello he creado una clase interna que hereda de <strong>ListCell</strong> y que sobreescribe el método <strong>updateItem</strong> que es el encargado de visualizar cada uno de los elementos para que en vez de mostrar el texto pinte un rectángulo redondeado de dicho color. Luego simplemente debemos decirle a la lista que utilice un objeto de dicha clase para visualizar los elementos mediante el método <strong>setCellFactory</strong> de la misma. La interfaz es la que muestro a continuación.</p>
+<p><img src="Captura_de_pantalla_de_2018-04-15_19-18-17.png" style="display: block; margin-left: auto; margin-right: auto;" width="430" height="236" /></p>
+<p>El tercer ejemplo permite además añadir y borrar elementos de la lista. Para añadir elementos, éstos se seleccionan de un selector de color y al pulsar el botón <strong>Añadir</strong> se añaden al modelo de la lista mediante el método <strong>add</strong>. Para eliminar el elemento seleccionado se utiliza el método <strong>remove</strong> del modelo asociado a la lista. La interfaz es la siguiente.</p>
+<p><img src="Captura_de_pantalla_de_2018-04-15_19-18-29.png" style="display: block; margin-left: auto; margin-right: auto;" width="650" height="386" /></p>
+<p>Ahora os dejo el código de cada uno de los ejemplos.</p>
+<h2 style="text-align: center;">ListaColores1.java</h2>
+<div class="highlighted-code language-java">
+<div>
+<pre><code>package javafx.eventos;
+
+import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.stage.Stage;
+
+public class ListaColores1 extends Application {
+	
+	private ListView&lt;String&gt; lvColores;
+	private ObservableList&lt;String&gt; colores = FXCollections.observableArrayList(
+            "Red", "Maroon", "Pink", "PaleVioletRed", "Moccasin",
+            "Orange", "Wheat", "Peru", "SaddleBrown", "LightYellow",
+            "Gold", "LawnGreen", "Green", "Aquamarine", "Teal",
+            "CornflowerBlue", "MidnightBlue", "Violet", "DarkMagenta", "Indigo");
+	private Label lbElige;
+	private Pane panel;
+	private final String estiloPanel = "-fx-border-color: gray; -fx-border-radius: 5; -fx-background-radius: 5; ";
+	
+	private void muestraColor(String color) {
+		panel.setStyle(estiloPanel + "-fx-background-color: " + color + ";");
+	}
+	
+	@Override
+	public void start(Stage escenarioPrincipal) {
+		try {
+			HBox raiz = new HBox(20);
+			raiz.setPadding(new Insets(30));
+			raiz.setAlignment(Pos.BOTTOM_CENTER);
+			
+			VBox hbOpciones =new VBox(20);
+			raiz.setAlignment(Pos.CENTER);
+			
+			lbElige = new Label("Elige el color");
+			lbElige.setFont(Font.font(20));
+			lvColores = new ListView&lt;String&gt;(colores);
+			lvColores.getSelectionModel().select("chocolate");
+			lvColores.getSelectionModel().selectedItemProperty().addListener((ov, viejo, nuevo) -&gt; muestraColor(nuevo));
+			hbOpciones.getChildren().addAll(lbElige, lvColores);
+			
+			panel = new Pane();
+			panel.setMinSize(140, 140);
+			panel.setMaxSize(140, 140);
+			panel.setStyle(estiloPanel + "-fx-background-color: chocolate;");
+			
+			raiz.getChildren().addAll(hbOpciones, panel);
+			
+			Scene escena = new Scene(raiz, 430, 200);
+			escenarioPrincipal.setTitle("Elige un color");
+			escenarioPrincipal.setScene(escena);
+			escenarioPrincipal.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void main(String[] args) {
+		launch(args);
+	}
+}</code></pre>
+</div>
+</div>
+<h2 style="text-align: center;">ListaColores2.java</h2>
+<div class="highlighted-code language-java">
+<div>
+<pre><code>package javafx.eventos;
+
+import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.stage.Stage;
+
+public class ListaColores2 extends Application {
+	
+	class CeldaColor extends ListCell&lt;String&gt; {
+        @Override
+        public void updateItem(String color, boolean vacio) {
+            super.updateItem(color, vacio);
+            Pane colorMostrado = new Pane();
+            colorMostrado.setMinSize(70, 20);
+            colorMostrado.setMaxSize(70, 20);
+            colorMostrado.setStyle(estiloPanel);
+            if (color != null) {
+                colorMostrado.setStyle(estiloPanel + "-fx-background-color: " + color + ";");
+                setGraphic(colorMostrado);
+            }
+        }
+    }
+	
+	private ListView&lt;String&gt; lvColores;
+	private ObservableList&lt;String&gt; colores = FXCollections.observableArrayList(
+            "Red", "Maroon", "Pink", "PaleVioletRed", "Moccasin",
+            "Orange", "Wheat", "Peru", "SaddleBrown", "LightYellow",
+            "Gold", "LawnGreen", "Green", "Aquamarine", "Teal",
+            "CornflowerBlue", "MidnightBlue", "Violet", "DarkMagenta", "Indigo");
+	private Label lbElige;
+	private Pane panel;
+	private final String estiloPanel = "-fx-border-color: gray; -fx-border-radius: 5; -fx-background-radius: 5; ";
+	
+	private void muestraColor(String color) {
+		panel.setStyle(estiloPanel + "-fx-background-color: " + color + ";");
+	}
+	
+	@Override
+	public void start(Stage escenarioPrincipal) {
+		try {
+			HBox raiz = new HBox(20);
+			raiz.setPadding(new Insets(30));
+			raiz.setAlignment(Pos.BOTTOM_CENTER);
+			
+			VBox hbOpciones =new VBox(20);
+			raiz.setAlignment(Pos.CENTER);
+			
+			lbElige = new Label("Elige el color");
+			lbElige.setFont(Font.font(20));
+			lvColores = new ListView&lt;String&gt;(colores);
+			lvColores.setPrefWidth(80);
+			lvColores.getSelectionModel().select("Red");
+			lvColores.getSelectionModel().selectedItemProperty().addListener((ov, viejo, nuevo) -&gt; muestraColor(nuevo));
+			lvColores.setCellFactory((ListView&lt;String&gt; l) -&gt; new CeldaColor());
+			hbOpciones.getChildren().addAll(lbElige, lvColores);
+			
+			panel = new Pane();
+			panel.setMinSize(140, 140);
+			panel.setMaxSize(140, 140);
+			panel.setStyle(estiloPanel + "-fx-background-color: Red;");
+			
+			raiz.getChildren().addAll(hbOpciones, panel);
+			
+			Scene escena = new Scene(raiz, 430, 200);
+			escenarioPrincipal.setTitle("Elige un color");
+			escenarioPrincipal.setScene(escena);
+			escenarioPrincipal.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void main(String[] args) {
+		launch(args);
+	}
+}</code></pre>
+</div>
+</div>
+<h2 style="text-align: center;">ListaColores3.java</h2>
+<div class="highlighted-code language-java">
+<div>
+<pre><code>package javafx.eventos;
+
+import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.ColorPicker;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.stage.Stage;
+
+public class ListaColores3 extends Application {
+	
+	class CeldaColor extends ListCell&lt;String&gt; {
+        @Override
+        public void updateItem(String color, boolean vacio) {
+            super.updateItem(color, vacio);
+            Pane colorMostrado = new Pane();
+            colorMostrado.setMinSize(70, 20);
+            colorMostrado.setMaxSize(70, 20);
+            colorMostrado.setStyle(estiloPanel);
+            if (color != null) {
+                colorMostrado.setStyle(estiloPanel + "-fx-background-color: " + color + ";");
+                setGraphic(colorMostrado);
+            } else {
+            	setGraphic(null);
+            }
+        }
+    }
+	
+	private ListView&lt;String&gt; lvColores;
+	private ObservableList&lt;String&gt; colores = FXCollections.observableArrayList(
+            "Red", "Maroon", "Pink", "PaleVioletRed", "Moccasin",
+            "Orange", "Wheat", "Peru", "SaddleBrown", "LightYellow",
+            "Gold", "LawnGreen", "Green", "Aquamarine", "Teal",
+            "CornflowerBlue", "MidnightBlue", "Violet", "DarkMagenta", "Indigo");
+	private Label lbElige;
+	private Pane panel;
+	private Color nuevoColor = Color.WHITE;
+	private Button btAnadirColor, btBorrarColor;	
+	
+	private final String estiloPanel = "-fx-border-color: gray; -fx-border-radius: 5; -fx-background-radius: 5; ";
+	
+	private void muestraColor(String color) {
+		if (color != null) {
+			panel.setStyle(estiloPanel + "-fx-background-color: " + color + ";");
+			lvColores.getSelectionModel().select(color);
+		}
+	}
+	
+	private void anadirColor() {
+		String color = nuevoColor.toString().replace("0x", "#");
+		if (color != null &amp;&amp; !colores.contains(color)) {
+			colores.add(0, color);
+			muestraColor(color);
+		}
+	}
+	
+	private void borrarColor() {
+		String color = lvColores.getSelectionModel().getSelectedItem();
+		colores.remove(color);
+		if (colores.size() == 0)
+			panel.setStyle(estiloPanel);
+	}
+	
+	@Override
+	public void start(Stage escenarioPrincipal) {
+		try {
+			HBox raiz = new HBox(20);
+			raiz.setPadding(new Insets(30));
+			raiz.setAlignment(Pos.BOTTOM_CENTER);
+			
+			VBox hbOpciones =new VBox(20);
+			raiz.setAlignment(Pos.CENTER);
+			
+			lbElige = new Label("Elige el color");
+			lbElige.setFont(Font.font(20));
+			lvColores = new ListView&lt;String&gt;(colores);
+			lvColores.setPrefWidth(80);
+			lvColores.getSelectionModel().select("Red");
+			lvColores.getSelectionModel().selectedItemProperty().addListener((ov, viejo, nuevo) -&gt; muestraColor(nuevo));
+			lvColores.setCellFactory((ListView&lt;String&gt; l) -&gt; new CeldaColor());
+			
+			HBox hbAnadir = new HBox(10);
+			ColorPicker cp = new ColorPicker();
+			cp.setMinWidth(230);
+			cp.setOnAction(e -&gt; { nuevoColor = cp.getValue(); });
+			btAnadirColor = new Button("Añadir");
+			btAnadirColor.setOnAction(e -&gt; anadirColor());
+			hbAnadir.getChildren().addAll(cp, btAnadirColor);
+			
+			VBox vbAcciones = new VBox(10);
+			btBorrarColor = new Button("Borrar");
+			btBorrarColor.setMinWidth(300);
+			btBorrarColor.setOnAction(e -&gt; borrarColor());
+			vbAcciones.getChildren().addAll(hbAnadir, btBorrarColor);
+			
+			hbOpciones.getChildren().addAll(lbElige, lvColores, vbAcciones);
+			
+			panel = new Pane();
+			panel.setMinSize(300, 300);
+			panel.setMaxSize(300, 300);
+			panel.setStyle(estiloPanel + "-fx-background-color: Red;");
+			
+			raiz.getChildren().addAll(hbOpciones, panel);
+			
+			Scene escena = new Scene(raiz, 650, 350);
+			escenarioPrincipal.setTitle("Elige un color");
+			escenarioPrincipal.setScene(escena);
+			escenarioPrincipal.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void main(String[] args) {
+		launch(args);
+	}
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id='bottomPagination'>
+<div class="pagination noprt">
+<a href="cmo_cambia_el_valor_de_un_deslizador.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="mostrando_dilogos.html" class="next"><span>Siguiente<span> &raquo;</span></span></a>
+</div>
+</div>
+<div id="siteFooter"><p style="text-align: center; font-size: large;">CC by-nc - <strong>José Ramón Jiménez Reyes </strong>- IES Al-Ándalus</p></div></div>
+<script type="text/javascript" src="_fpd_js.js"></script></body></html>

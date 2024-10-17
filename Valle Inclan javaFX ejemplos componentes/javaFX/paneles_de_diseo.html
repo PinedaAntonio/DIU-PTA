@@ -1,0 +1,591 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="es" xml:lang="es" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="stylesheet" type="text/css" href="base.css" />
+<link rel="stylesheet" type="text/css" href="exe_effects.css" />
+<link rel="stylesheet" type="text/css" href="exe_highlighter.css" />
+<link rel="stylesheet" type="text/css" href="content.css" />
+<link rel="stylesheet" type="text/css" href="nav.css" />
+<meta http-equiv="content-type" content="text/html;  charset=utf-8" />
+<title>Paneles de diseño | JavaFX </title>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<meta http-equiv="content-language" content="es" />
+<meta name="author" content="José Ramón Jiménez Reyes" />
+<meta name="generator" content="eXeLearning 2.1 - exelearning.net" />
+<script type="text/javascript" src="exe_jquery.js"></script>
+<script type="text/javascript" src="exe_effects.js"></script>
+<script type="text/javascript" src="exe_highlighter.js"></script>
+<script type="text/javascript">$exe_i18n={previous:"Anterior",next:"Siguiente",show:"Mostrar",hide:"Ocultar",showFeedback:"Mostrar retroalimentación",hideFeedback:"Ocultar retroalimentación",correct:"Correcto",incorrect:"Incorrecto",menu:"Menú",print:"Imprimir"}</script>
+<script type="text/javascript" src="common.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" /></head>
+<body class="exe-web-site"><script type="text/javascript">document.body.className+=" js"</script>
+<div id="content">
+<p id="skipNav"><a href="#main" class="sr-av">Saltar la navegación</a></p>
+<div id="header" ><div id="headerContent">JavaFX</div></div>
+<div id="siteNav">
+<ul>
+   <li><a href="index.html" class="daddy main-node">JavaFX</a></li>
+   <li class="current-page-parent"><a href="diseo_de_interfaces.html" class="current-page-parent daddy">Diseño de interfaces</a>
+   <ul>
+      <li><a href="controles.html" class="daddy">Controles</a>
+      <ul class="other-section">
+         <li><a href="etiquetas.html" class="no-ch">Etiquetas</a></li>
+         <li><a href="hiperenlaces.html" class="no-ch">Hiperenlaces</a></li>
+         <li><a href="campos_de_texto.html" class="no-ch">Campos de texto</a></li>
+         <li><a href="campos_de_contrasea.html" class="no-ch">Campos de contraseña</a></li>
+         <li><a href="botones.html" class="no-ch">Botones</a></li>
+         <li><a href="botones_de_activacin.html" class="no-ch">Botones de activación</a></li>
+         <li><a href="radio_botones.html" class="no-ch">Radio botones</a></li>
+         <li><a href="casillas_de_verificacin.html" class="no-ch">Casillas de verificación</a></li>
+         <li><a href="cajas_de_eleccin.html" class="no-ch">Cajas de elección</a></li>
+         <li><a href="cajas_combinadas.html" class="no-ch">Cajas combinadas</a></li>
+         <li><a href="separador.html" class="no-ch">Separador</a></li>
+         <li><a href="barras_de_desplazamiento_y_paneles_de_desplazamiento.html" class="no-ch">Barras de desplazamiento y paneles de desplazamiento</a></li>
+         <li><a href="deslizador.html" class="no-ch">Deslizador</a></li>
+         <li><a href="barras_e_indicadores_de_progreso.html" class="no-ch">Barras e indicadores de progreso</a></li>
+         <li><a href="vista_de_lista.html" class="no-ch">Vista de lista</a></li>
+         <li><a href="vista_de_tabla.html" class="no-ch">Vista de tabla</a></li>
+         <li><a href="vista_de_rbol.html" class="no-ch">Vista de árbol</a></li>
+         <li><a href="vista_de_tabla_en_rbol.html" class="no-ch">Vista de tabla en árbol</a></li>
+         <li><a href="editor_html.html" class="no-ch">Editor HTML</a></li>
+         <li><a href="informacin_contextual.html" class="no-ch">Información contextual</a></li>
+         <li><a href="mens.html" class="no-ch">Menús</a></li>
+         <li><a href="paneles_con_ttulo_y_acordeones.html" class="no-ch">Paneles con título y acordeones</a></li>
+         <li><a href="paginacin.html" class="no-ch">Paginación</a></li>
+         <li><a href="selector_de_color.html" class="no-ch">Selector de color</a></li>
+         <li><a href="selector_de_fecha.html" class="no-ch">Selector de fecha</a></li>
+         <li><a href="selector_de_ficheros.html" class="no-ch">Selector de ficheros</a></li>
+      </ul>
+      </li>
+      <li id="active"><a href="paneles_de_diseo.html" class="active no-ch">Paneles de diseño</a></li>
+      <li><a href="personalizacin_de_interfaces.html" class="no-ch">Personalización de interfaces</a></li>
+   </ul>
+   </li>
+   <li><a href="interaccionando_con_el_usuario.html" class="daddy">Interaccionando con el usuario</a>
+   <ul class="other-section">
+      <li><a href="contador_de_pulsaciones.html" class="no-ch">Contador de pulsaciones</a></li>
+      <li><a href="qu_botn_hemos_pulsado.html" class="no-ch">¿Qué botón hemos pulsado?</a></li>
+      <li><a href="campo_de_texto_con_una_longitud_mxima.html" class="no-ch">Campo de texto con una longitud máxima</a></li>
+      <li><a href="campo_de_texto_numrico.html" class="no-ch">Campo de texto numérico</a></li>
+      <li><a href="qu_radio_botn_hemos_seleccionado.html" class="no-ch">¿Qué radio botón hemos seleccionado?</a></li>
+      <li><a href="qu_opcin_hemos_escojido_de_una_caja_de_eleccin.html" class="no-ch">¿Qué opción hemos escojido de una caja de elección?</a></li>
+      <li><a href="elige_las_imgenes_a_mostrar.html" class="no-ch">Elige las imágenes a mostrar</a></li>
+      <li><a href="posicin_del_ratn.html" class="no-ch">Posición del ratón</a></li>
+      <li><a href="cmo_cambia_el_valor_de_un_deslizador.html" class="no-ch">¿Cómo cambia el valor de un deslizador?</a></li>
+      <li><a href="interaccionando_con_una_lista.html" class="no-ch">Interaccionando con una lista</a></li>
+      <li><a href="mostrando_dilogos.html" class="no-ch">Mostrando diálogos</a></li>
+      <li><a href="trabajando_con_tablas.html" class="no-ch">Trabajando con tablas</a></li>
+   </ul>
+   </li>
+   <li><a href="jxml.html" class="daddy">JXML</a>
+   <ul class="other-section">
+      <li><a href="scenebuilder.html" class="no-ch">SceneBuilder</a></li>
+   </ul>
+   </li>
+   <li><a href="cdigo_de_los_ejemplos.html" class="no-ch">Código de los ejemplos</a></li>
+</ul>
+</div>
+<div id='topPagination'>
+<div class="pagination noprt">
+<a href="selector_de_ficheros.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="personalizacin_de_interfaces.html" class="next"><span>Siguiente<span> &raquo;</span></span></a>
+</div>
+</div>
+<div id="main-wrapper">
+<div id="main"><a name="main"></a>
+<div id="nodeDecoration"><h1 id="nodeTitle">Paneles de diseño</h1></div>
+<div class="iDevice_wrapper FreeTextfpdIdevice" id="id0">
+<div class="iDevice emphasis0">
+<div id="ta0_154" class="block iDevice_content">
+<p>En nuestra IU nosotros podríamos ir añadiendo controles colocándolos en una posición dada y dándoles un tamaño, pero esa no es la forma adecuada de hacerlo. La forma adecuada de posicionar los diferentes controles es utilizando paneles de diseño (Layout Pane).</p>
+<p>Los paneles de diseño utilizan diferentes políticas para posicionar, dimensionar, espaciar, etc los controles que se añaden al mismo. Además a un panel de diseño no sólo podremos añadir controles si no que también podremos añadir otros paneles de diseño u otros elementos de JavaFX, por lo que a partir de ahora hablaremos de nodos.</p>
+<p>Veamos los ejemplos más comunes de paneles de diseño:</p>
+<div class="exe-fx exe-tabs">
+<h2>Pane</h2>
+<p>Este panel nos ofrece total libertad para colocar los diferentes nodos. Los nodos se posicionan por las coordenadas en las que los añadimos. Este panel de diseño <strong>no se debe utilizar</strong> para realizar diseños robustos.</p>
+<p>Este panel de diseño pertenece a la clase <strong>javafx.scene.layout.Pane</strong>.</p>
+<p><img src="Captura_de_pantalla_de_2018-04-12_17-14-42.png" alt="Pane" title="Pane" style="display: block; margin-left: auto; margin-right: auto;" width="300" height="236" /></p>
+<p>El código utilizado para crear esta interfaz es el siguiente:</p>
+<div class="highlighted-code language-java">
+<div>
+<pre><code>package javafx.panelesdiseno;
+
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
+
+public class Panel extends Application {
+
+	@Override
+	public void start(Stage escenarioPrincipal) {
+		try {
+			Pane raiz = new Pane();
+			Button bt1, bt2, bt3;
+			bt1 = new Button("Botón 1");
+			bt1.setLayoutX(10);
+			bt1.setLayoutY(20);
+			bt2 = new Button("Botón 2");
+			bt2.setLayoutX(200);
+			bt2.setLayoutY(100);
+			bt3 = new Button("Botón 3");
+			bt3.setLayoutX(50);
+			bt3.setLayoutY(150);
+			raiz.getChildren().addAll(bt1, bt2, bt3);
+			
+			Scene escena = new Scene(raiz, 300, 200);
+			escenarioPrincipal.setTitle("Panel");
+			escenarioPrincipal.setScene(escena);
+			escenarioPrincipal.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void main(String[] args) {
+		launch(args);
+	}
+}</code></pre>
+</div>
+</div>
+<h2>HBox</h2>
+<p>Este panel posiciona los diferentes nodos que se le van añadiendo en una fila uno detrás de otro.</p>
+<p>Este panel de diseño pertenece a la clase <strong>javafx.scene.layout.HBox</strong>.</p>
+<p><img src="Captura_de_pantalla_de_2018-04-12_17-22-33.png" alt="HBox" title="HBox" style="display: block; margin-left: auto; margin-right: auto;" width="300" height="86" /></p>
+<p>Como puedes apreciar aparece un botón pegado al otro y pegados a los bordes. Este comportamiento lo podemos modificar cambiando las diferentes propiedades del mismo. Las más representativas son las siguientes propiedades:</p>
+<ul>
+<li><strong>padding:</strong> propiedad con la que podemos controlar la distancia entre los límites del panel y los bordes del panel.</li>
+<li><strong>spacing</strong>: propiedad que indica la separación entre los nodos.</li>
+</ul>
+<p>En la siguiente imagen puedes observar la diferencia al modificar los valores de ambas propiedades.</p>
+<p><img src="Captura_de_pantalla_de_2018-04-12_17-25-22.png" alt="HBox" title="HBox" style="display: block; margin-left: auto; margin-right: auto;" width="300" height="86" /></p>
+<p>También podemos cambiar la alineación de los nodos tal y como se muestra en la siguiente imagen, por medio de la propiedad <strong>alignment</strong>.</p>
+<p><img src="Captura_de_pantalla_de_2018-04-12_17-23-15.png" alt="HBox" title="HBox" style="display: block; margin-left: auto; margin-right: auto;" width="300" height="86" /></p>
+<div class="highlighted-code language-java">
+<div>
+<pre><code>package javafx.panelesdiseno;
+
+import javafx.application.Application;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
+
+public class PanelHorizontal extends Application {
+
+	@Override
+	public void start(Stage escenarioPrincipal) {
+		try {
+			HBox raiz = new HBox(10);
+			raiz.setPadding(new Insets(10));
+			raiz.setAlignment(Pos.CENTER_RIGHT);
+			
+			Button bt1, bt2, bt3;
+			bt1 = new Button("Botón 1");
+			bt2 = new Button("Botón 2");
+			bt3 = new Button("Botón 3");
+			
+			raiz.getChildren().addAll(bt1, bt2, bt3);
+			
+			Scene escena = new Scene(raiz, 300, 50);
+			escenarioPrincipal.setTitle("Panel horizontal");
+			escenarioPrincipal.setScene(escena);
+			escenarioPrincipal.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void main(String[] args) {
+		launch(args);
+	}
+}</code></pre>
+</div>
+</div>
+<h2>VBox</h2>
+<p>Este panel es similar al anterior con la salvedad que coloca los nodos en una columna uno debajo de otro. Al igual que con el anterior, podemos modificar las propiedades para cambiar su comportamiento.</p>
+<p>Este panel de diseño pertenece a la clase <strong>javafx.scene.layout.VBox</strong>.</p>
+<div style="display: block; margin-left: auto; margin-right: auto; text-align: center;"><img src="Captura_de_pantalla_de_2018-04-12_17-29-41.png" alt="VBox" title="VBox" width="250" height="186" /><img src="Captura_de_pantalla_de_2018-04-12_17-30-10.png" alt="VBox" title="VBox" width="250" height="186" /><img src="Captura_de_pantalla_de_2018-04-12_17-30-23.png" alt="VBox" title="VBox" width="250" height="186" /></div>
+<div style="display: block; margin-left: auto; margin-right: auto; text-align: left;">El código utilizado para crear la interfaz de la última imagen es el siguiente:</div>
+<div style="display: block; margin-left: auto; margin-right: auto; text-align: left;">
+<div class="highlighted-code language-java">
+<div>
+<pre><code>package javafx.panelesdiseno;
+
+import javafx.application.Application;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+
+public class PanelHorizontal extends Application {
+
+	@Override
+	public void start(Stage escenarioPrincipal) {
+		try {
+			VBox raiz = new VBox(10);
+			raiz.setPadding(new Insets(10));
+			raiz.setAlignment(Pos.CENTER);
+			
+			Button bt1, bt2, bt3;
+			bt1 = new Button("Botón 1");
+			bt2 = new Button("Botón 2");
+			bt3 = new Button("Botón 3");
+			
+			raiz.getChildren().addAll(bt1, bt2, bt3);
+			
+			Scene escena = new Scene(raiz, 250, 150);
+			escenarioPrincipal.setTitle("Panel vertical");
+			escenarioPrincipal.setScene(escena);
+			escenarioPrincipal.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void main(String[] args) {
+		launch(args);
+	}
+}</code></pre>
+</div>
+</div>
+</div>
+<h2>BorderPane</h2>
+<p>Este panel nos ofrece cinco regiones en las que añadir nodos: arriba, abajo, izquierda, derecha y centro. Este tipo de panel es muy utilizado para crear interfaces clásicas que arriba suelen tener una barra de menú, abajo una barra de estado, un panel de navegación a la izquierda, etc.</p>
+<p>Este panel de diseño pertenece a la clase <strong>javafx.scene.layout.BorderPane</strong>.</p>
+<p><img src="Captura_de_pantalla_de_2018-04-12_17-50-35.png" alt="BorderPane" title="BorderPane" style="display: block; margin-left: auto; margin-right: auto;" width="500" height="336" /></p>
+<p>El código utilizado para crear la interfaz de la imagen (aunque parezca algo enrevesado, lo he hecho para distinguir las diferentes zonas) es el siguiente:</p>
+<div class="highlighted-code language-java">
+<div>
+<pre><code>package javafx.panelesdiseno;
+
+import javafx.application.Application;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+
+public class PanelBorde extends Application {
+
+	@Override
+	public void start(Stage escenarioPrincipal) {
+		try {
+			BorderPane raiz = new BorderPane();
+			VBox vbIzquierda = new VBox();
+			VBox vbDerecha = new VBox();
+			HBox hbArriba = new HBox();
+			HBox hbAbajo = new HBox();
+			
+			Button btIzquierda, btDerecha, btArriba, btAbajo, btCentro;
+			btIzquierda = new Button("Izquierda (LEFT)");
+			btDerecha = new Button("Derecha (RIGHT)");
+			btArriba = new Button("Arriba (TOP)");
+			btAbajo = new Button("Abajo (BOTTOM)");
+			btCentro = new Button("Centro (CENTER)");
+			
+			vbIzquierda.getChildren().add(btIzquierda);
+			vbIzquierda.setAlignment(Pos.CENTER);
+			vbIzquierda.setStyle("-fx-background-color: #dc143c");
+			vbDerecha.getChildren().add(btDerecha);
+			vbDerecha.setAlignment(Pos.CENTER);
+			vbDerecha.setStyle("-fx-background-color: #dc143c");
+			hbArriba.getChildren().add(btArriba);
+			hbArriba.setAlignment(Pos.CENTER);
+			hbArriba.setStyle("-fx-background-color: #b6e7c9");
+			hbAbajo.getChildren().add(btAbajo);
+			hbAbajo.setAlignment(Pos.CENTER);
+			hbAbajo.setStyle("-fx-background-color: #b6e7c9");
+			
+			raiz.setLeft(vbIzquierda);
+			raiz.setRight(vbDerecha);
+			raiz.setTop(hbArriba);
+			raiz.setBottom(hbAbajo);
+			raiz.setCenter(btCentro);
+			
+			Scene escena = new Scene(raiz, 500, 300);
+			escenarioPrincipal.setTitle("Panel de borde");
+			escenarioPrincipal.setScene(escena);
+			escenarioPrincipal.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void main(String[] args) {
+		launch(args);
+	}
+}</code></pre>
+</div>
+</div>
+<h2><strong>StackPane</strong></h2>
+<p>Este panel coloca los diferentes nodos uno encima del otro.</p>
+<p>Este panel de diseño pertenece a la clase <strong>javafx.scene.layout.StackPane</strong>.</p>
+<p><img src="Captura_de_pantalla_de_2018-04-13_10-56-52.png" alt="StackPane" title="StackPane" style="display: block; margin-left: auto; margin-right: auto;" width="250" height="286" /></p>
+<p>El código utilizado para crear la interfaz de la imagen es el siguiente:</p>
+<div class="highlighted-code language-java">
+<div>
+<pre><code>package javafx.panelesdiseno;
+
+import javafx.application.Application;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.effect.InnerShadow;
+import javafx.scene.effect.Light;
+import javafx.scene.effect.Lighting;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
+import javafx.stage.Stage;
+
+public class PanelApilado extends Application {
+
+	@Override
+	public void start(Stage escenarioPrincipal) {
+		try {
+			VBox raiz = new VBox();
+			raiz.setAlignment(Pos.CENTER);
+			
+			StackPane spEmoji = new StackPane();
+			Rectangle rectangulo = new Rectangle(100, 100);
+			rectangulo.setFill(Color.web("#dc143c"));
+			rectangulo.setStroke(Color.web("#b6e7c9"));
+			rectangulo.setStrokeWidth(10);
+			rectangulo.setArcHeight(40);
+			rectangulo.setArcWidth(40);
+			Label lbEmoji = new Label(";)");
+			lbEmoji.setFont(new Font(60));
+			spEmoji.getChildren().addAll(rectangulo, lbEmoji);
+			InnerShadow is = new InnerShadow(10, Color.BLUE);
+			DropShadow ds = new DropShadow(40, Color.DARKVIOLET);
+			Light.Distant distancia = new Light.Distant();
+			distancia.setColor(Color.LIGHTGRAY);
+			distancia.setElevation(80);
+			Lighting l = new Lighting(distancia);
+			is.setInput(l);
+			ds.setInput(is);
+			spEmoji.setEffect(ds);
+			
+			raiz.getChildren().addAll(spEmoji);
+			
+			Scene escena = new Scene(raiz, 250, 250);
+			escenarioPrincipal.setTitle("Panel apilado");
+			escenarioPrincipal.setScene(escena);
+			escenarioPrincipal.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void main(String[] args) {
+		launch(args);
+	}
+}</code></pre>
+</div>
+</div>
+<h2><strong>GridPane</strong></h2>
+<p>Este panel nos ofrece una cuadrícula de filas y columnas y en cada celda podemos colocar un nodo.</p>
+<p>Este panel de diseño pertenece a la clase <strong>javafx.scene.layout.GridPane</strong>.</p>
+<p><img src="Captura_de_pantalla_de_2018-04-06_11-54-13.png" alt="GridPane" title="GridPane" style="display: block; margin-left: auto; margin-right: auto;" width="206" height="117" /></p>
+<p>Mediante las propiedades <strong>Hgap</strong> y <strong>Vgap</strong> podemos definir la distancia horizontal y/o vertical entre las celdas. También podemos modificar, entre otras, la propiedad <strong>padding</strong>.</p>
+<p style="text-align: center;"><img src="Captura_de_pantalla_de_2018-04-06_12-08-00.png" alt="GridPane" title="GridPane" width="239" height="149" /></p>
+<p>Este panel es muy utilizado para crear formularios con etiquetas y campos de texto alineados.</p>
+<p><img src="Captura_de_pantalla_de_2018-04-12_18-24-06.png" alt="Formulario" title="Formulario" style="display: block; margin-left: auto; margin-right: auto;" width="300" height="196" /></p>
+<p>El código utilizado para crear la interfaz anterior es el siguiente:</p>
+<div class="highlighted-code language-java">
+<div>
+<pre><code>package javafx.panelesdiseno;
+
+import javafx.application.Application;
+import javafx.geometry.HPos;
+import javafx.geometry.Insets;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
+
+public class PanelCuadricula extends Application {
+
+	@Override
+	public void start(Stage escenarioPrincipal) {
+		try {
+			GridPane raiz = new GridPane();
+			raiz.setHgap(20);
+			raiz.setVgap(20);
+			raiz.setPadding(new Insets(20));
+			
+			Label lbNombre, lbApellidos, lbDni;
+			lbNombre = new Label("Nombre:");
+			lbApellidos = new Label("Apellidos:");
+			lbDni = new Label("DNI:");
+			TextField tfNombre, tfApellidos, tfDni;
+			tfNombre = new TextField();
+			tfApellidos = new TextField();
+			tfDni = new TextField();
+			
+			raiz.add(lbNombre, 0, 0);
+			GridPane.setHalignment(lbNombre, HPos.RIGHT);
+			raiz.add(tfNombre, 1, 0);
+			raiz.add(lbApellidos, 0, 1);
+			GridPane.setHalignment(lbApellidos, HPos.RIGHT);
+			raiz.add(tfApellidos, 1, 1);
+			raiz.add(lbDni, 0, 2);
+			GridPane.setHalignment(lbDni, HPos.RIGHT);
+			raiz.add(tfDni, 1, 2);
+			
+			Scene escena = new Scene(raiz, 300, 160);
+			escenarioPrincipal.setTitle("Panel en cuadrícula");
+			escenarioPrincipal.setScene(escena);
+			escenarioPrincipal.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void main(String[] args) {
+		launch(args);
+	}
+}
+package javafx.panelesdiseno;
+
+import javafx.application.Application;
+import javafx.geometry.HPos;
+import javafx.geometry.Insets;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
+
+public class PanelCuadricula extends Application {
+
+	@Override
+	public void start(Stage escenarioPrincipal) {
+		try {
+			GridPane raiz = new GridPane();
+			raiz.setHgap(20);
+			raiz.setVgap(20);
+			raiz.setPadding(new Insets(20));
+			
+			Label lbNombre, lbApellidos, lbDni;
+			lbNombre = new Label("Nombre:");
+			lbApellidos = new Label("Apellidos:");
+			lbDni = new Label("DNI:");
+			TextField tfNombre, tfApellidos, tfDni;
+			tfNombre = new TextField();
+			tfApellidos = new TextField();
+			tfDni = new TextField();
+			
+			raiz.add(lbNombre, 0, 0);
+			GridPane.setHalignment(lbNombre, HPos.RIGHT);
+			raiz.add(tfNombre, 1, 0);
+			raiz.add(lbApellidos, 0, 1);
+			GridPane.setHalignment(lbApellidos, HPos.RIGHT);
+			raiz.add(tfApellidos, 1, 1);
+			raiz.add(lbDni, 0, 2);
+			GridPane.setHalignment(lbDni, HPos.RIGHT);
+			raiz.add(tfDni, 1, 2);
+			
+			Scene escena = new Scene(raiz, 300, 160);
+			escenarioPrincipal.setTitle("Panel en cuadrícula");
+			escenarioPrincipal.setScene(escena);
+			escenarioPrincipal.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void main(String[] args) {
+		launch(args);
+	}
+}</code></pre>
+</div>
+</div>
+<h2><strong>FlowPane</strong></h2>
+<p>Este panel dispone los nodos unos detrás de otros. Los nodos pueden flotar horizontalmente o verticalmente. Si la orientación es horizontal, colocará nodos uno detrás de otro y cuando llegue a la anchura del panel, seguirá colocando debajo de estos uno detrás de otro. Si es vertical los colocará uno debajo de otro y cuando llegue a la altura del panel los seguirá colocando a la derecha de los anteriores uno debajo de otro.</p>
+<p>Este panel de diseño pertenece a la clase <strong>javafx.scene.layout.FlowPane</strong>.</p>
+<p style="text-align: center;"><img src="Captura_de_pantalla_de_2018-04-12_18-57-08.png" alt="FlowPane" title="FlowPane" width="400" height="106" /><img src="Captura_de_pantalla_de_2018-04-12_18-57-22.png" alt="FlowPane" title="FlowPane" style="vertical-align: top;" width="288" height="119" /></p>
+<p style="text-align: left;">El código utilizado para crea la primera interfaz es el que sigue. La segunda es una muestra de la misma interfaz redimensionada.</p>
+<div class="highlighted-code language-java">
+<div>
+<pre><code>package javafx.panelesdiseno;
+
+import javafx.application.Application;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.FlowPane;
+import javafx.stage.Stage;
+
+public class PanelFlujo extends Application {
+
+	@Override
+	public void start(Stage escenarioPrincipal) {
+		try {
+			FlowPane raiz = new FlowPane();
+			raiz.setPadding(new Insets(10));
+			raiz.setAlignment(Pos.CENTER);
+			
+			Button bt1, bt2, bt3, bt4, bt5;
+			bt1 = new Button("Botón 1");
+			bt2 = new Button("Botón 2");
+			bt3 = new Button("Botón 3");
+			bt4 = new Button("Botón 4");
+			bt5 = new Button("Botón 5");
+			
+			raiz.getChildren().addAll(bt1, bt2, bt3, bt4, bt5);
+			
+			Scene escena = new Scene(raiz, 400, 70);
+			escenarioPrincipal.setTitle("Panel de flujo");
+			escenarioPrincipal.setScene(escena);
+			escenarioPrincipal.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void main(String[] args) {
+		launch(args);
+	}
+}</code></pre>
+</div>
+</div>
+<h2><strong>TilePane</strong></h2>
+<p>Este panel es muy similar al anterior, aunque nos ofrece una cuadrícula de filas y columnas en las que irá colocando los nodos. Los nodos pueden colocarse horizontal o verticalmente y para colocar los nodos sigue la misma política que el panel anterior. Para definir la cuadrícula se utilizan las porpiedades <strong>prefColumns</strong> y <strong>prefRows</strong>. Aunque el número de filas y columnas puede variar dependiendo de la anchura y altura del panel.</p>
+<p>Este panel de diseño pertenece a la clase <strong>javafx.scene.layout.TilePane</strong>.</p>
+<h2>AnchorPane</h2>
+<p>Este panel permite posicionar los nodos anclados a las caras del mismo por lo que nos ofrece total libertad para colocar los diferentes nodos. Al igual que <strong>Pane</strong>, no <strong>se debe utilizar</strong> para realizar diseños robustos.</p>
+<p>Este panel de diseño pertenece a la clase <strong>javafx.scene.layout.AnchorPane</strong>.</p>
+<p><img src="Captura_de_pantalla_de_2018-04-06_13-18-43.png" alt="AnchorPane" title="AnchorPane" style="display: block; margin-left: auto; margin-right: auto;" width="301" height="185" /></p>
+</div>
+<p></p>
+<p>Para crear interfaces complejas lo más adecuado es combinar el uso de varios paneles de diseño para facilitarnos la tarea de diseño. Por ejemplo, para crear el formulario de la siguiente imagen he utilizado como panel principal un <strong>VBox</strong>. Dentro de éste he añadido:</p>
+<ul>
+<li>Un <strong>GridPane</strong> de 3 filas y 2 columnas en el que he ido añadiendo las etiquetas y los campos de texto. </li>
+<li>Un <strong>HBox</strong> en el que he añadido los dos botones alineados a la derecha.</li>
+</ul>
+<p><img src="Captura_de_pantalla_de_2018-04-06_20-59-29.png" alt="Formulario" title="Formulario" style="display: block; margin-left: auto; margin-right: auto;" width="404" height="250" /></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id='bottomPagination'>
+<div class="pagination noprt">
+<a href="selector_de_ficheros.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="personalizacin_de_interfaces.html" class="next"><span>Siguiente<span> &raquo;</span></span></a>
+</div>
+</div>
+<div id="siteFooter"><p style="text-align: center; font-size: large;">CC by-nc - <strong>José Ramón Jiménez Reyes </strong>- IES Al-Ándalus</p></div></div>
+<script type="text/javascript" src="_fpd_js.js"></script></body></html>
