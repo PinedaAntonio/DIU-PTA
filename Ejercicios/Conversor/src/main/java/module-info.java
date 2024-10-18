@@ -10,9 +10,9 @@ module com.example.conversor {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
+    requires java.desktop;
     requires AccesoBBDDMoneda;
     requires java.sql;
-    requires java.desktop;
 
     opens com.example.conversor to javafx.fxml;
     exports com.example.conversor;
