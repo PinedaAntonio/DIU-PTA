@@ -47,5 +47,8 @@
             <Button layoutX="473.0" layoutY="350.0" mnemonicParsing="false" onAction="#handleCancel" prefHeight="30.0" prefWidth="100.0" text="Cancel" />
          </children>
       </HBox>
+      <ProgressBar layoutX="23.0" layoutY="344.0" prefHeight="28.0" prefWidth="210.0" progress="0.0" />
+      <Label layoutX="245.0" layoutY="347.0" text="Ocupado" />
+      <Label layoutX="32.0" layoutY="347.0" styleClass="label-porcentaje" text="0%" />
    </children>
 </AnchorPane>
