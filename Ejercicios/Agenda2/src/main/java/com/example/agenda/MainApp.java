@@ -1,5 +1,8 @@
 package com.example.agenda;
 
+import com.example.agenda.Modelo.AgendaModelo;
+import com.example.agenda.Modelo.repository.PersonRepository;
+import com.example.agenda.Modelo.repository.impl.PersonRepositoryImpl;
 import com.example.agenda.controller.BirthdayStatisticsController;
 import com.example.agenda.controller.PersonEditDialogController;
 import com.example.agenda.controller.PersonOverviewController;
@@ -15,24 +18,21 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class MainApp extends Application {
 
     private Stage primaryStage;
     private BorderPane rootLayout;
     private ObservableList<Person> personData = FXCollections.observableArrayList();
+    private AgendaModelo agendaModelo;
+
 
     public MainApp(){
-        // Add some sample data
-        personData.add(new Person("Pistacho", "Salvamoros"));
-        personData.add(new Person("Francisco", "Mejías"));
-        personData.add(new Person("Manuel", "Bernáldez"));
-        personData.add(new Person("Mario", "Vaquerizo"));
-        personData.add(new Person("El", "Cigala"));
-        personData.add(new Person("Leticia", "Sabater"));
-        personData.add(new Person("Romano", "Aspas"));
-        personData.add(new Person("Bernardino", "Garrido"));
-        personData.add(new Person("Pablo", "Motas"));
+        PersonRepositoryImpl personRepository = new PersonRepositoryImpl();
+        agendaModelo = new AgendaModelo();
+        agendaModelo.setPersonRepository(personRepository);
+        personData.addAll(agendaModelo.mostrarPersonas());
     }
 
     /**

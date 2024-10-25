@@ -1,5 +1,6 @@
 package com.example.agenda.Modelo;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class PersonVO {
@@ -9,9 +10,9 @@ public class PersonVO {
     String street;
     String city;
     Integer postalCode;
-    Date birthday;
+    LocalDate birthday;
 
-    public PersonVO(String firstName, String lastName, String street, String city, Integer postalCode, Date birthday) {
+    public PersonVO(String firstName, String lastName, String street, String city, Integer postalCode, LocalDate birthday) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.street = street;
@@ -20,7 +21,7 @@ public class PersonVO {
         this.birthday = birthday;
     }
 
-    public PersonVO(Integer Id, String firstName, String lastName, String street, String city, Integer postalCode, Date birthday) {
+    public PersonVO(Integer Id, String firstName, String lastName, String street, String city, Integer postalCode, LocalDate birthday) {
         this.Id = Id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -78,11 +79,11 @@ public class PersonVO {
         this.city = city;
     }
 
-    public Date getBirthday() {
+    public LocalDate getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(LocalDate birthday) {
         this.birthday = birthday;
     }
 

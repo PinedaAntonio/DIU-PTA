@@ -8,8 +8,9 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
+
 
 public class PersonRepositoryImpl implements PersonRepository{
     private final ConexionJDBC conexion = new ConexionJDBC();
@@ -35,7 +36,7 @@ public class PersonRepositoryImpl implements PersonRepository{
                 String st = rs.getString("street");
                 String c = rs.getString("city");
                 Integer pc = rs.getInt("postalCode");
-                Date bd = rs.getDate("birthday");
+                LocalDate bd = rs.getDate("birthday").toLocalDate();
                 Integer i = rs.getInt("Id");
                 this.persona = new PersonVO(f, l, st, c, pc, bd);
                 this.persona.setId(i);
