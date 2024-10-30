@@ -80,7 +80,7 @@ public class PersonRepositoryImpl implements PersonRepository{
         try {
             Connection conn = this.conexion.conectarBD();
             this.stmt = conn.createStatement();
-            String sql = String.format( "UPDATE personas SET firstName = '%s', lastName = '%s', street = '%s', city = '%s', postalCode = %d, birthday = '%s' WHERE Id = %d", personVO.getFirstName(), personVO.getLastName(), personVO.getStreet(), personVO.getCity(), personVO.getPostalCode(), personVO.getBirthday());
+            String sql = String.format( "UPDATE personas SET firstName = '%s', lastName = '%s', street = '%s', city = '%s', postalCode = %d, birthday = '%s' WHERE Id = %d", personVO.getFirstName(), personVO.getLastName(), personVO.getStreet(), personVO.getCity(), personVO.getPostalCode(), personVO.getBirthday(), personVO.getId());
             this.stmt.executeUpdate(sql);
         } catch (Exception var4) {
             throw new ExcepcionPerson("No se ha podido realizar la edición");

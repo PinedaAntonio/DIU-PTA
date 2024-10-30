@@ -32,7 +32,11 @@ public class MainApp extends Application {
         PersonRepositoryImpl personRepository = new PersonRepositoryImpl();
         agendaModelo = new AgendaModelo();
         agendaModelo.setPersonRepository(personRepository);
-        personData.addAll(agendaModelo.mostrarPersonas());
+        try{
+            personData.addAll(agendaModelo.mostrarPersonas());
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -100,6 +104,7 @@ public class MainApp extends Application {
             // Give the controller access to the main app.
             PersonOverviewController controller = loader.getController();
             controller.setMainApp(this);
+            controller.setAgendaModelo(agendaModelo);
         } catch (IOException e) {
             e.printStackTrace();
         }

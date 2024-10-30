@@ -1,6 +1,11 @@
+
 package com.example.agenda.controller;
 
+import com.example.agenda.Modelo.AgendaModelo;
+import com.example.agenda.Modelo.ExcepcionPerson;
+import com.example.agenda.Modelo.PersonVO;
 import com.example.agenda.util.DateUtil;
+import com.example.agenda.util.PersonUtil;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -9,6 +14,9 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import com.example.agenda.MainApp;
 import com.example.agenda.Person;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class PersonOverviewController {
     @FXML
@@ -33,6 +41,8 @@ public class PersonOverviewController {
 
     // Reference to the main application.
     private MainApp mainApp;
+    private PersonUtil personUtil = new PersonUtil();
+    private AgendaModelo modelo;
 
     /**
      * The constructor.
@@ -69,6 +79,10 @@ public class PersonOverviewController {
 
         // Add observable list data to the table
         personTable.setItems(mainApp.getPersonData());
+    }
+
+    public void setAgendaModelo(AgendaModelo modelo) {
+        this.modelo = modelo;
     }
 
     /**
@@ -108,13 +122,19 @@ public class PersonOverviewController {
         int selectedIndex = personTable.getSelectionModel().getSelectedIndex();
         if (selectedIndex >= 0) {
             personTable.getItems().remove(selectedIndex);
+            try {
+                PersonVO personVO = personUtil.convertToPersonVO(personTable.getItems().get(selectedIndex-1));
+                modelo.borrarPerson(personVO);
+            } catch (ExcepcionPerson e) {
+                mostrarAlertaError("Error al guardar la persona", e.getMessage());
+            }
         } else {
             // Nothing selected.
             Alert alert= new Alert(AlertType.WARNING);
-                    alert.setTitle("No Selection");
-                    alert.setHeaderText("No Person Selected");
-                    alert.setContentText("Please select a person in the table.");
-                    alert.showAndWait();
+            alert.setTitle("No Selection");
+            alert.setHeaderText("No Person Selected");
+            alert.setContentText("Please select a person in the table.");
+            alert.showAndWait();
         }
     }
 
@@ -127,7 +147,13 @@ public class PersonOverviewController {
         Person tempPerson = new Person();
         boolean okClicked = mainApp.showPersonEditDialog(tempPerson);
         if (okClicked) {
-            mainApp.getPersonData().add(tempPerson);
+            try {
+                PersonVO personVO = personUtil.convertToPersonVO(tempPerson);
+                modelo.nuevaPerson(personVO);
+                mainApp.getPersonData().add(tempPerson);
+            } catch (ExcepcionPerson e) {
+                mostrarAlertaError("Error al guardar la persona", e.getMessage());
+            }
         }
     }
 
@@ -142,15 +168,28 @@ public class PersonOverviewController {
             boolean okClicked = mainApp.showPersonEditDialog(selectedPerson);
             if (okClicked) {
                 showPersonDetails(selectedPerson);
+                try {
+                    PersonVO personVO = personUtil.convertToPersonVO(selectedPerson);
+                    modelo.editarPerson(personVO);
+                } catch (ExcepcionPerson e) {
+                    mostrarAlertaError("Error al guardar la persona", e.getMessage());
+                }
             }
 
         } else {
             // Nothing selected.
             Alert alert=new Alert(AlertType.WARNING);
-                    alert.setTitle("No Selection");
-                    alert.setHeaderText("No Person Selected");
-                    alert.setContentText("Please select a person in the table.");
-                    alert.showAndWait();
+            alert.setTitle("No Selection");
+            alert.setHeaderText("No Person Selected");
+            alert.setContentText("Please select a person in the table.");
+            alert.showAndWait();
         }
+    }
+    private void mostrarAlertaError(String titulo, String mensaje) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle(titulo);
+        alert.setHeaderText("Please correct invalid fields");
+        alert.setContentText(mensaje);
+        alert.showAndWait();
     }
 }

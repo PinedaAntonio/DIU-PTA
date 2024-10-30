@@ -40,4 +40,9 @@ public class PersonUtil {
         return listaPersonVO;
     }
 
+    public PersonVO convertToPersonVO(Person person) {
+        return new PersonVO(person.getId(), person.getFirstName(), person.getLastName(),
+                person.getStreet(), person.getCity(), person.getPostalCode(), person.getBirthday());
+    }
+
 }

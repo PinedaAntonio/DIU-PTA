@@ -1,45 +1,49 @@
 package com.example.agenda;
 
-import java.time.LocalDate;
+import javafx.beans.property.*;
 
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import java.time.LocalDate;
 
 public class Person {
 
+    private final IntegerProperty id;                // Nuevo campo id
     private final StringProperty firstName;
     private final StringProperty lastName;
     private final StringProperty street;
-    private final IntegerProperty postalCode;
     private final StringProperty city;
+    private final IntegerProperty postalCode;
     private final ObjectProperty<LocalDate> birthday;
 
-    /**
-     * Default constructor.
-     */
     public Person() {
-        this(null, null);
+        this.id = new SimpleIntegerProperty();       // Inicializar el campo id
+        this.firstName = new SimpleStringProperty();
+        this.lastName = new SimpleStringProperty();
+        this.street = new SimpleStringProperty();
+        this.city = new SimpleStringProperty();
+        this.postalCode = new SimpleIntegerProperty();
+        this.birthday = new SimpleObjectProperty<>();
     }
 
-    /**
-     * Constructor with some initial data.
-     *
-     * @param firstName
-     * @param lastName
-     */
-    public Person(String firstName, String lastName) {
+    public Person(int id, String firstName, String lastName, String street, String city, int postalCode, LocalDate birthday) {
+        this.id = new SimpleIntegerProperty(id);      // Inicializar el campo id en el constructor
         this.firstName = new SimpleStringProperty(firstName);
         this.lastName = new SimpleStringProperty(lastName);
+        this.street = new SimpleStringProperty(street);
+        this.city = new SimpleStringProperty(city);
+        this.postalCode = new SimpleIntegerProperty(postalCode);
+        this.birthday = new SimpleObjectProperty<>(birthday);
+    }
 
-        // Some initial dummy data, just for convenient testing.
-        this.street = new SimpleStringProperty("Una calle");
-        this.city = new SimpleStringProperty("Una ciudad");
-        this.postalCode = new SimpleIntegerProperty(11111);
-        this.birthday = new SimpleObjectProperty<LocalDate>(LocalDate.of(2005, 10, 15));
+    public int getId() {
+        return id.get();
+    }
+
+    public void setId(int id) {
+        this.id.set(id);
+    }
+
+    public IntegerProperty idProperty() {
+        return id;
     }
 
     public String getFirstName() {
@@ -78,18 +82,6 @@ public class Person {
         return street;
     }
 
-    public int getPostalCode() {
-        return postalCode.get();
-    }
-
-    public void setPostalCode(int postalCode) {
-        this.postalCode.set(postalCode);
-    }
-
-    public IntegerProperty postalCodeProperty() {
-        return postalCode;
-    }
-
     public String getCity() {
         return city.get();
     }
@@ -100,6 +92,18 @@ public class Person {
 
     public StringProperty cityProperty() {
         return city;
+    }
+
+    public int getPostalCode() {
+        return postalCode.get();
+    }
+
+    public void setPostalCode(int postalCode) {
+        this.postalCode.set(postalCode);
+    }
+
+    public IntegerProperty postalCodeProperty() {
+        return postalCode;
     }
 
     public LocalDate getBirthday() {
@@ -114,3 +118,4 @@ public class Person {
         return birthday;
     }
 }
+

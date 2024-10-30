@@ -15,6 +15,7 @@ public class AgendaModelo {
     // Constructor que inicializa personUtil
     public AgendaModelo() {
         this.personUtil = new PersonUtil();
+
     }
 
     public void setPersonRepository(PersonRepository personRepository) {
@@ -30,4 +31,16 @@ public class AgendaModelo {
         }
         return personas;
     }
+
+    public void nuevaPerson(PersonVO personVO) throws ExcepcionPerson {
+        personRepository.addPersona(personVO);
+    }
+    public void editarPerson(PersonVO personVO) throws ExcepcionPerson {
+        personRepository.editPersona(personVO);
+    }
+    public void borrarPerson(PersonVO personVO) throws ExcepcionPerson {
+        personRepository.deletePersona(personVO.getId());
+    }
 }
+
+
