@@ -4,10 +4,7 @@ import com.example.agenda.Modelo.ExcepcionPerson;
 import com.example.agenda.Modelo.PersonVO;
 import com.example.agenda.Modelo.repository.PersonRepository;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -77,15 +74,49 @@ public class PersonRepositoryImpl implements PersonRepository{
     }
 
     public void editPersona(PersonVO personVO) throws ExcepcionPerson {
+        Connection conn = null;
         try {
-            Connection conn = this.conexion.conectarBD();
+            conn = this.conexion.conectarBD();
             this.stmt = conn.createStatement();
-            String sql = String.format( "UPDATE personas SET firstName = '%s', lastName = '%s', street = '%s', city = '%s', postalCode = %d, birthday = '%s' WHERE Id = %d", personVO.getFirstName(), personVO.getLastName(), personVO.getStreet(), personVO.getCity(), personVO.getPostalCode(), personVO.getBirthday(), personVO.getId());
-            this.stmt.executeUpdate(sql);
-        } catch (Exception var4) {
-            throw new ExcepcionPerson("No se ha podido realizar la edición");
+
+            // Verifica el ID y lanza una excepción si es 0 o negativo
+            if (personVO.getId() <= 0) {
+                throw new ExcepcionPerson("ID de la persona no es válido: " + personVO.getId());
+            }
+
+            String sql = String.format(
+                    "UPDATE personas SET firstName = '%s', lastName = '%s', street = '%s', city = '%s', postalCode = %d, birthday = '%s' WHERE Id = %d",
+                    personVO.getFirstName(),
+                    personVO.getLastName(),
+                    personVO.getStreet(),
+                    personVO.getCity(),
+                    personVO.getPostalCode(),
+                    personVO.getBirthday().toString(),
+                    personVO.getId()
+            );
+
+            System.out.println("Ejecutando consulta SQL: " + sql); // Imprime la consulta SQL para depuración
+
+            int rowsAffected = this.stmt.executeUpdate(sql);
+            System.out.println("Filas afectadas: " + rowsAffected);
+
+            if (rowsAffected == 0) {
+                throw new ExcepcionPerson("No se encontró la persona con el ID: " + personVO.getId());
+            }
+
+        } catch (SQLException e) {
+            throw new ExcepcionPerson("No se ha podido realizar la edición: " + e.getMessage());
+        } catch (Exception e) {
+            throw new ExcepcionPerson("No se ha podido realizar la edición: " + e.getMessage());
+        } finally {
+            if (conn != null) {
+                this.conexion.desconectarBD(conn);
+            }
         }
     }
+
+
+
 
     public int lastId() throws ExcepcionPerson {
         int lastPersonaId = 0;
@@ -102,4 +133,5 @@ public class PersonRepositoryImpl implements PersonRepository{
             throw new ExcepcionPerson("No se ha podido realizar la busqueda del ID");
         }
     }
+
 }

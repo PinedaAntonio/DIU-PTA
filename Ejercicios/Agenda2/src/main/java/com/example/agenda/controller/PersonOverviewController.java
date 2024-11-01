@@ -1,9 +1,10 @@
-
 package com.example.agenda.controller;
 
 import com.example.agenda.Modelo.AgendaModelo;
 import com.example.agenda.Modelo.ExcepcionPerson;
 import com.example.agenda.Modelo.PersonVO;
+import com.example.agenda.Modelo.repository.PersonRepository;
+import com.example.agenda.Modelo.repository.impl.PersonRepositoryImpl;
 import com.example.agenda.util.DateUtil;
 import com.example.agenda.util.PersonUtil;
 import javafx.fxml.FXML;
@@ -16,7 +17,6 @@ import com.example.agenda.MainApp;
 import com.example.agenda.Person;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class PersonOverviewController {
     @FXML
@@ -44,17 +44,12 @@ public class PersonOverviewController {
     private PersonUtil personUtil = new PersonUtil();
     private AgendaModelo modelo;
 
-    /**
-     * The constructor.
-     * The constructor is called before the initialize() method.
-     */
+    // Añadir instancia de repositorio
+    private PersonRepository personRepository = new PersonRepositoryImpl(); // Repositorio
+
     public PersonOverviewController() {
     }
 
-    /**
-     * Initializes the controller class. This method is automatically called
-     * after the fxml file has been loaded.
-     */
     @FXML
     private void initialize() {
         // Initialize the person table with the two columns.
@@ -69,31 +64,28 @@ public class PersonOverviewController {
                 (observable, oldValue, newValue) -> showPersonDetails(newValue));
     }
 
-    /**
-     * Is called by the main application to give a reference back to itself.
-     *
-     * @param mainApp
-     */
     public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
-
-        // Add observable list data to the table
-        personTable.setItems(mainApp.getPersonData());
+        loadPersonData(); // Cargar datos al inicio
     }
 
     public void setAgendaModelo(AgendaModelo modelo) {
         this.modelo = modelo;
     }
 
-    /**
-     * Fills all text fields to show details about the person.
-     * If the specified person is null, all text fields are cleared.
-     *
-     * @param person the person or null
-     */
+    // Método para cargar personas desde la base de datos
+    private void loadPersonData() {
+        try {
+            ArrayList<PersonVO> personVOList = personRepository.ObtenerListaPersonas();
+            ArrayList<Person> personList = personUtil.getPersons(personVOList);
+            personTable.getItems().setAll(personList); // Actualiza la tabla con nuevos datos
+        } catch (ExcepcionPerson e) {
+            mostrarAlertaError("Error al cargar la lista de personas", e.getMessage());
+        }
+    }
+
     private void showPersonDetails(Person person) {
         if (person != null) {
-            // Fill the labels with info from the person object.
             firstNameLabel.setText(person.getFirstName());
             lastNameLabel.setText(person.getLastName());
             streetLabel.setText(person.getStreet());
@@ -101,7 +93,6 @@ public class PersonOverviewController {
             postalCodeLabel.setText(Integer.toString(person.getPostalCode()));
             birthdayLabel.setText(DateUtil.format(person.getBirthday()));
         } else {
-            // Person is null, remove all the text.
             firstNameLabel.setText("");
             lastNameLabel.setText("");
             streetLabel.setText("");
@@ -111,25 +102,19 @@ public class PersonOverviewController {
         }
     }
 
-    /**
-     * Called when the user clicks on the delete button.
-     */
     @FXML
-    /**
-     * Called when the user clicks on the delete button.
-     */
     private void handleDeletePerson() {
         int selectedIndex = personTable.getSelectionModel().getSelectedIndex();
         if (selectedIndex >= 0) {
-            personTable.getItems().remove(selectedIndex);
+            Person personToDelete = personTable.getItems().get(selectedIndex);
             try {
-                PersonVO personVO = personUtil.convertToPersonVO(personTable.getItems().get(selectedIndex-1));
-                modelo.borrarPerson(personVO);
+                PersonVO personVO = personUtil.convertToPersonVO(personToDelete);
+                modelo.borrarPerson(personVO); // Asumiendo que tienes un método en modelo para borrar
+                loadPersonData(); // Recargar la lista después de borrar
             } catch (ExcepcionPerson e) {
-                mostrarAlertaError("Error al guardar la persona", e.getMessage());
+                mostrarAlertaError("Error al borrar la persona", e.getMessage());
             }
         } else {
-            // Nothing selected.
             Alert alert= new Alert(AlertType.WARNING);
             alert.setTitle("No Selection");
             alert.setHeaderText("No Person Selected");
@@ -138,10 +123,6 @@ public class PersonOverviewController {
         }
     }
 
-    /**
-     * Called when the user clicks the new button. Opens a dialog to edit
-     * details for a new person.
-     */
     @FXML
     private void handleNewPerson() {
         Person tempPerson = new Person();
@@ -149,42 +130,38 @@ public class PersonOverviewController {
         if (okClicked) {
             try {
                 PersonVO personVO = personUtil.convertToPersonVO(tempPerson);
-                modelo.nuevaPerson(personVO);
-                mainApp.getPersonData().add(tempPerson);
+                modelo.nuevaPerson(personVO); // Asumiendo que tienes un método en modelo para crear
+                loadPersonData(); // Recargar la lista después de añadir
             } catch (ExcepcionPerson e) {
                 mostrarAlertaError("Error al guardar la persona", e.getMessage());
             }
         }
     }
 
-    /**
-     * Called when the user clicks the edit button. Opens a dialog to edit
-     * details for the selected person.
-     */
     @FXML
     private void handleEditPerson() {
         Person selectedPerson = personTable.getSelectionModel().getSelectedItem();
         if (selectedPerson != null) {
             boolean okClicked = mainApp.showPersonEditDialog(selectedPerson);
             if (okClicked) {
-                showPersonDetails(selectedPerson);
                 try {
                     PersonVO personVO = personUtil.convertToPersonVO(selectedPerson);
-                    modelo.editarPerson(personVO);
+                    modelo.editarPerson(personVO); // Actualiza la persona
+                    loadPersonData(); // Recargar la lista después de editar
+                    showPersonDetails(selectedPerson); // Muestra los detalles actualizados
                 } catch (ExcepcionPerson e) {
-                    mostrarAlertaError("Error al guardar la persona", e.getMessage());
+                    mostrarAlertaError("Error al editar la persona", e.getMessage());
                 }
             }
-
         } else {
-            // Nothing selected.
-            Alert alert=new Alert(AlertType.WARNING);
+            Alert alert = new Alert(AlertType.WARNING);
             alert.setTitle("No Selection");
             alert.setHeaderText("No Person Selected");
             alert.setContentText("Please select a person in the table.");
             alert.showAndWait();
         }
     }
+
     private void mostrarAlertaError(String titulo, String mensaje) {
         Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle(titulo);

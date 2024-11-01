@@ -13,6 +13,7 @@ public class PersonUtil {
             Person person = new Person();
 
             // Asignación de campos desde PersonVO a Person
+            person.setId(personVO.getId()); // Asegúrate de que se asigna el ID
             person.setFirstName(personVO.getFirstName());
             person.setLastName(personVO.getLastName());
             person.setStreet(personVO.getStreet());
@@ -21,9 +22,10 @@ public class PersonUtil {
             person.setBirthday(personVO.getBirthday());
 
             listaPerson.add(person);
-
-        }return listaPerson;
+        }
+        return listaPerson;
     }
+
 
     public ArrayList<PersonVO> getPersonsVO(ArrayList<Person> listaPersons) {
         ArrayList<PersonVO> listaPersonVO = new ArrayList<>();

@@ -1,12 +1,19 @@
 package com.example.agenda.controller;
 
+import com.example.agenda.Modelo.AgendaModelo;
+import com.example.agenda.Modelo.ExcepcionPerson;
+import com.example.agenda.Modelo.PersonVO;
+import com.example.agenda.Modelo.repository.PersonRepository;
+import com.example.agenda.Modelo.repository.impl.PersonRepositoryImpl;
+import javafx.beans.property.*;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import com.example.agenda.Person;
 import com.example.agenda.util.DateUtil;
+
+import java.util.ArrayList;
 
 
 public class PersonEditDialogController {
@@ -23,18 +30,33 @@ public class PersonEditDialogController {
     private TextField cityField;
     @FXML
     private TextField birthdayField;
-    
+
+
+    @FXML
+    private ProgressBar progressBar;
+    @FXML
+    private Label indicador;
+
     private Stage dialogStage;
     private Person person;
     private boolean okClicked = false;
+    private PersonRepository personRepository = new PersonRepositoryImpl();
+    private DoubleProperty progresoNum = new SimpleDoubleProperty();
+    private AgendaModelo modelo = new AgendaModelo();
 
     /**
      * Initializes the controller class. This method is automatically called
      * after the fxml file has been loaded.
      */
     @FXML
-    private void initialize() {
+    private void initialize() throws ExcepcionPerson {
+        ArrayList<PersonVO> personas = modelo.obtenerPersonas();
+        cambiarBarra(personas.size());
+        progressBar.progressProperty().bindBidirectional(progresoNum);
+        indicador.textProperty().bind(progresoNum.multiply(100).asString("Completado: %.0f%%"));
     }
+
+
 
     /**
      * Sets the stage of this dialog.
@@ -148,4 +170,13 @@ public class PersonEditDialogController {
         }
     }
 
+
+
+    private void cambiarBarra(int n) {
+        progresoNum.set(n / 50.0);
+    }
+
+    public IntegerProperty numProperty() {
+        return new SimpleIntegerProperty((int) (progresoNum.get() * 50));
+    }
 }

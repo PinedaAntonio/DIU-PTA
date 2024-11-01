@@ -1,6 +1,7 @@
 package com.example.agenda.Modelo;
 
 import com.example.agenda.Modelo.repository.PersonRepository;
+import com.example.agenda.Modelo.repository.impl.PersonRepositoryImpl;
 import com.example.agenda.Person;
 import com.example.agenda.util.PersonUtil;
 
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 public class AgendaModelo {
     private ArrayList<PersonVO> personasVO = new ArrayList<>();
     private ArrayList<Person> personas = new ArrayList<>();
-    private PersonRepository personRepository;
+    private PersonRepository personRepository = new PersonRepositoryImpl();
     private PersonUtil personUtil;
 
     // Constructor que inicializa personUtil
@@ -40,6 +41,11 @@ public class AgendaModelo {
     }
     public void borrarPerson(PersonVO personVO) throws ExcepcionPerson {
         personRepository.deletePersona(personVO.getId());
+    }
+
+    public ArrayList<PersonVO> obtenerPersonas() throws ExcepcionPerson {
+        ArrayList<PersonVO> personVOs = personRepository.ObtenerListaPersonas();
+        return personVOs;
     }
 }
 
