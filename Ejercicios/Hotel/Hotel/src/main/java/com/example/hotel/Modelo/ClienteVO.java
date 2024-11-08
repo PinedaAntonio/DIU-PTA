@@ -38,6 +38,14 @@ public class ClienteVO {
         Dni = dni;
     }
 
+    public String getNombre() {
+        return Nombre;
+    }
+
+    public void setNombre(String nombre) {
+        Nombre = nombre;
+    }
+
     public String getApellidos() {
         return Apellidos;
     }

@@ -1,12 +1,12 @@
 package com.example.hotel.Modelo;
 
-public class ExcepcionCliente extends RuntimeException {
+public class ExcepcionHotel extends RuntimeException {
     private String mensaje;
 
-    public ExcepcionCliente() {
+    public ExcepcionHotel() {
     }
 
-    public ExcepcionCliente(String ms) {
+    public ExcepcionHotel(String ms) {
         this.mensaje = ms;
     }
 
