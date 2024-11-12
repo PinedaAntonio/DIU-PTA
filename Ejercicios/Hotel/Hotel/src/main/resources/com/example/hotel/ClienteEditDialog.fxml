@@ -7,7 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="background" stylesheets="@../../../estilos/DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotel.Controller.ClienteEditDialogController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="background" stylesheets="@../../../estilos/TablaEstilo.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotel.Controller.ClienteEditDialogController">
    <children>
       <GridPane layoutX="180.0" layoutY="95.0" prefHeight="270.0" prefWidth="580.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
         <columnConstraints>
@@ -24,11 +24,11 @@
         </rowConstraints>
          <children>
             <Label text="Nombre" />
-            <Label text="Last Name" GridPane.rowIndex="1" />
-            <Label text="Street" GridPane.rowIndex="2" />
-            <Label text="City" GridPane.rowIndex="3" />
-            <Label text="Postal Code" GridPane.rowIndex="4" />
-            <Label text="Birthday" GridPane.rowIndex="5" />
+            <Label text="Apellido" GridPane.rowIndex="1" />
+            <Label text="Direccion" GridPane.rowIndex="2" />
+            <Label text="Localidad" GridPane.rowIndex="3" />
+            <Label text="Provincia" GridPane.rowIndex="4" />
+            <Label text="Dni" GridPane.rowIndex="5" />
             <TextField fx:id="nameField" GridPane.columnIndex="1" />
             <TextField fx:id="apellidoField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <TextField fx:id="direccionField" GridPane.columnIndex="1" GridPane.rowIndex="2" />

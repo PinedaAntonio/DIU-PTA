@@ -26,9 +26,9 @@ public class ClienteRepositoryImpl implements ClienteRepository {
             this.clientes = new ArrayList();
             this.stmt = conn.createStatement();
             this.sentencia = "SELECT * FROM clientes";
-            this.sentencia2 = "SELECT * FROM reservas";
+            //this.sentencia2 = "SELECT * FROM reservas";
             ResultSet rs = this.stmt.executeQuery(this.sentencia);
-            ResultSet rs2 = this.stmt.executeQuery(this.sentencia2);
+            //ResultSet rs2 = this.stmt.executeQuery(this.sentencia2);
 
             while(rs.next()) {
                 String n = rs.getString("Nombre");

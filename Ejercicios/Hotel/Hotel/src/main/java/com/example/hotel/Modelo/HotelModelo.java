@@ -26,7 +26,7 @@ public class HotelModelo {
     public ArrayList<Cliente> mostrarClientes() {
         try {
             clientesVO = clienteRepository.ObtenerListaClientes();
-            clientes = clienteUtil.getPersons(clientesVO);  // Usa personUtil ya inicializado
+            clientes = clienteUtil.getPersons(clientesVO);
         } catch (ExcepcionHotel e) {
             e.printStackTrace();
         }
