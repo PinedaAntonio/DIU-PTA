@@ -5,6 +5,7 @@ import com.example.hotel.Controller.ClienteOverviewController;
 import com.example.hotel.Controller.ClienteEditDialogController;
 import com.example.hotel.Modelo.HotelModelo;
 import com.example.hotel.Modelo.Repository.Impl.ClienteRepositoryImpl;
+import com.example.hotel.Modelo.Repository.Impl.ReservaRepositoryImpl;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -28,10 +29,12 @@ public class MainApp extends Application {
 
     public MainApp(){
         ClienteRepositoryImpl clienteRepository = new ClienteRepositoryImpl();
+        ReservaRepositoryImpl reservaRepository = new ReservaRepositoryImpl();
         hotelModelo = new HotelModelo();
         hotelModelo.setClienteRepository(clienteRepository);
         try{
             personData.addAll(hotelModelo.mostrarClientes());
+            reservaData.addAll(hotelModelo.mostrarReservas());
         }catch (Exception e){
             e.printStackTrace();
         }

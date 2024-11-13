@@ -3,6 +3,9 @@ package com.example.hotel.Modelo;
 import com.example.hotel.Cliente;
 import com.example.hotel.Modelo.Repository.Impl.ClienteRepositoryImpl;
 import com.example.hotel.Util.ClienteUtil;
+import com.example.hotel.Reserva;
+import com.example.hotel.Modelo.Repository.Impl.ReservaRepositoryImpl;
+import com.example.hotel.Util.ReservaUtil;
 
 import java.util.ArrayList;
 
@@ -12,15 +15,23 @@ public class HotelModelo {
     private ArrayList<Cliente> clientes = new ArrayList<>();
     private ClienteRepositoryImpl clienteRepository = new ClienteRepositoryImpl();
     private ClienteUtil clienteUtil;
+    private ReservaRepositoryImpl reservaRepository = new ReservaRepositoryImpl();
+    private ArrayList<Reserva> reservas = new ArrayList<>();
+    private ArrayList<ReservaVO> reservasVO = new ArrayList<>();
+    private ReservaUtil reservaUtil;
 
     // Constructor que inicializa personUtil
     public HotelModelo() {
         this.clienteUtil = new ClienteUtil();
-
+        this.reservaUtil = new ReservaUtil();
     }
 
     public void setClienteRepository(ClienteRepositoryImpl clienteRepository) {
         this.clienteRepository = clienteRepository;
+    }
+
+    public void setReservaRepository(ReservaRepositoryImpl reservaRepository) {
+        this.reservaRepository = reservaRepository;
     }
 
     public ArrayList<Cliente> mostrarClientes() {
@@ -46,5 +57,30 @@ public class HotelModelo {
     public ArrayList<ClienteVO> obtenerPersonas() throws ExcepcionHotel {
         ArrayList<ClienteVO> clientesVO = clienteRepository.ObtenerListaClientes();
         return clientesVO;
+    }
+
+    public ArrayList<Reserva> mostrarReservas() {
+        try {
+            reservasVO = reservaRepository.ObtenerListaReservas();
+            reservas = reservaUtil.getReservas(reservasVO);
+        } catch (ExcepcionHotel e) {
+            e.printStackTrace();
+        }
+        return reservas;
+    }
+
+    public void nuevaReserva(ReservaVO reservaVO) throws ExcepcionHotel {
+        reservaRepository.addReserva(reservaVO);
+    }
+    public void editarReserva(ReservaVO reservaVO) throws ExcepcionHotel {
+        reservaRepository.editReserva(reservaVO);
+    }
+    public void borrarReserva(ReservaVO reservaVO) throws ExcepcionHotel {
+        reservaRepository.deleteReserva(reservaVO.getDni_Cliente());
+    }
+
+    public ArrayList<ReservaVO> obtenerReservas() throws ExcepcionHotel {
+        ArrayList<ReservaVO> reservasVO = reservaRepository.ObtenerListaReservas();
+        return reservasVO;
     }
 }

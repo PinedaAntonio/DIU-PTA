@@ -1,18 +1,21 @@
 package com.example.hotel.Modelo;
 
+import com.example.hotel.Modelo.Repository.Impl.regimen;
+import com.example.hotel.Modelo.Repository.Impl.tipoHabitacion;
+
 import java.time.LocalDate;
 
 public class ReservaVO {
     int Id;
     LocalDate Fecha_Llegada;
     LocalDate Fecha_Salida;
-    int NHabitaciones;
-    String Tipo_Habitacion;
+    tipoHabitacion NHabitaciones;
+    int Tipo_Habitacion;
     boolean Fumador;
-    String Regimen;
+    regimen Regimen;
     String Dni_Cliente;
 
-    public ReservaVO(int id, LocalDate fecha_Llegada, LocalDate fecha_Salida, int NHabitaciones, String tipo_Habitacion, boolean fumador, String regimen, String dni_Cliente) {
+    public ReservaVO(int id, LocalDate fecha_Llegada, LocalDate fecha_Salida, tipoHabitacion NHabitaciones, int tipo_Habitacion, boolean fumador, regimen regimen, String dni_Cliente) {
         Id = id;
         Fecha_Llegada = fecha_Llegada;
         Fecha_Salida = fecha_Salida;
@@ -47,19 +50,19 @@ public class ReservaVO {
         Fecha_Salida = fecha_Salida;
     }
 
-    public int getNHabitaciones() {
+    public tipoHabitacion getNHabitaciones() {
         return NHabitaciones;
     }
 
-    public void setNHabitaciones(int NHabitaciones) {
+    public void setNHabitaciones(tipoHabitacion NHabitaciones) {
         this.NHabitaciones = NHabitaciones;
     }
 
-    public String getTipo_Habitacion() {
+    public int getTipo_Habitacion() {
         return Tipo_Habitacion;
     }
 
-    public void setTipo_Habitacion(String tipo_Habitacion) {
+    public void setTipo_Habitacion(int tipo_Habitacion) {
         Tipo_Habitacion = tipo_Habitacion;
     }
 
@@ -71,11 +74,11 @@ public class ReservaVO {
         Fumador = fumador;
     }
 
-    public String getRegimen() {
+    public regimen getRegimen() {
         return Regimen;
     }
 
-    public void setRegimen(String regimen) {
+    public void setRegimen(regimen regimen) {
         Regimen = regimen;
     }
 

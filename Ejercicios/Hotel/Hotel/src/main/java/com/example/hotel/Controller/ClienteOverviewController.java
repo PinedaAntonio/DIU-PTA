@@ -106,16 +106,16 @@ public class ClienteOverviewController {
             Cliente clienteToDelete = clienteTable.getItems().get(selectedIndex);
             try {
                 ClienteVO clienteVO = clienteUtil.convertToClienteVO(clienteToDelete);
-                modelo.borrarPerson(clienteVO); // Asumiendo que tienes un método en modelo para borrar
+                modelo.borrarPerson(clienteVO);
                 loadPersonData(); // Recargar la lista después de borrar
             } catch (ExcepcionHotel e) {
                 mostrarAlertaError("Error al borrar la persona", e.getMessage());
             }
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("No Selection");
-            alert.setHeaderText("No Person Selected");
-            alert.setContentText("Please select a person in the table.");
+            alert.setTitle("No Seleccion");
+            alert.setHeaderText("No Hay Persona Seleccionada");
+            alert.setContentText("Seleccione a una persona de la tabla");
             alert.showAndWait();
         }
     }
@@ -127,7 +127,7 @@ public class ClienteOverviewController {
         if (okClicked) {
             try {
                 ClienteVO clienteVO = clienteUtil.convertToClienteVO(tempCliente);
-                modelo.nuevaPerson(clienteVO); // Asumiendo que tienes un método en modelo para crear
+                modelo.nuevaPerson(clienteVO);
                 loadPersonData(); // Recargar la lista después de añadir
             } catch (ExcepcionHotel e) {
                 mostrarAlertaError("Error al guardar la persona", e.getMessage());
@@ -152,9 +152,9 @@ public class ClienteOverviewController {
             }
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("No Selection");
-            alert.setHeaderText("No Person Selected");
-            alert.setContentText("Please select a person in the table.");
+            alert.setTitle("No Seleccion");
+            alert.setHeaderText("No se ha seleccionado ninguna persona");
+            alert.setContentText("Seleccione a una persona de la tabla");
             alert.showAndWait();
         }
     }
@@ -162,7 +162,7 @@ public class ClienteOverviewController {
     private void mostrarAlertaError(String titulo, String mensaje) {
         Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle(titulo);
-        alert.setHeaderText("Please correct invalid fields");
+        alert.setHeaderText("Por favor corrija los campos no válidos");
         alert.setContentText(mensaje);
         alert.showAndWait();
     }

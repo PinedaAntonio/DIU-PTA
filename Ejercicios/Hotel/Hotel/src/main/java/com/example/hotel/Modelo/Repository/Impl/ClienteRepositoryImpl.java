@@ -15,7 +15,6 @@ public class ClienteRepositoryImpl implements ClienteRepository {
     private final ConexionJDBC conexion = new ConexionJDBC();
     private Statement stmt;
     private String sentencia;
-    private String sentencia2;
     private ArrayList<ClienteVO> clientes;
     private ClienteVO cliente;
 
@@ -26,9 +25,7 @@ public class ClienteRepositoryImpl implements ClienteRepository {
             this.clientes = new ArrayList();
             this.stmt = conn.createStatement();
             this.sentencia = "SELECT * FROM clientes";
-            //this.sentencia2 = "SELECT * FROM reservas";
             ResultSet rs = this.stmt.executeQuery(this.sentencia);
-            //ResultSet rs2 = this.stmt.executeQuery(this.sentencia2);
 
             while(rs.next()) {
                 String n = rs.getString("Nombre");
@@ -37,7 +34,6 @@ public class ClienteRepositoryImpl implements ClienteRepository {
                 String l = rs.getString("Localidad");
                 String p = rs.getString("Provincia");
                 String dni = rs.getString("Dni");
-                //ArrayList<Reserva> r = rs2.getArray(); insertar reservas
                 this.cliente = new ClienteVO(dni, n, a, d, l, p);
                 this.clientes.add(this.cliente);
             }
