@@ -1,4 +1,5 @@
 package com.example.hotel.Controller;
+
 import com.example.hotel.Cliente;
 import com.example.hotel.MainApp;
 import com.example.hotel.Modelo.ClienteVO;
@@ -6,12 +7,19 @@ import com.example.hotel.Modelo.ExcepcionHotel;
 import com.example.hotel.Modelo.HotelModelo;
 import com.example.hotel.Modelo.Repository.ClienteRepository;
 import com.example.hotel.Modelo.Repository.Impl.ClienteRepositoryImpl;
+import com.example.hotel.Modelo.Repository.Impl.ReservaRepositoryImpl;
+import com.example.hotel.Modelo.Repository.ReservaRepository;
 import com.example.hotel.Util.ClienteUtil;
+import com.example.hotel.Util.ReservaUtil;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import com.example.hotel.Reserva;
+import com.example.hotel.Modelo.ReservaVO;
 
 import java.util.ArrayList;
 
@@ -36,29 +44,109 @@ public class ClienteOverviewController {
     @FXML
     private Label dniLabel;
 
-    // Reference to the main application.
+    @FXML
+    private TableView<Reserva> reservaTable;
+    @FXML
+    private TableColumn<Reserva, String> ReservaColumn;
+
+    @FXML
+    private Label arrivalLabel;
+    @FXML
+    private Label departureLabel;
+    @FXML
+    private Label nHabLabel;
+    @FXML
+    private Label tHabLabel;
+    @FXML
+    private Label fumadorLabel;
+    @FXML
+    private Label regimenLabel;
+
+
     private MainApp mainApp;
     private ClienteUtil clienteUtil = new ClienteUtil();
     private HotelModelo modelo;
+    private ReservaUtil reservaUtil = new ReservaUtil();
 
-    // Añadir instancia de repositorio
     private ClienteRepository clienteRepository = new ClienteRepositoryImpl(); // Repositorio
+    private ReservaRepository reservaRepository = new ReservaRepositoryImpl();
 
     public ClienteOverviewController() {
     }
 
     @FXML
     private void initialize() {
-        // Initialize the person table with the two columns.
+        // Configuración de las columnas de las tablas
         NameColumn.setCellValueFactory(cellData -> cellData.getValue().nombreProperty());
         ApellidoColumn.setCellValueFactory(cellData -> cellData.getValue().apellidosProperty());
 
-        // Clear person details
-        showClienteDetails(null);
+        ReservaColumn.setCellValueFactory(cellData -> cellData.getValue().fecha_LlegadaProperty().asString());
 
-        // Listen for selection changes and show the person details when changed.
+        showClienteDetails(null);
+        showReservaDetails(null);
+
+        // Listener para cuando se selecciona un cliente en la tabla
         clienteTable.getSelectionModel().selectedItemProperty().addListener(
-                (observable, oldValue, newValue) -> showClienteDetails(newValue));
+                (observable, oldValue, newValue) -> {
+                    if (newValue != null) {
+                        showClienteDetails(newValue);
+                        loadReservasData(newValue.getDni());
+                    } else {
+                        reservaTable.getItems().clear(); // Limpiar las reservas si no hay cliente seleccionado
+                    }
+                });
+
+        // Listener para cuando se selecciona una reserva en la tabla
+        reservaTable.getSelectionModel().selectedItemProperty().addListener(
+                (observable, oldValue, newValue) -> {
+                    showReservaDetails(newValue);
+                }
+        );
+    }
+
+    public void loadReservasData(String dniCliente) {
+        try {
+            if (dniCliente != null && !dniCliente.isEmpty()) {
+                ObservableList<Reserva> reservaData = FXCollections.observableArrayList(modelo.mostrarReservas(dniCliente));
+
+                if (reservaData.isEmpty()) {
+                    mostrarAlertaError("Sin reservas", "Este cliente no tiene reservas.");
+                    reservaTable.getItems().clear();
+                } else {
+                    reservaTable.setItems(reservaData);
+                }
+            } else {
+                mostrarAlertaError("Error de DNI", "El DNI del cliente no es válido.");
+            }
+        } catch (Exception e) {
+            mostrarAlertaError("Error al cargar reservas", "Ha ocurrido un error: " + e.getMessage());
+        }
+    }
+
+    private void showReservaDetails(Reserva reserva) {
+        if (reserva != null) {
+            arrivalLabel.setText(reserva.getFecha_Llegada().toString());
+            departureLabel.setText(reserva.getFecha_Salida().toString());
+            nHabLabel.setText(String.valueOf(reserva.getNHabitaciones()));
+            tHabLabel.setText(reserva.getTipo_Habitacion());
+            fumadorLabel.setText(String.valueOf(reserva.isFumador()));
+            regimenLabel.setText(reserva.getRegimen());
+        } else {
+            arrivalLabel.setText("");
+            departureLabel.setText("");
+            nHabLabel.setText("");
+            tHabLabel.setText("");
+            fumadorLabel.setText("");
+            regimenLabel.setText("");
+        }
+    }
+
+    private void mostrarAlertaError(String titulo, String mensaje) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle(titulo);
+        alert.setHeaderText("Por favor corrija los campos no válidos");
+        alert.setContentText(mensaje);
+        alert.showAndWait();
     }
 
     public void setMainApp(MainApp mainApp) {
@@ -70,7 +158,6 @@ public class ClienteOverviewController {
         this.modelo = modelo;
     }
 
-    // Método para cargar personas desde la base de datos
     private void loadPersonData() {
         try {
             ArrayList<ClienteVO> clienteVOList = clienteRepository.ObtenerListaClientes();
@@ -98,6 +185,7 @@ public class ClienteOverviewController {
             dniLabel.setText("");
         }
     }
+
 
     @FXML
     private void handleDeletePerson() {
@@ -159,11 +247,4 @@ public class ClienteOverviewController {
         }
     }
 
-    private void mostrarAlertaError(String titulo, String mensaje) {
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle(titulo);
-        alert.setHeaderText("Por favor corrija los campos no válidos");
-        alert.setContentText(mensaje);
-        alert.showAndWait();
-    }
 }

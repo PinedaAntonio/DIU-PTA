@@ -59,9 +59,9 @@ public class HotelModelo {
         return clientesVO;
     }
 
-    public ArrayList<Reserva> mostrarReservas() {
+    public ArrayList<Reserva> mostrarReservas(String dni_cliente) {
         try {
-            reservasVO = reservaRepository.ObtenerListaReservas();
+            reservasVO = reservaRepository.obtenerReservasPorDni(dni_cliente);
             reservas = reservaUtil.getReservas(reservasVO);
         } catch (ExcepcionHotel e) {
             e.printStackTrace();
@@ -79,8 +79,5 @@ public class HotelModelo {
         reservaRepository.deleteReserva(reservaVO.getDni_Cliente());
     }
 
-    public ArrayList<ReservaVO> obtenerReservas() throws ExcepcionHotel {
-        ArrayList<ReservaVO> reservasVO = reservaRepository.ObtenerListaReservas();
-        return reservasVO;
-    }
+
 }

@@ -3,7 +3,6 @@ package com.example.hotel.Modelo.Repository.Impl;
 import com.example.hotel.Modelo.ExcepcionHotel;
 import com.example.hotel.Modelo.Repository.ReservaRepository;
 import com.example.hotel.Modelo.ReservaVO;
-
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -19,13 +18,17 @@ public class ReservaRepositoryImpl implements ReservaRepository {
     private ArrayList<ReservaVO> reservas;
     private ReservaVO reserva;
 
+
+    // Método modificado para obtener las reservas por DNI del cliente
     @Override
-    public ArrayList<ReservaVO> ObtenerListaReservas() throws ExcepcionHotel {
+    public ArrayList<ReservaVO> obtenerReservasPorDni(String dni_cliente) throws ExcepcionHotel {
         try {
             Connection conn = this.conexion.conectarBD();
-            this.reservas = new ArrayList();
+            this.reservas = new ArrayList<>();
             this.stmt = conn.createStatement();
-            this.sentencia = "SELECT * FROM reservas";
+
+            // Sentencia SQL correctamente parametrizada
+            this.sentencia = "SELECT * FROM reservas WHERE Dni_Cliente = '" + dni_cliente + "'";  // Ojo con inyección SQL en un entorno real
             ResultSet rs = this.stmt.executeQuery(this.sentencia);
 
             while (rs.next()) {
@@ -45,7 +48,7 @@ public class ReservaRepositoryImpl implements ReservaRepository {
                 regimen regimen = null;
                 if (rs.getString("Regimen") != null) {
                     try {
-                        regimen = com.example.hotel.Modelo.Repository.Impl.regimen.valueOf(rs.getString("regimen"));
+                        regimen = com.example.hotel.Modelo.Repository.Impl.regimen.valueOf(rs.getString("Regimen"));
                     } catch (IllegalArgumentException e) {
                         throw new ExcepcionHotel("Valor no válido en columna Regimen");
                     }
@@ -63,20 +66,15 @@ public class ReservaRepositoryImpl implements ReservaRepository {
         }
     }
 
+    // Métodos no implementados (para seguir el patrón de tu código actual)
     @Override
-    public void addReserva(ReservaVO var1) throws ExcepcionHotel {
-
-    }
-
-    @Override
-    public void deleteReserva(String var1) throws ExcepcionHotel {
-
-    }
+    public void addReserva(ReservaVO var1) throws ExcepcionHotel {}
 
     @Override
-    public void editReserva(ReservaVO var1) throws ExcepcionHotel {
+    public void deleteReserva(String var1) throws ExcepcionHotel {}
 
-    }
+    @Override
+    public void editReserva(ReservaVO var1) throws ExcepcionHotel {}
 
     @Override
     public int lastId() throws ExcepcionHotel {

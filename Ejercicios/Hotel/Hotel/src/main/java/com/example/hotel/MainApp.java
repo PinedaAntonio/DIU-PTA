@@ -34,7 +34,7 @@ public class MainApp extends Application {
         hotelModelo.setClienteRepository(clienteRepository);
         try{
             personData.addAll(hotelModelo.mostrarClientes());
-            reservaData.addAll(hotelModelo.mostrarReservas());
+            //reservaData.addAll(hotelModelo.mostrarReservas());
         }catch (Exception e){
             e.printStackTrace();
         }
