@@ -134,6 +134,36 @@ public class MainApp extends Application {
             // Set the cliente into the controller.
             ClienteEditDialogController controller = loader.getController();
             controller.setDialogStage(dialogStage);
+            controller.setNewCliente(cliente);
+
+            // Show the dialog and wait until the user closes it
+            dialogStage.showAndWait();
+
+            return controller.isOkClicked();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean showNewClienteEditDialog(Cliente cliente) {
+        try {
+            // Load the fxml file and create a new stage for the popup dialog.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("ClienteEditDialog.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+
+            // Create the dialog Stage.
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Edit Person");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            // Set the cliente into the controller.
+            ClienteEditDialogController controller = loader.getController();
+            controller.setDialogStage(dialogStage);
             controller.setCliente(cliente);
 
             // Show the dialog and wait until the user closes it

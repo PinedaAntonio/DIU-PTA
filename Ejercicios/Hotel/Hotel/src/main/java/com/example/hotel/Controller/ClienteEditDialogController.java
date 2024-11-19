@@ -76,7 +76,7 @@ public class ClienteEditDialogController {
      *
      * @param cliente
      */
-    public void setCliente(Cliente cliente) {
+    public void setNewCliente(Cliente cliente) {
         this.cliente = cliente;
 
         nameField.setText(cliente.getNombre());
@@ -84,6 +84,7 @@ public class ClienteEditDialogController {
         direccionField.setText(cliente.getDireccion());
         provinciaField.setText(cliente.getProvincia());
         localidadField.setText(cliente.getLocalidad());
+        dniField.setEditable(false);
         dniField.setText(cliente.getDni());
     }
 
@@ -169,5 +170,17 @@ public class ClienteEditDialogController {
 
     public IntegerProperty numProperty() {
         return new SimpleIntegerProperty((int) (progresoNum.get() * 50));
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+
+        nameField.setText(cliente.getNombre());
+        apellidoField.setText(cliente.getApellidos());
+        direccionField.setText(cliente.getDireccion());
+        provinciaField.setText(cliente.getProvincia());
+        localidadField.setText(cliente.getLocalidad());
+        dniField.setEditable(true);
+        dniField.setText(cliente.getDni());
     }
 }

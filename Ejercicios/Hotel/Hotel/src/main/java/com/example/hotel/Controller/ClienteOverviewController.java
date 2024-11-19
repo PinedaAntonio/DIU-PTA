@@ -197,7 +197,7 @@ public class ClienteOverviewController {
                 modelo.borrarPerson(clienteVO);
                 loadPersonData(); // Recargar la lista después de borrar
             } catch (ExcepcionHotel e) {
-                mostrarAlertaError("Error al borrar la persona", e.getMessage());
+                mostrarAlertaError("Error al borrar el cliente", e.getMessage());
             }
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -211,7 +211,7 @@ public class ClienteOverviewController {
     @FXML
     private void handleNewPerson() {
         Cliente tempCliente = new Cliente();
-        boolean okClicked = mainApp.showClienteEditDialog(tempCliente);
+        boolean okClicked = mainApp.showNewClienteEditDialog(tempCliente);
         if (okClicked) {
             try {
                 ClienteVO clienteVO = clienteUtil.convertToClienteVO(tempCliente);

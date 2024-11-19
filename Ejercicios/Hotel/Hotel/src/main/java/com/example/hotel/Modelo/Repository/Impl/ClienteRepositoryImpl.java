@@ -4,10 +4,7 @@ import com.example.hotel.Modelo.ClienteVO;
 import com.example.hotel.Modelo.ExcepcionHotel;
 import com.example.hotel.Modelo.Repository.ClienteRepository;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 
 public class ClienteRepositoryImpl implements ClienteRepository {
@@ -50,7 +47,7 @@ public class ClienteRepositoryImpl implements ClienteRepository {
         try {
             Connection conn = this.conexion.conectarBD();
             this.stmt = conn.createStatement();
-            this.sentencia = "INSERT INTO clientes (Dni, Nombre, Apellidos, Direccion, Localidad, Provincia) VALUES ('" + c.getDni() + "','" + c.getNombre() + "','" + c.getApellidos() + "','" + c.getDireccion()+ "','" + c.getLocalidad() + "','" + c.getProvincia() +"');";
+            this.sentencia = "INSERT INTO clientes (Dni, Nombre, Apellidos, Direccion, Localidad, Provincia) VALUES ('" + c.getDni() + "','" + c.getNombre() + "','" + c.getApellidos() + "','" + c.getDireccion() + "','" + c.getLocalidad() + "','" + c.getProvincia() + "');";
             this.stmt.executeUpdate(this.sentencia);
             this.stmt.close();
             this.conexion.desconectarBD(conn);
@@ -58,15 +55,67 @@ public class ClienteRepositoryImpl implements ClienteRepository {
             throw new ExcepcionHotel("No se ha podido realizar la operación");
         }
     }
-
     @Override
-    public void deleteCliente(String var1) throws ExcepcionHotel {
+    public void deleteCliente(String dni) throws ExcepcionHotel {
+        try {
+            Connection conn = this.conexion.conectarBD();
+            String sql = "DELETE FROM clientes WHERE Dni = ?";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, dni);
+            int rowsAffected = pstmt.executeUpdate();
+            if (rowsAffected == 0) {
+                throw new ExcepcionHotel("No se encontró ningún cliente con el Dni especificado.");
+            }
+            pstmt.close();
+            this.conexion.desconectarBD(conn);
 
+        } catch (SQLException e) {
+            throw new ExcepcionHotel("No se ha podido realizar la eliminación: " + e.getMessage());
+        }
     }
 
     @Override
-    public void editCliente(ClienteVO var1) throws ExcepcionHotel {
+    public void editCliente(ClienteVO clienteVO) throws ExcepcionHotel {
+        Connection conn = null;
+        try {
+            conn = this.conexion.conectarBD();
+            this.stmt = conn.createStatement();
 
+            // Verifica que el Dni no sea nulo ni vacío
+            if (clienteVO.getDni() == null || clienteVO.getDni().trim().isEmpty()) {
+                throw new ExcepcionHotel("DNI de la persona no es válido: " + clienteVO.getDni());
+            }
+
+            // Prepara la consulta SQL usando String.format, asegurando que los valores de tipo String estén entre comillas
+            String sql = String.format(
+                    "UPDATE clientes SET  Nombre = '%s', Apellidos = '%s', Direccion = '%s', Localidad = '%s', Provincia = '%s' WHERE Dni = '%s'",
+                    clienteVO.getNombre(),
+                    clienteVO.getApellidos(),
+                    clienteVO.getDireccion(),
+                    clienteVO.getLocalidad(),  // asumiendo que Localidad es String
+                    clienteVO.getProvincia(),
+                    clienteVO.getDni()
+            );
+
+            System.out.println("Ejecutando consulta SQL: " + sql); // Imprime la consulta SQL para depuración
+
+            int rowsAffected = this.stmt.executeUpdate(sql);
+            System.out.println("Filas afectadas: " + rowsAffected);
+
+            // Verifica si alguna fila fue afectada
+            if (rowsAffected == 0) {
+                throw new ExcepcionHotel("No se encontró la persona con el Dni: " + clienteVO.getDni());
+            }
+
+        } catch (SQLException e) {
+            throw new ExcepcionHotel("No se ha podido realizar la edición: " + e.getMessage());
+        } catch (Exception e) {
+            throw new ExcepcionHotel("No se ha podido realizar la edición: " + e.getMessage());
+        } finally {
+            if (conn != null) {
+                this.conexion.desconectarBD(conn);
+            }
+        }
     }
 
     @Override
