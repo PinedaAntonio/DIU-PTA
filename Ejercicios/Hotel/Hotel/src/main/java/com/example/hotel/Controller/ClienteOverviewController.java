@@ -246,5 +246,65 @@ public class ClienteOverviewController {
             alert.showAndWait();
         }
     }
+    @FXML
+    private void handleDeleteReserva() {
+        int selectedIndex = reservaTable.getSelectionModel().getSelectedIndex();
+        if (selectedIndex >= 0) {
+            Reserva reservaToDelete = reservaTable.getItems().get(selectedIndex);
+            try {
+                ReservaVO reservaVO = reservaUtil.convertirReservaAReservaVO(reservaToDelete);
+                modelo.borrarReserva(reservaVO);
+                loadReservasData(reservaToDelete.getDni_Cliente()); // Recargar la lista después de borrar
+            } catch (ExcepcionHotel e) {
+                mostrarAlertaError("Error al borrar el cliente", e.getMessage());
+            }
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("No Seleccion");
+            alert.setHeaderText("No Hay Persona Seleccionada");
+            alert.setContentText("Seleccione a una persona de la tabla");
+            alert.showAndWait();
+        }
+    }
+
+    @FXML
+    private void handleNewReserva() {
+        Reserva tempReserva = new Reserva();
+        boolean okClicked = mainApp.showNewReservaEditDialog(tempReserva);
+        if (okClicked) {
+            try {
+                ReservaVO reservaVO = reservaUtil.convertirReservaAReservaVO(tempReserva);
+                modelo.nuevaReserva(reservaVO);
+                loadReservasData(reservaVO.getDni_Cliente());// Recargar la lista después de añadir
+            } catch (ExcepcionHotel e) {
+                mostrarAlertaError("Error al guardar la persona", e.getMessage());
+            }
+        }
+    }
+
+    @FXML
+    private void handleEditReserva() {
+        Reserva selectedReserva = reservaTable.getSelectionModel().getSelectedItem();
+        if (selectedReserva != null) {
+            boolean okClicked = mainApp.showReservaEditDialog(selectedReserva);
+            if (okClicked) {
+                try {
+                    ReservaVO reservaVO = reservaUtil.convertirReservaAReservaVO(selectedReserva);
+                    modelo.editarReserva(reservaVO); // Actualiza la persona
+                    loadReservasData(reservaVO.getDni_Cliente()); // Recargar la lista después de editar
+                    showReservaDetails(selectedReserva); // Muestra los detalles actualizados
+                } catch (ExcepcionHotel e) {
+                    mostrarAlertaError("Error al editar la persona", e.getMessage());
+                }
+            }
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("No Seleccion");
+            alert.setHeaderText("No se ha seleccionado ninguna persona");
+            alert.setContentText("Seleccione a una persona de la tabla");
+            alert.showAndWait();
+        }
+    }
+
 
 }

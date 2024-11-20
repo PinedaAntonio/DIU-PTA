@@ -66,7 +66,6 @@ public class ReservaRepositoryImpl implements ReservaRepository {
         }
     }
 
-    // Métodos no implementados (para seguir el patrón de tu código actual)
     @Override
     public void addReserva(ReservaVO var1) throws ExcepcionHotel {}
 

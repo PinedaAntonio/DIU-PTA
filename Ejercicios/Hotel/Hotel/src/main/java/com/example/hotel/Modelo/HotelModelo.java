@@ -79,5 +79,4 @@ public class HotelModelo {
         reservaRepository.deleteReserva(reservaVO.getDni_Cliente());
     }
 
-
 }

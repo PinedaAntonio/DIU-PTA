@@ -43,7 +43,6 @@ public class Cliente {
         this.Direccion = new SimpleStringProperty();
         this.Localidad = new SimpleStringProperty();
         this.Provincia = new SimpleStringProperty();
-//        this.reservas = new ArrayList<>();
     }
 
     public String getDni() {

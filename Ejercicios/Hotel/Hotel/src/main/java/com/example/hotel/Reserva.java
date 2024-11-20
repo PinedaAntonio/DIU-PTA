@@ -1,9 +1,6 @@
 package com.example.hotel;
 
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.*;
 
 import java.time.LocalDate;
 
@@ -26,6 +23,17 @@ public class Reserva {
         Fumador = fumador;
         Regimen = regimen;
         Dni_Cliente = dni_Cliente;
+    }
+
+    public Reserva() {
+        this.Id = new SimpleIntegerProperty();
+        this.Fecha_Llegada = new SimpleObjectProperty<>();
+        this.Fecha_Salida = new SimpleObjectProperty<>();
+        this.NHabitaciones = new SimpleIntegerProperty();
+        this.Tipo_Habitacion = new SimpleStringProperty();
+        this.Fumador = new SimpleBooleanProperty();
+        this.Regimen = new SimpleStringProperty();
+        this.Dni_Cliente = new SimpleStringProperty();
     }
 
     public int getId() {

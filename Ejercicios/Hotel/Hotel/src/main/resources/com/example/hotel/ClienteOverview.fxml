@@ -110,9 +110,9 @@
                         </GridPane>
                         <HBox layoutX="110.0" layoutY="349.0" spacing="5.0">
                            <children>
-                              <Button layoutX="195.0" layoutY="255.0" mnemonicParsing="false" onAction="#handleNewPerson" text="Nuevo..." />
-                              <Button layoutX="268.0" layoutY="255.0" mnemonicParsing="false" onAction="#handleEditPerson" text="Editar..." />
-                              <Button layoutX="336.0" layoutY="255.0" mnemonicParsing="false" onAction="#handleDeletePerson" text="Borrar" />
+                              <Button layoutX="195.0" layoutY="255.0" mnemonicParsing="false" onAction="#handleNewReserva" text="Nuevo..." />
+                              <Button layoutX="268.0" layoutY="255.0" mnemonicParsing="false" onAction="#handleEditReserva" text="Editar..." />
+                              <Button layoutX="336.0" layoutY="255.0" mnemonicParsing="false" onAction="#handleDeleteReserva" text="Borrar" />
                            </children>
                         </HBox>
                      </children>
