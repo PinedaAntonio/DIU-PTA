@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@styles/BlueTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.examen_ev1_pta.Controller.ConversorController">
+    <children>
+        <Label fx:id="eurosLabel" layoutX="254.0" layoutY="103.0" text="Euros">
+            <font>
+                <Font name="System Bold" size="20.0" />
+            </font>
+        </Label>
+        <Label fx:id="monedaLabel" layoutX="458.0" layoutY="103.0" text="Moneda">
+            <font>
+                <Font name="System Bold" size="20.0" />
+            </font>
+        </Label>
+        <TextField fx:id="eurosTextField" layoutX="201.0" layoutY="141.0" onAction="#convertir" />
+        <TextField fx:id="monedaTextField" layoutX="416.0" layoutY="141.0" onAction="#convertir" />
+      <TableView fx:id="monedaTable" prefHeight="400.0" prefWidth="178.0">
+         <columns>
+            <TableColumn fx:id="monedaColumn" prefWidth="177.0">
+               <graphic>
+                  <Label fx:id="tablaLabel" alignment="CENTER" prefHeight="29.0" prefWidth="178.0" text="LISTA MONEDAS" />
+               </graphic>
+            </TableColumn>
+         </columns>
+      </TableView>
+      <Button fx:id="convertirButton" layoutX="353.0" layoutY="271.0" mnemonicParsing="false" onAction="#convertir" text="Convertir" />
+      <MenuButton fx:id="menuImagen" layoutX="198.0" layoutY="345.0" mnemonicParsing="false" text="Imagen a mostrar">
+         <items>
+            <MenuItem fx:id="Euro" mnemonicParsing="false" onAction="#abrir" text="Euro" />
+         </items></MenuButton>
+    </children>
+</AnchorPane>
