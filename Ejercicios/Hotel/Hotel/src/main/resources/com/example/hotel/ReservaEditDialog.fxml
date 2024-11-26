@@ -37,7 +37,7 @@
             <CheckBox fx:id="fumadorField" mnemonicParsing="false" prefHeight="19.0" prefWidth="386.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <MenuButton fx:id="nHabField" mnemonicParsing="false" prefHeight="32.0" prefWidth="406.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <MenuButton fx:id="tHabField" layoutX="205.0" layoutY="104.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="406.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <MenuButton fx:id="regimenField" layoutX="205.0" layoutY="148.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="406.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <MenuButton fx:id="regimenField" layoutX="205.0" layoutY="148.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="406.0" stylesheets="@../../../estilos/TablaEstilo.css" GridPane.columnIndex="1" GridPane.rowIndex="5" />
          </children>
       </GridPane>
       <HBox layoutX="368.0" layoutY="344.0" spacing="10.0">

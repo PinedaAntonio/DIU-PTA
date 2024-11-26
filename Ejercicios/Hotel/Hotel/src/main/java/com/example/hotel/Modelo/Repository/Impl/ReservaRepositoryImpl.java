@@ -3,10 +3,8 @@ package com.example.hotel.Modelo.Repository.Impl;
 import com.example.hotel.Modelo.ExcepcionHotel;
 import com.example.hotel.Modelo.Repository.ReservaRepository;
 import com.example.hotel.Modelo.ReservaVO;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+
+import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -54,7 +52,7 @@ public class ReservaRepositoryImpl implements ReservaRepository {
                     }
                 }
                 String dniCliente = rs.getString("Dni_Cliente");
-                this.reserva = new ReservaVO(id, llegada, salida, tipoHabitacion, numHabitaciones, fumador, regimen, dniCliente);
+                this.reserva = new ReservaVO(id, llegada, salida, numHabitaciones, tipoHabitacion, fumador, regimen, dniCliente);
                 this.reserva.setId(id);
                 this.reservas.add(this.reserva);
             }
@@ -67,7 +65,29 @@ public class ReservaRepositoryImpl implements ReservaRepository {
     }
 
     @Override
-    public void addReserva(ReservaVO var1) throws ExcepcionHotel {}
+    public void addReserva(ReservaVO var1) throws ExcepcionHotel {
+        String query = "INSERT INTO reservas (Fecha_Llegada, Fecha_Salida, NHabitaciones, Tipo_Habitacion, Fumador, Regimen, Dni_Cliente) "
+                + "VALUES (?, ?, ?, ?, ?, ?, ?)";
+
+        try (Connection conn = this.conexion.conectarBD();
+             PreparedStatement pstmt = conn.prepareStatement(query)) {
+
+            // Asignar valores a los parámetros de la consulta usando `var1`
+            pstmt.setDate(1, java.sql.Date.valueOf(var1.getFecha_Llegada()));
+            pstmt.setDate(2, java.sql.Date.valueOf(var1.getFecha_Salida()));
+            pstmt.setInt(3, var1.getNHabitaciones()); // Cambiado para ser coherente con el tipo esperado
+            pstmt.setString(4, var1.getTipo_Habitacion().name()); // Enum convertido a String
+            pstmt.setBoolean(5, var1.isFumador());
+            pstmt.setString(6, var1.getRegimen().name()); // Enum convertido a String
+            pstmt.setString(7, var1.getDni_Cliente());
+
+            // Ejecutar la consulta
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new ExcepcionHotel("No se ha podido realizar la operación: " + e.getMessage());
+        }
+    }
+
 
     @Override
     public void deleteReserva(String var1) throws ExcepcionHotel {}

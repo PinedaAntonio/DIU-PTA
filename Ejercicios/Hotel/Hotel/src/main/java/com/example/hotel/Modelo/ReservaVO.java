@@ -9,13 +9,13 @@ public class ReservaVO {
     int Id;
     LocalDate Fecha_Llegada;
     LocalDate Fecha_Salida;
-    tipoHabitacion NHabitaciones;
-    int Tipo_Habitacion;
+    int NHabitaciones;
+    tipoHabitacion Tipo_Habitacion;
     boolean Fumador;
     regimen Regimen;
     String Dni_Cliente;
 
-    public ReservaVO(int id, LocalDate fecha_Llegada, LocalDate fecha_Salida, tipoHabitacion NHabitaciones, int tipo_Habitacion, boolean fumador, regimen regimen, String dni_Cliente) {
+    public ReservaVO(int id, LocalDate fecha_Llegada, LocalDate fecha_Salida, int NHabitaciones, tipoHabitacion tipo_Habitacion, boolean fumador, regimen regimen, String dni_Cliente) {
         Id = id;
         Fecha_Llegada = fecha_Llegada;
         Fecha_Salida = fecha_Salida;
@@ -50,20 +50,22 @@ public class ReservaVO {
         Fecha_Salida = fecha_Salida;
     }
 
-    public tipoHabitacion getNHabitaciones() {
+    public int getNHabitaciones() {
         return NHabitaciones;
     }
 
-    public void setNHabitaciones(tipoHabitacion NHabitaciones) {
+    public int setNHabitaciones(int NHabitaciones) {
         this.NHabitaciones = NHabitaciones;
+        return NHabitaciones;
     }
 
-    public int getTipo_Habitacion() {
+    public tipoHabitacion getTipo_Habitacion() {
         return Tipo_Habitacion;
     }
 
-    public void setTipo_Habitacion(int tipo_Habitacion) {
+    public tipoHabitacion setTipo_Habitacion(tipoHabitacion tipo_Habitacion) {
         Tipo_Habitacion = tipo_Habitacion;
+        return Tipo_Habitacion;
     }
 
     public boolean isFumador() {

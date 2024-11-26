@@ -42,7 +42,7 @@ public class ReservaUtil {
         regimen regimenEnum = regimen.valueOf(reserva.getRegimen().toUpperCase());
         String dniCliente = reserva.getDni_Cliente();
 
-        return new ReservaVO(id, fechaLlegada, fechaSalida, tipoHabitacionEnum, nHabitaciones, fumador, regimenEnum, dniCliente);
+        return new ReservaVO(id, fechaLlegada, fechaSalida, nHabitaciones, tipoHabitacionEnum, fumador, regimenEnum, dniCliente);
     }
 
     // Método para convertir un objeto ReservaVO a un objeto Reserva
@@ -50,8 +50,8 @@ public class ReservaUtil {
         SimpleIntegerProperty id = new SimpleIntegerProperty(reservaVO.getId());
         ObjectProperty<LocalDate> fechaLlegada = new SimpleObjectProperty<>(reservaVO.getFecha_Llegada());
         ObjectProperty<LocalDate> fechaSalida = new SimpleObjectProperty<>(reservaVO.getFecha_Salida());
-        SimpleStringProperty tipoHabitacion = new SimpleStringProperty(reservaVO.getNHabitaciones().name().replace("_", " "));
-        SimpleIntegerProperty nHabitaciones = new SimpleIntegerProperty(reservaVO.getTipo_Habitacion());
+        SimpleStringProperty tipoHabitacion = new SimpleStringProperty(reservaVO.getTipo_Habitacion().name().replace("_", " "));
+        SimpleIntegerProperty nHabitaciones = new SimpleIntegerProperty(reservaVO.getNHabitaciones());
         SimpleBooleanProperty fumador = new SimpleBooleanProperty(reservaVO.isFumador());
         SimpleStringProperty regimen = new SimpleStringProperty(reservaVO.getRegimen().name());
         SimpleStringProperty dniCliente = new SimpleStringProperty(reservaVO.getDni_Cliente());
