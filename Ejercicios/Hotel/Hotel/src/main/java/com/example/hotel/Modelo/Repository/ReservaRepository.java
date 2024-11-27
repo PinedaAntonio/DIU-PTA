@@ -11,7 +11,7 @@ public interface ReservaRepository {
 
     void addReserva(ReservaVO var1) throws ExcepcionHotel;
 
-    void deleteReserva(String var1) throws ExcepcionHotel;
+    void deleteReserva(int var1) throws ExcepcionHotel;
 
     void editReserva(ReservaVO var1) throws ExcepcionHotel;
 

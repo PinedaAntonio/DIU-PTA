@@ -75,10 +75,10 @@ public class ReservaRepositoryImpl implements ReservaRepository {
             // Asignar valores a los parámetros de la consulta usando `var1`
             pstmt.setDate(1, java.sql.Date.valueOf(var1.getFecha_Llegada()));
             pstmt.setDate(2, java.sql.Date.valueOf(var1.getFecha_Salida()));
-            pstmt.setInt(3, var1.getNHabitaciones()); // Cambiado para ser coherente con el tipo esperado
-            pstmt.setString(4, var1.getTipo_Habitacion().name()); // Enum convertido a String
+            pstmt.setInt(3, var1.getNHabitaciones());
+            pstmt.setString(4, var1.getTipo_Habitacion().name());
             pstmt.setBoolean(5, var1.isFumador());
-            pstmt.setString(6, var1.getRegimen().name()); // Enum convertido a String
+            pstmt.setString(6, var1.getRegimen().name());
             pstmt.setString(7, var1.getDni_Cliente());
 
             // Ejecutar la consulta
@@ -90,10 +90,53 @@ public class ReservaRepositoryImpl implements ReservaRepository {
 
 
     @Override
-    public void deleteReserva(String var1) throws ExcepcionHotel {}
+    public void deleteReserva(int id) throws ExcepcionHotel {
+        try {
+            Connection conn = this.conexion.conectarBD();
+            String sql = "DELETE FROM reservas WHERE Id = ?";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, id);
+            int rowsAffected = pstmt.executeUpdate();
+            if (rowsAffected == 0) {
+                throw new ExcepcionHotel("No se encontró ninguna reserva con el Id especificado.");
+            }
+            pstmt.close();
+            this.conexion.desconectarBD(conn);
+
+        } catch (SQLException e) {
+            throw new ExcepcionHotel("No se ha podido realizar la eliminación: " + e.getMessage());
+        }
+    }
+
 
     @Override
-    public void editReserva(ReservaVO var1) throws ExcepcionHotel {}
+    public void editReserva(ReservaVO var1) throws ExcepcionHotel {
+        String query = "UPDATE reservas SET Fecha_Llegada = ?, Fecha_Salida = ?, NHabitaciones = ?, " +
+                "Tipo_Habitacion = ?, Fumador = ?, Regimen = ?, Dni_Cliente = ? WHERE Id = ?";
+
+        try (Connection conn = this.conexion.conectarBD();
+             PreparedStatement pstmt = conn.prepareStatement(query)) {
+
+            // Asignar valores a los parámetros de la consulta usando `var1`
+            pstmt.setDate(1, java.sql.Date.valueOf(var1.getFecha_Llegada()));
+            pstmt.setDate(2, java.sql.Date.valueOf(var1.getFecha_Salida()));
+            pstmt.setInt(3, var1.getNHabitaciones());
+            pstmt.setString(4, var1.getTipo_Habitacion().name());
+            pstmt.setBoolean(5, var1.isFumador());
+            pstmt.setString(6, var1.getRegimen().name());
+            pstmt.setString(7, var1.getDni_Cliente());
+            pstmt.setInt(8, var1.getId());
+
+            // Ejecutar la consulta
+            int rowsAffected = pstmt.executeUpdate();
+            if (rowsAffected == 0) {
+                throw new ExcepcionHotel("No se encontró una reserva con el ID especificado.");
+            }
+        } catch (SQLException e) {
+            throw new ExcepcionHotel("No se ha podido realizar la operación: " + e.getMessage());
+        }
+    }
+
 
     @Override
     public int lastId() throws ExcepcionHotel {

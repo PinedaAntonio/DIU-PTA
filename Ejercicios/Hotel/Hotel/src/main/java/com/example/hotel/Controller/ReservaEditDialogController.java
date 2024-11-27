@@ -1,5 +1,6 @@
 package com.example.hotel.Controller;
 
+import com.example.hotel.Cliente;
 import com.example.hotel.Modelo.ExcepcionHotel;
 import com.example.hotel.Modelo.HotelModelo;
 import com.example.hotel.Modelo.Repository.Impl.ReservaRepositoryImpl;
@@ -44,6 +45,7 @@ public class ReservaEditDialogController {
     private ReservaRepositoryImpl reservaRepository = new ReservaRepositoryImpl();
     private DoubleProperty progresoNum = new SimpleDoubleProperty();
     private HotelModelo modelo = new HotelModelo();
+    private Cliente cliente;
 
     /**
      * Initializes the controller class. This method is automatically called
@@ -52,7 +54,7 @@ public class ReservaEditDialogController {
     @FXML
     private void initialize() {
         // Configurar opciones para nHabField
-        for (int i = 0; i <= 1; i++) {
+        for (int i = 1; i <= 1; i++) {
             MenuItem item = new MenuItem(String.valueOf(i));
             item.setOnAction(event -> nHabField.setText(item.getText()));
             nHabField.getItems().add(item);
@@ -199,13 +201,14 @@ public class ReservaEditDialogController {
         tHabField.setText(reserva.getTipo_Habitacion());
         regimenField.setText(reserva.getRegimen());
         fumadorField.setSelected(reserva.isFumador());
-        dniField.setEditable(true);
+        dniField.setEditable(false);
         dniField.setText(reserva.getDni_Cliente());
     }
 
 
-    public void setNewReserva(Reserva reserva) {
+    public void setNewReserva(Reserva reserva, Cliente cliente) {
         this.reserva = reserva;
+        this.cliente = cliente;
 
         llegadaField.setValue(null);
         salidaField.setValue(null);
@@ -216,7 +219,7 @@ public class ReservaEditDialogController {
 
         fumadorField.setSelected(false);
         dniField.setEditable(false);
-        dniField.clear();
+        dniField.setText(cliente.getDni());
     }
 
 

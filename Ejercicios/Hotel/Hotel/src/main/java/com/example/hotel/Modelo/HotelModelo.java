@@ -73,10 +73,12 @@ public class HotelModelo {
         reservaRepository.addReserva(reservaVO);
     }
     public void editarReserva(ReservaVO reservaVO) throws ExcepcionHotel {
+        System.out.println(reservaVO.getFecha_Llegada().toString());
+        System.out.println(reservaVO.getFecha_Salida().toString());
         reservaRepository.editReserva(reservaVO);
     }
     public void borrarReserva(ReservaVO reservaVO) throws ExcepcionHotel {
-        reservaRepository.deleteReserva(reservaVO.getDni_Cliente());
+        reservaRepository.deleteReserva(reservaVO.getId());
     }
 
 }

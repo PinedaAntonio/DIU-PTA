@@ -113,6 +113,7 @@ public class ClienteOverviewController {
                     mostrarAlertaError("Sin reservas", "Este cliente no tiene reservas.");
                     reservaTable.getItems().clear();
                 } else {
+                    reservaData.sort((reserva1, reserva2) -> reserva1.getFecha_Llegada().compareTo(reserva2.getFecha_Llegada()));
                     reservaTable.setItems(reservaData);
                 }
             } else {
@@ -162,7 +163,8 @@ public class ClienteOverviewController {
         try {
             ArrayList<ClienteVO> clienteVOList = clienteRepository.ObtenerListaClientes();
             ArrayList<Cliente> clienteList = clienteUtil.getPersons(clienteVOList);
-            clienteTable.getItems().setAll(clienteList); // Actualiza la tabla con nuevos datos
+            clienteList.sort((cliente1, cliente2) -> cliente1.getNombre().compareToIgnoreCase(cliente2.getNombre()));
+            clienteTable.getItems().setAll(clienteList); // Actualiza la tabla co// Actualiza la tabla con nuevos datos
         } catch (ExcepcionHotel e) {
             mostrarAlertaError("Error al cargar la lista de personas", e.getMessage());
         }
@@ -269,17 +271,34 @@ public class ClienteOverviewController {
 
     @FXML
     private void handleNewReserva() {
-        Reserva tempReserva = new Reserva();
-        boolean okClicked = mainApp.showNewReservaEditDialog(tempReserva);
-        if (okClicked) {
-            try {
-                ReservaVO reservaVO = reservaUtil.convertirReservaAReservaVO(tempReserva);
-                modelo.nuevaReserva(reservaVO);
-                loadReservasData(reservaVO.getDni_Cliente());// Recargar la lista después de añadir
-            } catch (ExcepcionHotel e) {
-                mostrarAlertaError("Error al guardar la persona", e.getMessage());
+        Cliente cliente = clienteTable.getSelectionModel().getSelectedItem();
+        if (cliente != null) {
+            Reserva tempReserva = new Reserva();
+            boolean okClicked = mainApp.showNewReservaEditDialog(tempReserva, cliente);
+            if (okClicked) {
+                try {
+                    ReservaVO reservaVO = reservaUtil.convertirReservaAReservaVO(tempReserva);
+                    modelo.nuevaReserva(reservaVO);
+                    loadReservasData(reservaVO.getDni_Cliente());// Recargar la lista después de añadir
+                    if(reservaVO.isFumador()){
+                        Alert alert = new Alert(Alert.AlertType.WARNING);
+                        alert.setTitle("Fumador detectado");
+                        alert.setHeaderText("Aviso a fumadores");
+                        alert.setContentText("En virtud de la ley de sanidad se informa a los clientes de que solo podrán fumar en las habitaciones reservadas para tal fin.");
+                        alert.showAndWait();
+                    }
+                } catch (ExcepcionHotel e) {
+                    mostrarAlertaError("Error al guardar la persona", e.getMessage());
+                }
             }
+        }else{
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("No Selección");
+            alert.setHeaderText("No hay cliente seleccionado");
+            alert.setContentText("Debe seleccionar un cliente antes de crear una reserva.");
+            alert.showAndWait();
         }
+
     }
 
     @FXML

@@ -35,8 +35,8 @@
             <DatePicker fx:id="llegadaField" prefHeight="35.0" prefWidth="401.0" GridPane.columnIndex="1" />
             <DatePicker fx:id="salidaField" layoutX="205.0" layoutY="15.0" prefHeight="35.0" prefWidth="401.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <CheckBox fx:id="fumadorField" mnemonicParsing="false" prefHeight="19.0" prefWidth="386.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <MenuButton fx:id="nHabField" mnemonicParsing="false" prefHeight="32.0" prefWidth="406.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <MenuButton fx:id="tHabField" layoutX="205.0" layoutY="104.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="406.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <MenuButton fx:id="nHabField" mnemonicParsing="false" prefHeight="32.0" prefWidth="406.0" stylesheets="@../../../estilos/TablaEstilo.css" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <MenuButton fx:id="tHabField" layoutX="205.0" layoutY="104.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="406.0" stylesheets="@../../../estilos/TablaEstilo.css" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <MenuButton fx:id="regimenField" layoutX="205.0" layoutY="148.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="406.0" stylesheets="@../../../estilos/TablaEstilo.css" GridPane.columnIndex="1" GridPane.rowIndex="5" />
          </children>
       </GridPane>

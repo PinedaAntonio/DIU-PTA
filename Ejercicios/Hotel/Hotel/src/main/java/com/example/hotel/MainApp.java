@@ -147,7 +147,7 @@ public class MainApp extends Application {
         }
     }
 
-    public boolean showNewReservaEditDialog(Reserva reserva) {
+    public boolean showNewReservaEditDialog(Reserva reserva, Cliente cliente) {
         try {
             // Load the fxml file and create a new stage for the popup dialog.
             FXMLLoader loader = new FXMLLoader();
@@ -157,15 +157,14 @@ public class MainApp extends Application {
             // Create the dialog Stage.
             Stage dialogStage = new Stage();
             dialogStage.setTitle("Nueva Reserva");
-            dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.initOwner(primaryStage);
             Scene scene = new Scene(page);
             dialogStage.setScene(scene);
 
-            // Set the cliente into the controller.
+            // Set the reserva into the controller.
             ReservaEditDialogController controller = loader.getController();
             controller.setDialogStage(dialogStage);
-            controller.setReserva(reserva);
+            controller.setNewReserva(reserva, cliente);
 
             // Show the dialog and wait until the user closes it
             dialogStage.showAndWait();
@@ -192,10 +191,10 @@ public class MainApp extends Application {
             Scene scene = new Scene(page);
             dialogStage.setScene(scene);
 
-            // Set the cliente into the controller.
+            // Set the reserva into the controller.
             ReservaEditDialogController controller = loader.getController();
             controller.setDialogStage(dialogStage);
-            controller.setNewReserva(reserva);
+            controller.setReserva(reserva);
 
             // Show the dialog and wait until the user closes it
             dialogStage.showAndWait();
@@ -217,7 +216,6 @@ public class MainApp extends Application {
             // Create the dialog Stage.
             Stage dialogStage = new Stage();
             dialogStage.setTitle("Nuevo Cliente");
-            dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.initOwner(primaryStage);
             Scene scene = new Scene(page);
             dialogStage.setScene(scene);
