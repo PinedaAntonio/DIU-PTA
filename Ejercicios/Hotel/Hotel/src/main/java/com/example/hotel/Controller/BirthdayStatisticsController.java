@@ -1,6 +1,7 @@
 package com.example.hotel.Controller;
 
 import java.text.DateFormatSymbols;
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
@@ -16,48 +17,84 @@ import javafx.scene.chart.XYChart;
 public class BirthdayStatisticsController {
 
     @FXML
-    private BarChart<String, Integer> barChart;
+    private BarChart<String, Double> barChart; // Cambié a Double porque ahora manejamos medias.
 
     @FXML
     private CategoryAxis xAxis;
 
     private ObservableList<String> monthNames = FXCollections.observableArrayList();
 
-    /**
-     * Initializes the controller class. This method is automatically called
-     * after the fxml file has been loaded.
-     */
+    // Número total de habitaciones disponibles por tipo
+    private static final int totalHabitacionesDobles = 80;
+    private static final int totalHabitacionesDoblesIndividuales = 20;
+    private static final int totalHabitacionesJuniorSuite = 15;
+    private static final int totalHabitacionesSuite = 5;
+
     @FXML
     private void initialize() {
-        // Get an array with the English month names.
-        String[] months = DateFormatSymbols.getInstance(Locale.ENGLISH).getMonths();
-        // Convert it to a list and add it to our ObservableList of months.
-        monthNames.addAll(Arrays.asList(months));
-
-        // Assign the month names as categories for the horizontal axis.
+        String[] meses = {
+                "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+                "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+        };
+        monthNames.addAll(Arrays.asList(meses));
         xAxis.setCategories(monthNames);
     }
 
-    /**
-     * Sets the persons to show the statistics for.
-     *
-     * @param reservas
-     */
-    public void setPersonData(List<Reserva> reservas) {
-        // Count the number of people having their birthday in a specific month.
-        int[] monthCounter = new int[12];
-        for (Reserva r : reservas) {
-            int month = r.getFecha_Llegada().getMonthValue() - 1;
-            monthCounter[month]++;
+    public void setReservaData(List<Reserva> reservas) {
+        // Contadores para las habitaciones reservadas por tipo por mes
+        int[] doblesReservadas = new int[12];
+        int[] doblesIndReservadas = new int[12];
+        int[] juniorSuiteReservadas = new int[12];
+        int[] suiteReservadas = new int[12];
+
+        // Contar las reservas por tipo de habitación y por mes
+        for (Reserva reserva : reservas) {
+            LocalDate fechaLlegada = reserva.getFecha_Llegada();
+            if (fechaLlegada != null) {
+                int mes = fechaLlegada.getMonthValue() - 1; // Mes en formato 0-11
+
+                // Aquí asignas los contadores por tipo de habitación
+                switch (reserva.getTipo_Habitacion()) {
+                    case "DOBLE":
+                        doblesReservadas[mes]++;
+                        break;
+                    case "DOBLE USO INDIVIDUAL":
+                        doblesIndReservadas[mes]++;
+                        break;
+                    case "JUNIOR_SUITE":
+                        juniorSuiteReservadas[mes]++;
+                        break;
+                    case "SUITE":
+                        suiteReservadas[mes]++;
+                        break;
+                    default:
+                        System.err.println("Tipo de habitación desconocido: " + reserva.getTipo_Habitacion());
+                        break;
+                }
+            } else {
+                System.err.println("Fecha inválida: " + reserva.getFecha_Llegada());
+            }
+        }
+// Crear una serie para mostrar las medias
+        XYChart.Series<String, Double> series = new XYChart.Series<>();
+
+        for (int i = 0; i < 12; i++) {
+            // Calcular la media de ocupación para cada tipo de habitación en cada mes
+            double mediaOcupacionDobles = (double) doblesReservadas[i] / totalHabitacionesDobles;
+            double mediaOcupacionDoblesIndividuales = (double) doblesIndReservadas[i] / totalHabitacionesDoblesIndividuales;
+            double mediaOcupacionJuniorSuite = (double) juniorSuiteReservadas[i] / totalHabitacionesJuniorSuite;
+            double mediaOcupacionSuite = (double) suiteReservadas[i] / totalHabitacionesSuite;
+
+            // Calcula la media total de ocupación para el mes (promedio de todos los tipos de habitaciones)
+            double mediaMensual = (mediaOcupacionDobles + mediaOcupacionDoblesIndividuales + mediaOcupacionJuniorSuite + mediaOcupacionSuite) / 4;
+
+            // Agregar los datos a la serie
+            series.getData().add(new XYChart.Data<>(monthNames.get(i), mediaMensual));
         }
 
-        XYChart.Series<String, Integer> series = new XYChart.Series<>();
-
-        // Create a XYChart.Data object for each month. Add it to the series.
-        for (int i = 0; i < monthCounter.length; i++) {
-            series.getData().add(new XYChart.Data<>(monthNames.get(i), monthCounter[i]));
-        }
-
+        // Limpiar y agregar la serie al gráfico
+        barChart.getData().clear();
         barChart.getData().add(series);
     }
+
 }

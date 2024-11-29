@@ -81,4 +81,13 @@ public class HotelModelo {
         reservaRepository.deleteReserva(reservaVO.getId());
     }
 
+    public ArrayList<Reserva>  mostrarReservasAll() {
+        ArrayList<ReservaVO> reservas = reservaRepository.obtenerTodasLasReservas();
+        return reservaUtil.getReservas(reservas);
+    }
+
+    public ArrayList<Reserva>  mostrarReservasActivas() {
+        ArrayList<ReservaVO> reservas = reservaRepository.obtenerReservasActivas();
+        return reservaUtil.getReservas(reservas);
+    }
 }

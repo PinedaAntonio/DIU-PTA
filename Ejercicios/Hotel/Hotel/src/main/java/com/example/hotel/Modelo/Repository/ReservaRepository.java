@@ -9,6 +9,10 @@ public interface ReservaRepository {
     // Método modificado para obtener las reservas por DNI del cliente
     ArrayList<ReservaVO> obtenerReservasPorDni(String dni_cliente) throws ExcepcionHotel;
 
+    ArrayList<ReservaVO> obtenerTodasLasReservas() throws ExcepcionHotel;
+
+    ArrayList<ReservaVO> obtenerReservasActivas() throws ExcepcionHotel;
+
     void addReserva(ReservaVO var1) throws ExcepcionHotel;
 
     void deleteReserva(int var1) throws ExcepcionHotel;

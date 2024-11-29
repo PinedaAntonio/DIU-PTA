@@ -131,4 +131,18 @@ public class Reserva {
     public void setDni_Cliente(String dni_Cliente) {
         this.Dni_Cliente.set(dni_Cliente);
     }
+
+    @Override
+    public String toString() {
+        return "Reserva{" +
+                "Id=" + Id +
+                ", Fecha_Llegada=" + Fecha_Llegada +
+                ", Fecha_Salida=" + Fecha_Salida +
+                ", NHabitaciones=" + NHabitaciones +
+                ", Tipo_Habitacion=" + Tipo_Habitacion +
+                ", Fumador=" + Fumador +
+                ", Regimen=" + Regimen +
+                ", Dni_Cliente=" + Dni_Cliente +
+                '}';
+    }
 }

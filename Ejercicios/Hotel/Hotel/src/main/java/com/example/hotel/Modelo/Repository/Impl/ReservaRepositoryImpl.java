@@ -137,6 +137,96 @@ public class ReservaRepositoryImpl implements ReservaRepository {
         }
     }
 
+    public ArrayList<ReservaVO> obtenerTodasLasReservas() throws ExcepcionHotel {
+        try {
+            Connection conn = this.conexion.conectarBD();
+            ArrayList<ReservaVO> reservas = new ArrayList<>();
+            this.stmt = conn.createStatement();
+
+            // Sentencia SQL para obtener todas las reservas
+            this.sentencia = "SELECT * FROM reservas";
+            ResultSet rs = this.stmt.executeQuery(this.sentencia);
+
+            while (rs.next()) {
+                int id = rs.getInt("Id");
+                LocalDate llegada = rs.getDate("Fecha_Llegada").toLocalDate();
+                LocalDate salida = rs.getDate("Fecha_Salida").toLocalDate();
+                tipoHabitacion tipoHabitacion = null;
+                if (rs.getString("Tipo_Habitacion") != null) {
+                    try {
+                        tipoHabitacion = com.example.hotel.Modelo.Repository.Impl.tipoHabitacion.valueOf(rs.getString("Tipo_Habitacion"));
+                    } catch (IllegalArgumentException e) {
+                        throw new ExcepcionHotel("Valor no válido en columna Tipo_Habitacion");
+                    }
+                }
+                int numHabitaciones = rs.getInt("NHabitaciones");
+                Boolean fumador = rs.getBoolean("Fumador");
+                regimen regimen = null;
+                if (rs.getString("Regimen") != null) {
+                    try {
+                        regimen = com.example.hotel.Modelo.Repository.Impl.regimen.valueOf(rs.getString("Regimen"));
+                    } catch (IllegalArgumentException e) {
+                        throw new ExcepcionHotel("Valor no válido en columna Regimen");
+                    }
+                }
+                String dniCliente = rs.getString("Dni_Cliente");
+                ReservaVO reserva = new ReservaVO(id, llegada, salida, numHabitaciones, tipoHabitacion, fumador, regimen, dniCliente);
+                reservas.add(reserva);
+            }
+
+            this.conexion.desconectarBD(conn);
+            return reservas;
+        } catch (SQLException var6) {
+            throw new ExcepcionHotel("No se ha podido realizar la operación");
+        }
+    }
+
+    public ArrayList<ReservaVO> obtenerReservasActivas() throws ExcepcionHotel {
+        try {
+            Connection conn = this.conexion.conectarBD();
+            ArrayList<ReservaVO> reservas = new ArrayList<>();
+            this.stmt = conn.createStatement();
+
+            // Obtener la fecha actual
+            LocalDate today = LocalDate.now();
+
+            // Modificar la sentencia para filtrar las reservas activas
+            this.sentencia = "SELECT * FROM reservas WHERE Fecha_Llegada <= '" + today + "' AND Fecha_Salida >= '" + today + "'";
+            ResultSet rs = this.stmt.executeQuery(this.sentencia);
+
+            while (rs.next()) {
+                int id = rs.getInt("Id");
+                LocalDate llegada = rs.getDate("Fecha_Llegada").toLocalDate();
+                LocalDate salida = rs.getDate("Fecha_Salida").toLocalDate();
+                tipoHabitacion tipoHabitacion = null;
+                if (rs.getString("Tipo_Habitacion") != null) {
+                    try {
+                        tipoHabitacion = tipoHabitacion.valueOf(rs.getString("Tipo_Habitacion"));
+                    } catch (IllegalArgumentException e) {
+                        throw new ExcepcionHotel("Valor no válido en columna Tipo_Habitacion");
+                    }
+                }
+                int numHabitaciones = rs.getInt("NHabitaciones");
+                Boolean fumador = rs.getBoolean("Fumador");
+                regimen regimen = null;
+                if (rs.getString("Regimen") != null) {
+                    try {
+                        regimen = regimen.valueOf(rs.getString("Regimen"));
+                    } catch (IllegalArgumentException e) {
+                        throw new ExcepcionHotel("Valor no válido en columna Regimen");
+                    }
+                }
+                String dniCliente = rs.getString("Dni_Cliente");
+                ReservaVO reserva = new ReservaVO(id, llegada, salida, numHabitaciones, tipoHabitacion, fumador, regimen, dniCliente);
+                reservas.add(reserva);
+            }
+
+            this.conexion.desconectarBD(conn);
+            return reservas;
+        } catch (SQLException var6) {
+            throw new ExcepcionHotel("No se ha podido realizar la operación");
+        }
+    }
 
     @Override
     public int lastId() throws ExcepcionHotel {

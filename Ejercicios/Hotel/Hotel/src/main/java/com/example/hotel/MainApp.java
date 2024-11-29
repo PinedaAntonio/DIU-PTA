@@ -1,19 +1,20 @@
 package com.example.hotel;
 
-import com.example.hotel.Controller.BirthdayStatisticsController;
-import com.example.hotel.Controller.ClienteOverviewController;
-import com.example.hotel.Controller.ClienteEditDialogController;
-import com.example.hotel.Controller.ReservaEditDialogController;
+import com.example.hotel.Controller.*;
+import com.example.hotel.Modelo.ExcepcionHotel;
 import com.example.hotel.Modelo.HotelModelo;
 import com.example.hotel.Modelo.Repository.Impl.ClienteRepositoryImpl;
 import com.example.hotel.Modelo.Repository.Impl.ReservaRepositoryImpl;
+import com.example.hotel.Modelo.ReservaVO;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -35,7 +36,6 @@ public class MainApp extends Application {
         hotelModelo.setClienteRepository(clienteRepository);
         try{
             personData.addAll(hotelModelo.mostrarClientes());
-            //reservaData.addAll(hotelModelo.mostrarReservas());
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -240,24 +240,27 @@ public class MainApp extends Application {
      */
     public void showBirthdayStatistics() {
         try {
+            // Obtener todas las reservas de todos los clientes
+            ArrayList<Reserva> reservas = hotelModelo.mostrarReservasAll();
+
             // Load the fxml file and create a new stage for the popup.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("BirthdayStatistics.fxml"));
             AnchorPane page = (AnchorPane) loader.load();
             Stage dialogStage = new Stage();
-            dialogStage.setTitle("Birthday Statistics");
+            dialogStage.setTitle("Ocupación Habitaciones");
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.initOwner(primaryStage);
             Scene scene = new Scene(page);
             dialogStage.setScene(scene);
 
-            // Set the persons into the controller.
+            // Set the reservas into the controller
             BirthdayStatisticsController controller = loader.getController();
-            controller.setPersonData(reservaData);
+            controller.setReservaData(reservas);
 
             dialogStage.show();
 
-        } catch (IOException e) {
+        } catch (IOException | ExcepcionHotel e) {
             e.printStackTrace();
         }
     }

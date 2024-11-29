@@ -6,11 +6,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="1400.0" stylesheets="@../../../estilos/TablaEstilo.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotel.Controller.RootLayoutController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="1400.0" stylesheets="@../../../estilos/EstilosRoot.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotel.Controller.RootLayoutController">
     <top>
         <MenuBar BorderPane.alignment="CENTER">
             <menus>
-                <Menu mnemonicParsing="false" text="Archivo">
+                <Menu mnemonicParsing="false" text="Habitaciones">
                     <items>
                         <MenuItem mnemonicParsing="false" text="Close" />
                     </items>
@@ -18,11 +18,6 @@
                 <Menu mnemonicParsing="false" text="Estadísticas">
                     <items>
                         <MenuItem mnemonicParsing="false" onAction="#handleShowBirthdayStatistics" text="Show Statistics" />
-                    </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Ayuda">
-                    <items>
-                        <MenuItem mnemonicParsing="false" text="About" />
                     </items>
                 </Menu>
             </menus>
