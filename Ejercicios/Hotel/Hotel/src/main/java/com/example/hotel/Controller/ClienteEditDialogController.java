@@ -97,6 +97,34 @@ public class ClienteEditDialogController {
         return okClicked;
     }
 
+    private boolean isDniValid(String dni) {
+        // Verificar que el DNI no sea nulo y tenga 9 caracteres
+        if (dni == null || dni.length() != 9) {
+            return false;
+        }
+
+        // Verificar que los primeros 8 caracteres son dígitos
+        String dniNumeros = dni.substring(0, 8);
+        if (!dniNumeros.matches("\\d{8}")) {
+            return false;
+        }
+
+        // Verificar que el noveno carácter sea una letra
+        char letra = dni.charAt(8);
+        if (!Character.isLetter(letra)) {
+            return false;
+        }
+
+        // Comprobar que la letra es válida según el número de DNI
+        int dniNumber = Integer.parseInt(dniNumeros);
+        char[] letras = "TRWAGMYFPDXBNJZSQVHLCKE".toCharArray();
+        int remainder = dniNumber % 23;
+        char expectedLetter = letras[remainder];
+
+        return letra == expectedLetter;
+    }
+
+
     /**
      * Called when the user clicks ok.
      */
@@ -133,27 +161,32 @@ public class ClienteEditDialogController {
         if (nameField.getText() == null || nameField.getText().length() == 0) {
             errorMessage += "Nombre no válido\n";
         }
+
         if (apellidoField.getText() == null || apellidoField.getText().length() == 0) {
             errorMessage += "Apellido no válido\n";
         }
+
         if (direccionField.getText() == null || direccionField.getText().length() == 0) {
             errorMessage += "Dirección no válida\n";
         }
+
         if (provinciaField.getText() == null || provinciaField.getText().length() == 0) {
             errorMessage += "Provincia no válida\n";
         }
+
         if (localidadField.getText() == null || localidadField.getText().length() == 0) {
             errorMessage += "Localidad no válida\n";
         }
-        if (dniField.getText() == null || dniField.getText().length() == 0) {
-            errorMessage += "Dni no válido\n";
+
+        String dni = dniField.getText();
+        if (dni == null || dni.length() == 0 || !isDniValid(dni)) {
+            errorMessage += "DNI no válido\n";
         }
 
         if (errorMessage.length() == 0) {
             return true;
         } else {
-            // Show the error message.
-            Alert alert=new Alert(Alert.AlertType.WARNING);
+            Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Campos inválidos");
             alert.setHeaderText("Por favor, corrija los campos inválidos");
             alert.setContentText(errorMessage);
@@ -163,14 +196,11 @@ public class ClienteEditDialogController {
     }
 
 
-
     private void cambiarBarra(int n) {
         progresoNum.set(n / 50.0);
     }
 
-    public IntegerProperty numProperty() {
-        return new SimpleIntegerProperty((int) (progresoNum.get() * 50));
-    }
+
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.geometry.*?>
 <?import java.lang.*?>
@@ -10,7 +11,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="background" stylesheets="@../../../estilos/TablaEstilo.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotel.Controller.ReservaEditDialogController">
    <children>
-      <GridPane layoutX="180.0" layoutY="95.0" prefHeight="306.0" prefWidth="580.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+      <GridPane layoutX="180.0" layoutY="95.0" prefHeight="332.0" prefWidth="580.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="281.0" minWidth="10.0" prefWidth="195.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="399.0" minWidth="10.0" prefWidth="385.0" />
@@ -35,7 +36,7 @@
             <TextField fx:id="dniField" layoutX="205.0" layoutY="234.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
             <DatePicker fx:id="llegadaField" prefHeight="35.0" prefWidth="401.0" GridPane.columnIndex="1" />
             <DatePicker fx:id="salidaField" layoutX="205.0" layoutY="15.0" prefHeight="35.0" prefWidth="401.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <CheckBox fx:id="fumadorField" mnemonicParsing="false" prefHeight="19.0" prefWidth="386.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <CheckBox fx:id="fumadorField" mnemonicParsing="false" prefHeight="72.0" prefWidth="385.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <MenuButton fx:id="nHabField" mnemonicParsing="false" prefHeight="32.0" prefWidth="406.0" styleClass="menuColor" stylesheets="@../../../estilos/TablaEstilo.css" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <MenuButton fx:id="tHabField" layoutX="205.0" layoutY="104.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="406.0" styleClass="menuColor" stylesheets="@../../../estilos/TablaEstilo.css" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <MenuButton fx:id="regimenField" layoutX="205.0" layoutY="148.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="406.0" styleClass="menuColor" stylesheets="@../../../estilos/TablaEstilo.css" GridPane.columnIndex="1" GridPane.rowIndex="5" />
@@ -51,5 +52,6 @@
             <Button layoutX="473.0" layoutY="350.0" mnemonicParsing="false" onAction="#handleCancel" prefHeight="30.0" prefWidth="100.0" text="Cancel" />
          </children>
       </HBox>
+      <Label fx:id="FumadorLabel" layoutY="342.0" prefHeight="85.0" prefWidth="358.0" text="En virtud de la ley de sanidad se informa a los clientes de que solo podrán fumar en las habitacionesreservadas para tal fin." visible="false"/>
    </children>
 </AnchorPane>

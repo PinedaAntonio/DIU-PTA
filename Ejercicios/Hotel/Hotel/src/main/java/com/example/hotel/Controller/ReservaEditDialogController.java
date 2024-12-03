@@ -32,7 +32,8 @@ public class ReservaEditDialogController {
     private MenuButton regimenField;
     @FXML
     private TextField dniField;
-
+    @FXML
+    private Label FumadorLabel;
 
     @FXML
     private ProgressBar progressBar;
@@ -75,6 +76,11 @@ public class ReservaEditDialogController {
             item.setOnAction(event -> regimenField.setText(item.getText()));
             regimenField.getItems().add(item);
         }
+
+        fumadorField.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            FumadorLabel.setVisible(newValue);  // Si es seleccionado, lo hace visible, si no, invisible.
+        });
+        FumadorLabel.setWrapText(true);
     }
 
 
@@ -140,37 +146,30 @@ public class ReservaEditDialogController {
     private boolean isInputValid() {
         String errorMessage = "";
 
-        // Verificar la fecha de llegada
         if (llegadaField.getValue() == null || llegadaField.getValue().isBefore(LocalDate.now())) {
             errorMessage += "La fecha de llegada no puede ser anterior a la fecha actual.\n";
         }
 
-        // Verificar la fecha de salida
         if (salidaField.getValue() == null || salidaField.getValue().isBefore(llegadaField.getValue())) {
             errorMessage += "La fecha de salida no puede ser anterior a la fecha de llegada.\n";
         }
 
-        // Verificar el número de habitaciones
         if ("Seleccione".equals(nHabField.getText())) {
             errorMessage += "Número de habitaciones no válido\n";
         }
 
-        // Verificar el tipo de habitación
         if ("Seleccione".equals(tHabField.getText())) {
             errorMessage += "Tipo de habitación no válido\n";
         }
 
-        // Verificar el régimen
         if ("Seleccione".equals(regimenField.getText())) {
             errorMessage += "Régimen no válido\n";
         }
 
-        // Verificar el DNI
         if (dniField.getText() == null || dniField.getText().isEmpty()) {
             errorMessage += "DNI no válido\n";
         }
 
-        // Si hay errores, mostrar una alerta con los mensajes
         if (errorMessage.isEmpty()) {
             return true;
         } else {
@@ -181,17 +180,6 @@ public class ReservaEditDialogController {
             alert.showAndWait();
             return false;
         }
-    }
-
-
-
-
-    private void cambiarBarra(int n) {
-        progresoNum.set(n / 50.0);
-    }
-
-    public IntegerProperty numProperty() {
-        return new SimpleIntegerProperty((int) (progresoNum.get() * 50));
     }
 
     /**

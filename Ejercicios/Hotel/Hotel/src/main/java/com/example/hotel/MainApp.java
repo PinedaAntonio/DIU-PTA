@@ -12,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.web.WebView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import java.io.IOException;
@@ -343,6 +344,24 @@ public class MainApp extends Application {
         }
     }
 
+    public void showWebView(){
+        try {
+            WebView webView = new WebView();
+
+            webView.getEngine().load("https://www.wikipedia.org/");
+
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Wikipedia");
+
+            Scene scene = new Scene(webView, 800, 600);
+            dialogStage.setScene(scene);
+
+            dialogStage.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     public static void main(String[] args) {
         launch();

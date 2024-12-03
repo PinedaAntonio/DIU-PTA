@@ -36,4 +36,7 @@ public class RootLayoutController {
 
     @FXML
     private void handleMostrarCarruselIndividual() {mainApp.mostrarCarrusel("DOBLE_USO_INDIVIDUAL");}
+
+    @FXML
+    private void handleWebView(){mainApp.showWebView();}
 }

@@ -20,7 +20,12 @@
                 </Menu>
                 <Menu mnemonicParsing="false" text="Estadísticas">
                     <items>
-                        <MenuItem mnemonicParsing="false" onAction="#handleShowBirthdayStatistics" text="Show Statistics" />
+                        <MenuItem mnemonicParsing="false" onAction="#handleShowBirthdayStatistics" text="Mostrar Ocupación" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Web">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#handleWebView" text="MostrarWebView" />
                     </items>
                 </Menu>
             </menus>
