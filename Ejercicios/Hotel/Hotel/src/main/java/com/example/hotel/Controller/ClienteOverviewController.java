@@ -14,10 +14,7 @@ import com.example.hotel.Util.ReservaUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import com.example.hotel.Reserva;
 import com.example.hotel.Modelo.ReservaVO;
 
@@ -61,6 +58,8 @@ public class ClienteOverviewController {
     private Label fumadorLabel;
     @FXML
     private Label regimenLabel;
+    @FXML
+    private TextField DniField;
 
 
     private MainApp mainApp;
@@ -279,7 +278,7 @@ public class ClienteOverviewController {
                 try {
                     ReservaVO reservaVO = reservaUtil.convertirReservaAReservaVO(tempReserva);
                     modelo.nuevaReserva(reservaVO);
-                    loadReservasData(reservaVO.getDni_Cliente());// Recargar la lista después de añadir
+                    loadReservasData(reservaVO.getDni_Cliente());
                     if(reservaVO.isFumador()){
                         Alert alert = new Alert(Alert.AlertType.WARNING);
                         alert.setTitle("Fumador detectado");
@@ -309,9 +308,9 @@ public class ClienteOverviewController {
             if (okClicked) {
                 try {
                     ReservaVO reservaVO = reservaUtil.convertirReservaAReservaVO(selectedReserva);
-                    modelo.editarReserva(reservaVO); // Actualiza la persona
-                    loadReservasData(reservaVO.getDni_Cliente()); // Recargar la lista después de editar
-                    showReservaDetails(selectedReserva); // Muestra los detalles actualizados
+                    modelo.editarReserva(reservaVO);
+                    loadReservasData(reservaVO.getDni_Cliente());
+                    showReservaDetails(selectedReserva);
                 } catch (ExcepcionHotel e) {
                     mostrarAlertaError("Error al editar la persona", e.getMessage());
                 }
@@ -322,6 +321,26 @@ public class ClienteOverviewController {
             alert.setHeaderText("No se ha seleccionado ninguna persona");
             alert.setContentText("Seleccione a una persona de la tabla");
             alert.showAndWait();
+        }
+    }
+
+    @FXML
+    private void handleSearchByDni() {
+        String dni = DniField.getText().trim();  // Obtener el DNI ingresado
+
+        if (!dni.isEmpty()) {
+            // Filtra los clientes por el DNI
+            ObservableList<Cliente> filteredList = FXCollections.observableArrayList();
+            for (Cliente cliente : mainApp.getPersonData()) {
+                if (cliente.getDni().equals(dni)) {
+                    filteredList.add(cliente);
+                    break; // Se detiene después de encontrar el primer cliente que coincida
+                }
+            }
+            clienteTable.setItems(filteredList);  // Actualiza la tabla con el cliente filtrado
+        } else {
+            // Si el campo DNI está vacío, muestra todos los clientes
+            clienteTable.setItems(mainApp.getPersonData());
         }
     }
 

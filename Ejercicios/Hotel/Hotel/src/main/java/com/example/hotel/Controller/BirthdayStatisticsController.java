@@ -17,7 +17,7 @@ import javafx.scene.chart.XYChart;
 public class BirthdayStatisticsController {
 
     @FXML
-    private BarChart<String, Double> barChart; // Cambié a Double porque ahora manejamos medias.
+    private BarChart<String, Double> barChart;
 
     @FXML
     private CategoryAxis xAxis;
@@ -53,12 +53,12 @@ public class BirthdayStatisticsController {
             if (fechaLlegada != null) {
                 int mes = fechaLlegada.getMonthValue() - 1; // Mes en formato 0-11
 
-                // Aquí asignas los contadores por tipo de habitación
+                // Aquí asignamos los contadores por tipo de habitación
                 switch (reserva.getTipo_Habitacion()) {
                     case "DOBLE":
                         doblesReservadas[mes]++;
                         break;
-                    case "DOBLE USO INDIVIDUAL":
+                    case "DOBLE_USO_INDIVIDUAL":
                         doblesIndReservadas[mes]++;
                         break;
                     case "JUNIOR_SUITE":
@@ -75,7 +75,7 @@ public class BirthdayStatisticsController {
                 System.err.println("Fecha inválida: " + reserva.getFecha_Llegada());
             }
         }
-// Crear una serie para mostrar las medias
+        // Crear una serie para mostrar las medias
         XYChart.Series<String, Double> series = new XYChart.Series<>();
 
         for (int i = 0; i < 12; i++) {

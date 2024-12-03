@@ -3,6 +3,8 @@ package com.example.hotel.Modelo.Repository.Impl;
 import com.example.hotel.Modelo.ClienteVO;
 import com.example.hotel.Modelo.ExcepcionHotel;
 import com.example.hotel.Modelo.Repository.ClienteRepository;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -117,6 +119,35 @@ public class ClienteRepositoryImpl implements ClienteRepository {
             }
         }
     }
+
+    // En ClienteRepositoryImpl.java
+    public ObservableList<ClienteVO> buscarClientesPorDni(String id) {
+        try {
+            Connection conn = this.conexion.conectarBD();
+            this.clientes = new ArrayList();
+            this.stmt = conn.createStatement();
+            this.sentencia = "SELECT * FROM clientes where Dni = '" + id + "';";
+            ResultSet rs = this.stmt.executeQuery(this.sentencia);
+
+            while(rs.next()) {
+                String n = rs.getString("Nombre");
+                String a = rs.getString("Apellidos");
+                String d = rs.getString("Direccion");
+                String l = rs.getString("Localidad");
+                String p = rs.getString("Provincia");
+                String dni = rs.getString("Dni");
+                this.cliente = new ClienteVO(dni, n, a, d, l, p);
+                this.clientes.add(this.cliente);
+            }
+
+            this.conexion.desconectarBD(conn);
+            ObservableList<ClienteVO> observableClientes = FXCollections.observableArrayList(this.clientes);
+            return observableClientes;
+        } catch (SQLException var6) {
+            throw new ExcepcionHotel("No se ha podido realizar la operación");
+        }
+    }
+
 
     @Override
     public int lastId() throws ExcepcionHotel {

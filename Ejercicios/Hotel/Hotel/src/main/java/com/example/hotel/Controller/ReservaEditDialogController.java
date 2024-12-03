@@ -140,25 +140,37 @@ public class ReservaEditDialogController {
     private boolean isInputValid() {
         String errorMessage = "";
 
-        if (llegadaField.getValue() == null) {
-            errorMessage += "Fecha de llegada no válida\n";
+        // Verificar la fecha de llegada
+        if (llegadaField.getValue() == null || llegadaField.getValue().isBefore(LocalDate.now())) {
+            errorMessage += "La fecha de llegada no puede ser anterior a la fecha actual.\n";
         }
-        if (salidaField.getValue() == null) {
-            errorMessage += "Fecha de salida no válida\n";
+
+        // Verificar la fecha de salida
+        if (salidaField.getValue() == null || salidaField.getValue().isBefore(llegadaField.getValue())) {
+            errorMessage += "La fecha de salida no puede ser anterior a la fecha de llegada.\n";
         }
+
+        // Verificar el número de habitaciones
         if ("Seleccione".equals(nHabField.getText())) {
             errorMessage += "Número de habitaciones no válido\n";
         }
+
+        // Verificar el tipo de habitación
         if ("Seleccione".equals(tHabField.getText())) {
             errorMessage += "Tipo de habitación no válido\n";
         }
+
+        // Verificar el régimen
         if ("Seleccione".equals(regimenField.getText())) {
             errorMessage += "Régimen no válido\n";
         }
+
+        // Verificar el DNI
         if (dniField.getText() == null || dniField.getText().isEmpty()) {
             errorMessage += "DNI no válido\n";
         }
 
+        // Si hay errores, mostrar una alerta con los mensajes
         if (errorMessage.isEmpty()) {
             return true;
         } else {

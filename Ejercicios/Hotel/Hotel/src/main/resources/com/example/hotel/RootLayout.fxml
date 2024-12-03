@@ -10,9 +10,12 @@
     <top>
         <MenuBar BorderPane.alignment="CENTER">
             <menus>
-                <Menu mnemonicParsing="false" text="Habitaciones">
+                <Menu mnemonicParsing="false" text="Habitaciones" >
                     <items>
-                        <MenuItem mnemonicParsing="false" text="Close" />
+                        <MenuItem text="Carrusel Doble Uso Individual" onAction="#handleMostrarCarruselIndividual" />
+                        <MenuItem text="Carrusel Doble" onAction="#handleMostrarCarruselDoble" />
+                        <MenuItem text="Carrusel Junior Suite" onAction="#handleMostrarCarruselJunior" />
+                        <MenuItem text="Carrusel Suite" onAction="#handleMostrarCarruselSuite" />
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Estadísticas">

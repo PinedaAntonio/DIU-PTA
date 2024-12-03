@@ -87,7 +87,8 @@ public class HotelModelo {
     }
 
     public ArrayList<Reserva>  mostrarReservasActivas() {
-        ArrayList<ReservaVO> reservas = reservaRepository.obtenerReservasActivas();
-        return reservaUtil.getReservas(reservas);
+        ArrayList<ReservaVO> reservasVO = reservaRepository.obtenerReservasActivas();
+        ArrayList<Reserva> reservas = reservaUtil.getReservas(reservasVO);
+        return reservas;
     }
 }

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+
+<VBox alignment="CENTER" spacing="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotel.Controller.CarruselDialogController">
+    <children>
+        <Label fx:id="tituloLabel" style="-fx-font-size: 18px;" />
+        <StackPane fx:id="carruselPane" prefHeight="300" prefWidth="400">
+            <!-- Carrusel de imágenes -->
+        </StackPane>
+        <HBox alignment="CENTER" spacing="10">
+            <children>
+                <Button onAction="#mostrarAnterior" text="Anterior" />
+                <ProgressIndicator fx:id="progressInd" progress="0.0" />
+                <Button onAction="#mostrarSiguiente" text="Siguiente" />
+            </children>
+        </HBox>
+    </children>
+</VBox>

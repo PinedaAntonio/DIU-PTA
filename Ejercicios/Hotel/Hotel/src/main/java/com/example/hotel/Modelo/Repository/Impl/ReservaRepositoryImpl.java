@@ -187,10 +187,8 @@ public class ReservaRepositoryImpl implements ReservaRepository {
             ArrayList<ReservaVO> reservas = new ArrayList<>();
             this.stmt = conn.createStatement();
 
-            // Obtener la fecha actual
             LocalDate today = LocalDate.now();
 
-            // Modificar la sentencia para filtrar las reservas activas
             this.sentencia = "SELECT * FROM reservas WHERE Fecha_Llegada <= '" + today + "' AND Fecha_Salida >= '" + today + "'";
             ResultSet rs = this.stmt.executeQuery(this.sentencia);
 

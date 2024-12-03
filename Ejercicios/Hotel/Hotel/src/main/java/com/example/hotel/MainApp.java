@@ -9,12 +9,16 @@ import com.example.hotel.Modelo.ReservaVO;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -27,6 +31,8 @@ public class MainApp extends Application {
     private ObservableList<Cliente> personData = FXCollections.observableArrayList();
     private ObservableList<Reserva> reservaData = FXCollections.observableArrayList();
     private HotelModelo hotelModelo;
+    private Map<String, List<Image>> imagenesHabitaciones;
+    private Map<String, Integer> ocupacionHabitaciones;
 
 
     public MainApp(){
@@ -39,6 +45,7 @@ public class MainApp extends Application {
         }catch (Exception e){
             e.printStackTrace();
         }
+        cargarDatosHabitaciones();
     }
 
     /**
@@ -264,6 +271,78 @@ public class MainApp extends Application {
             e.printStackTrace();
         }
     }
+
+    private void cargarDatosHabitaciones() {
+        imagenesHabitaciones = new HashMap<>();
+        imagenesHabitaciones.put("DOBLE_USO_INDIVIDUAL", List.of(
+                new Image(getClass().getResource("/images/doble_i.jpeg").toExternalForm()), new Image(getClass().getResource("/images/doble_i2.jpeg").toExternalForm()), new Image(getClass().getResource("/images/doble_i3.jpeg").toExternalForm())
+        ));
+        imagenesHabitaciones.put("DOBLE", List.of(
+                new Image(getClass().getResource("/images/doble.jpeg").toExternalForm()), new Image(getClass().getResource("/images/doble2.jpeg").toExternalForm()), new Image(getClass().getResource("/images/doble3.jpeg").toExternalForm())
+        ));
+        imagenesHabitaciones.put("JUNIOR_SUITE", List.of(
+                new Image(getClass().getResource("/images/junior.jpeg").toExternalForm()), new Image(getClass().getResource("/images/junior2.jpeg").toExternalForm()), new Image(getClass().getResource("/images/junior3.jpeg").toExternalForm())
+        ));
+        imagenesHabitaciones.put("SUITE", List.of(
+                new Image(getClass().getResource("/images/suite.jpeg").toExternalForm()), new Image(getClass().getResource("/images/suite2.jpeg").toExternalForm()), new Image(getClass().getResource("/images/suite3.jpeg").toExternalForm())
+        ));
+        actualizarOcupacionHabitaciones();
+    }
+
+    private void actualizarOcupacionHabitaciones() {
+        ocupacionHabitaciones = new HashMap<>();
+        try {
+            ArrayList<Reserva> reservasActivas = hotelModelo.mostrarReservasActivas();
+
+            for (Reserva reserva : reservasActivas) {
+                String tipoHabitacion = reserva.getTipo_Habitacion().replace(" ", "_").toUpperCase();
+                ocupacionHabitaciones.put(tipoHabitacion, ocupacionHabitaciones.getOrDefault(tipoHabitacion, 0) + 1);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            ocupacionHabitaciones.put("DOBLE_USO_INDIVIDUAL", 0);
+            ocupacionHabitaciones.put("DOBLE", 0);
+            ocupacionHabitaciones.put("JUNIOR_SUITE", 0);
+            ocupacionHabitaciones.put("SUITE", 0);
+        }
+    }
+
+    public List<Image> getImagenesPorTipo(String tipoHabitacion) {
+        return imagenesHabitaciones.getOrDefault(tipoHabitacion, List.of());
+    }
+
+    public int getOcupacionPorTipo(String tipoHabitacion) {
+        return ocupacionHabitaciones.getOrDefault(tipoHabitacion, 0);
+    }
+
+    public void mostrarCarrusel(String tipoHabitacion) {
+        try {
+            // Cargar el archivo FXML
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("CarruselDialog.fxml"));
+            VBox page = loader.load();
+            actualizarOcupacionHabitaciones();
+
+            // Crear el diálogo
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Carrusel de Habitaciones");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            CarruselDialogController controller = loader.getController();
+
+            List<Image> imagenes = getImagenesPorTipo(tipoHabitacion);
+            int ocupacion = getOcupacionPorTipo(tipoHabitacion);
+            controller.configurarCarrusel(tipoHabitacion, imagenes, ocupacion);
+
+            dialogStage.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     public static void main(String[] args) {
         launch();

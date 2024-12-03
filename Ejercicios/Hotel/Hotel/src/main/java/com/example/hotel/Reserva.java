@@ -85,7 +85,7 @@ public class Reserva {
     }
 
     public String getTipo_Habitacion() {
-        return Tipo_Habitacion.get();
+        return Tipo_Habitacion.get().replace(" ", "_");
     }
 
     public SimpleStringProperty tipo_HabitacionProperty() {
