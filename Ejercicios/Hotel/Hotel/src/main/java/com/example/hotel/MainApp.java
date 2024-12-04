@@ -5,7 +5,6 @@ import com.example.hotel.Modelo.ExcepcionHotel;
 import com.example.hotel.Modelo.HotelModelo;
 import com.example.hotel.Modelo.Repository.Impl.ClienteRepositoryImpl;
 import com.example.hotel.Modelo.Repository.Impl.ReservaRepositoryImpl;
-import com.example.hotel.Modelo.ReservaVO;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -246,14 +245,14 @@ public class MainApp extends Application {
     /**
      * Opens a dialog to show birthday statistics.
      */
-    public void showBirthdayStatistics() {
+    public void showOcupacionStatistics() {
         try {
             // Obtener todas las reservas de todos los clientes
             ArrayList<Reserva> reservas = hotelModelo.mostrarReservasAll();
 
             // Load the fxml file and create a new stage for the popup.
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource("BirthdayStatistics.fxml"));
+            loader.setLocation(MainApp.class.getResource("OcupacionStatistics.fxml"));
             AnchorPane page = (AnchorPane) loader.load();
             Stage dialogStage = new Stage();
             dialogStage.setTitle("Ocupación Habitaciones");
@@ -263,7 +262,7 @@ public class MainApp extends Application {
             dialogStage.setScene(scene);
 
             // Set the reservas into the controller
-            BirthdayStatisticsController controller = loader.getController();
+            OcupacionController controller = loader.getController();
             controller.setReservaData(reservas);
 
             dialogStage.show();

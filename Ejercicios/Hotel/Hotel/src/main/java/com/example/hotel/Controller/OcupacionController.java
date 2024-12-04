@@ -1,10 +1,8 @@
 package com.example.hotel.Controller;
 
-import java.text.DateFormatSymbols;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Locale;
 
 import com.example.hotel.Reserva;
 import javafx.collections.FXCollections;
@@ -14,7 +12,7 @@ import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.XYChart;
 
-public class BirthdayStatisticsController {
+public class OcupacionController {
 
     @FXML
     private BarChart<String, Double> barChart;

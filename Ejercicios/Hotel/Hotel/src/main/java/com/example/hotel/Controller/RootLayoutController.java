@@ -2,10 +2,6 @@ package com.example.hotel.Controller;
 
 import com.example.hotel.MainApp;
 import javafx.fxml.FXML;
-import javafx.scene.image.Image;
-
-import java.util.Arrays;
-import java.util.List;
 
 public class RootLayoutController {
 
@@ -16,7 +12,7 @@ public class RootLayoutController {
      */
     @FXML
     private void handleShowBirthdayStatistics() {
-        mainApp.showBirthdayStatistics();
+        mainApp.showOcupacionStatistics();
     }
 
     @FXML
