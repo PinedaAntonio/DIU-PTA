@@ -99,10 +99,8 @@ public class ClienteRepositoryImpl implements ClienteRepository {
                     clienteVO.getDni()
             );
 
-            System.out.println("Ejecutando consulta SQL: " + sql); // Imprime la consulta SQL para depuración
 
             int rowsAffected = this.stmt.executeUpdate(sql);
-            System.out.println("Filas afectadas: " + rowsAffected);
 
             // Verifica si alguna fila fue afectada
             if (rowsAffected == 0) {

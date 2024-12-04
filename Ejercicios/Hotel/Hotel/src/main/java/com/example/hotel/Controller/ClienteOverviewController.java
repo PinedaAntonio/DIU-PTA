@@ -279,13 +279,6 @@ public class ClienteOverviewController {
                     ReservaVO reservaVO = reservaUtil.convertirReservaAReservaVO(tempReserva);
                     modelo.nuevaReserva(reservaVO);
                     loadReservasData(reservaVO.getDni_Cliente());
-                    if(reservaVO.isFumador()){
-                        Alert alert = new Alert(Alert.AlertType.WARNING);
-                        alert.setTitle("Fumador detectado");
-                        alert.setHeaderText("Aviso a fumadores");
-                        alert.setContentText("En virtud de la ley de sanidad se informa a los clientes de que solo podrán fumar en las habitaciones reservadas para tal fin.");
-                        alert.showAndWait();
-                    }
                 } catch (ExcepcionHotel e) {
                     mostrarAlertaError("Error al guardar la persona", e.getMessage());
                 }
