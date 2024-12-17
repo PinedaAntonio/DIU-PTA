@@ -1,0 +1,38 @@
+.container-counter {
+    display: grid;
+    grid-template-columns: auto 500px auto;
+    grid-template-rows: auto;
+    grid-template-areas:
+    ". counter ."
+    ". buttons .";
+}
+
+.counter {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    grid-area: counter;
+    justify-self: center;
+    font-size: 56px;
+}
+
+.buttons {
+    grid-area: buttons;
+    justify-self: center;
+}
+
+.incButton {
+    background-color: red;
+    color: white;
+    padding: 10px 20px;
+    margin: 0 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 0 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
