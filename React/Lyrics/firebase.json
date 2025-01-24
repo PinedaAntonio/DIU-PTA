@@ -1,0 +1,17 @@
+{
+  "hosting": {
+    "site": "proyectoreact-f3bb8-9eeaa",
+    "public": "build",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
