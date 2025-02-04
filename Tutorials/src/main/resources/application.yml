@@ -1,11 +1,12 @@
 server:
-  port: 8098
+  port: 8080
 spring:
     application:
       name:tutorialsService
-main:
-      allow-bean-definition-overriding: true
+#main:
+#      allow-bean-definition-overriding: true
 data:
-      mongodb:
-        database: tutorialsservice_db
-        port: 27017
+mongodb:
+host: mongo_DB # Usa el nombre del contenedor en Docker en lugar de la IP
+port: 27017
+database: tutorialsservice_db # Asegúrate de usar el nombre correcto de la base de datos

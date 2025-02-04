@@ -37,7 +37,7 @@ export default class Tutorial extends Component {
         event.preventDefault();
 
         const { id, title, description, published } = this.state;
-        const data = {id, title, description, published };
+        const data = { id, title, description, published };
 
         try {
             const response = await TutorialDataService.update(id, data);
