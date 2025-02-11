@@ -9,7 +9,7 @@ import java.util.Optional;
 public interface AgendaAPI {
     List<AgendaVO> getAllAgenda();
     Optional<AgendaVO> getAgendaById(String id);
-    List<AgendaVO> findByNameContaining(String firstName);
+    List<AgendaVO> findByfirstNameContaining(String firstName);
     AgendaVO save(AgendaVO Agenda);
     AgendaVO updateAgenda(AgendaVO Agenda, String id);
     ResponseEntity deleteAgenda(String id);

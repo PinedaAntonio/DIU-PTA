@@ -35,8 +35,8 @@ public class AgendaServiceImpl implements AgendaService {
     }
 
     @Override
-    public List<AgendaVO> findByNameContaining(String firstName) {
-        List<AgendaDto> AgendaOptional = AgendaRepository.findByNameContaining(firstName);
+    public List<AgendaVO> findByfisrtNameContaining(String firstName) {
+        List<AgendaDto> AgendaOptional = AgendaRepository.findByfirstNameContaining(firstName);
 
         return AgendaMapper.AgendaListMapperEntityToDto(AgendaOptional);
     }

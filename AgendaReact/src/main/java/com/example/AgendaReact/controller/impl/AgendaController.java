@@ -30,8 +30,8 @@ public class AgendaController implements AgendaAPI {
 
     @Override
     @GetMapping("/Agenda/title/{title}")
-    public List<AgendaVO> findByNameContaining(@PathVariable String firstName) {
-        return AgendaService.findByNameContaining(firstName);
+    public List<AgendaVO> findByfirstNameContaining(@PathVariable String firstName) {
+        return AgendaService.findByfisrtNameContaining(firstName);
     }
 
 
