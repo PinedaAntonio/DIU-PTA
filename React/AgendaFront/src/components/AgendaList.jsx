@@ -1,37 +1,37 @@
-import React, { useEffect, useState } from 'react';
-import { Container, Row, Col, Spinner } from 'react-bootstrap';
-import AgendaItem from './AgendaItem';
-import { fetchAgenda } from './api';
+import React from "react";
+import { Col, ListGroup, Row } from "react-bootstrap";
+import "../App.css";
 
-const AgendaList = () => {
-    const [agendaList, setAgendaList] = useState([]);
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        const getData = async () => {
-            const data = await fetchAgenda();
-            setAgendaList(data);
-            setLoading(false);
-        };
-        getData();
-    }, []);
-
-    return (
-        <Container>
-            <h2 className="mt-4">Lista de Agenda</h2>
-            {loading ? (
-                <Spinner animation="border" />
-            ) : (
-                <Row>
-                    {agendaList.map((agenda) => (
-                        <Col key={agenda.id} md={4}>
-                            <AgendaItem agenda={agenda} />
-                        </Col>
-                    ))}
-                </Row>
-            )}
-        </Container>
-    );
+const AgendaList = ({ contacts, setSelectedContact, selectedContact }) => {
+  return (
+    <Col md={4} className="agenda-list">
+      <ListGroup>
+        <ListGroup.Item className="header-item">
+          <Row>
+            <Col>
+              <h2 className="list-title">Nombre</h2>
+            </Col>
+            <Col>
+              <h2 className="list-title">Apellidos</h2>
+            </Col>
+          </Row>
+        </ListGroup.Item>
+        {contacts.map((contact) => (
+          <ListGroup.Item
+            key={contact.id}
+            onClick={() => setSelectedContact(contact)}
+            active={selectedContact && selectedContact.id === contact.id}
+            className="contact-item"
+          >
+            <Row>
+              <Col className="contact-name">{contact.firstName}</Col>
+              <Col className="contact-name">{contact.lastName}</Col>
+            </Row>
+          </ListGroup.Item>
+        ))}
+      </ListGroup>
+    </Col>
+  );
 };
 
 export default AgendaList;
