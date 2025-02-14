@@ -15,6 +15,7 @@ public class TutorialsVO {
     private String title;
     private String description;
     private Boolean published;
+    private String imageUrl;
 
 }
 

@@ -1,35 +1,35 @@
 import React from "react";
-import { Col, ListGroup, Row } from "react-bootstrap";
+import { Col } from "react-bootstrap";
 import "../App.css";
 
-const AgendaList = ({ contacts, setSelectedContact, selectedContact }) => {
+const AgendaList = ({ selectedContact }) => {
   return (
-    <Col md={4} className="agenda-list">
-      <ListGroup>
-        <ListGroup.Item className="header-item">
-          <Row>
-            <Col>
-              <h2 className="list-title">Nombre</h2>
-            </Col>
-            <Col>
-              <h2 className="list-title">Apellidos</h2>
-            </Col>
-          </Row>
-        </ListGroup.Item>
-        {contacts.map((contact) => (
-          <ListGroup.Item
-            key={contact.id}
-            onClick={() => setSelectedContact(contact)}
-            active={selectedContact && selectedContact.id === contact.id}
-            className="contact-item"
-          >
-            <Row>
-              <Col className="contact-name">{contact.firstName}</Col>
-              <Col className="contact-name">{contact.lastName}</Col>
-            </Row>
-          </ListGroup.Item>
-        ))}
-      </ListGroup>
+    <Col md={4} className="contact-details">
+      <h2>Detalles Personales</h2>
+      {selectedContact ? (
+        <div>
+          <p>
+            <strong>Nombre:</strong> {selectedContact.firstName}
+          </p>
+          <p>
+            <strong>Apellido:</strong> {selectedContact.lastName}
+          </p>
+          <p>
+            <strong>Calle:</strong> {selectedContact.street}
+          </p>
+          <p>
+            <strong>Ciudad:</strong> {selectedContact.city}
+          </p>
+          <p>
+            <strong>Código Postal:</strong> {selectedContact.postalCode}
+          </p>
+          <p>
+            <strong>Cumpleaños:</strong> {selectedContact.birthday}
+          </p>
+        </div>
+      ) : (
+        <p>Selecciona un contacto</p>
+      )}
     </Col>
   );
 };

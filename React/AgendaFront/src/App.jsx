@@ -1,17 +1,18 @@
 import { useState, useEffect } from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, ListGroup } from "react-bootstrap";
 import AgendaList from "./components/AgendaList";
-import axios from "axios";
+import TutorialList from "./components/TutorialList";
+import contactService from "./services/http-agenda";
 
 function App() {
   const [contacts, setContacts] = useState([]);
   const [selectedContact, setSelectedContact] = useState(null);
 
   useEffect(() => {
-    axios
-      .get("http://localhost:8099/api/v1/Agenda")
+    contactService
+      .getAllContacts()
       .then((response) => setContacts(response.data))
       .catch((error) => console.error("Error al cargar contactos:", error));
   }, []);
@@ -19,43 +20,46 @@ function App() {
   return (
     <Container fluid className="app-container">
       <Row className="app-row">
-        <AgendaList
-          contacts={contacts}
-          setSelectedContact={setSelectedContact}
-          selectedContact={selectedContact}
-        />
-        <Col md={8} className="contact-details">
-          <h2>Detalles Personales</h2>
+        <Col md={4} className="agenda-list">
+          <ListGroup>
+            <ListGroup.Item className="header-item">
+              <Row>
+                <Col>
+                  <h2 className="list-title">Nombre</h2>
+                </Col>
+                <Col>
+                  <h2 className="list-title">Apellidos</h2>
+                </Col>
+              </Row>
+            </ListGroup.Item>
+            {contacts.map((contact) => (
+              <ListGroup.Item
+                key={contact.id}
+                onClick={() => setSelectedContact(contact)}
+                active={selectedContact && selectedContact.id === contact.id}
+                className="contact-item"
+              >
+                <Row>
+                  <Col className="contact-name">{contact.firstName}</Col>
+                  <Col className="contact-name">{contact.lastName}</Col>
+                </Row>
+              </ListGroup.Item>
+            ))}
+          </ListGroup>
+        </Col>
+
+        <AgendaList selectedContact={selectedContact} />
+
+        <Col md={4} className="contact-details">
+          <h2>Tutoriales</h2>
           {selectedContact ? (
-            <div>
-              <p>
-                <strong>Nombre:</strong> {selectedContact.firstName}
-              </p>
-              <p>
-                <strong>Apellido:</strong> {selectedContact.lastName}
-              </p>
-              <p>
-                <strong>Calle:</strong> {selectedContact.street}
-              </p>
-              <p>
-                <strong>Ciudad:</strong> {selectedContact.city}
-              </p>
-              <p>
-                <strong>Código Postal:</strong> {selectedContact.postalCode}
-              </p>
-              <p>
-                <strong>Cumpleaños:</strong> {selectedContact.birthday}
-              </p>
-              <p>
-                <strong>Tutoriales:</strong>{" "}
-                {selectedContact.tutorials?.join(", ")}
-              </p>
-            </div>
+            <TutorialList selectedContact={selectedContact} />
           ) : (
-            <p>Selecciona un contacto</p>
+            <p>No hay tutoriales disponibles</p>
           )}
         </Col>
       </Row>
+
       <div className="buttons">
         <button className="btn btn-primary">Nuevo...</button>
         <button className="btn btn-warning">Editar...</button>
