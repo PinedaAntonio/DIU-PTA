@@ -1,21 +1,43 @@
 import { useState, useEffect } from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Container, Row, Col, ListGroup } from "react-bootstrap";
+import { Container, Row, Col, ListGroup, Button } from "react-bootstrap";
 import AgendaList from "./components/AgendaList";
 import TutorialList from "./components/TutorialList";
+import AddAgenda from "./components/AddAgenda";
 import contactService from "./services/http-agenda";
 
 function App() {
   const [contacts, setContacts] = useState([]);
   const [selectedContact, setSelectedContact] = useState(null);
+  const [showAddModal, setShowAddModal] = useState(false);
+  const [isEditMode, setIsEditMode] = useState(false); // Nuevo estado para determinar si es edición
 
-  useEffect(() => {
+  const fetchContacts = () => {
     contactService
       .getAllContacts()
       .then((response) => setContacts(response.data))
       .catch((error) => console.error("Error al cargar contactos:", error));
+  };
+
+  useEffect(() => {
+    fetchContacts();
   }, []);
+
+  const handleEditContact = () => {
+    if (selectedContact) {
+      setIsEditMode(true); // Activar el modo de edición
+      setShowAddModal(true); // Abrir el modal para editar
+    } else {
+      alert("Por favor, selecciona un contacto para editar.");
+    }
+  };
+
+  const handleNewContact = () => {
+    setSelectedContact(null); // Asegúrate de que no haya contacto seleccionado
+    setIsEditMode(false); // Desactivar el modo de edición
+    setShowAddModal(true); // Abrir el modal para un nuevo contacto
+  };
 
   return (
     <Container fluid className="app-container">
@@ -61,10 +83,29 @@ function App() {
       </Row>
 
       <div className="buttons">
-        <button className="btn btn-primary">Nuevo...</button>
-        <button className="btn btn-warning">Editar...</button>
-        <button className="btn btn-danger">Borrar</button>
+        <Button
+          className="btn btn-primary"
+          onClick={handleNewContact} // Para añadir un nuevo contacto
+        >
+          Nuevo
+        </Button>
+        <Button
+          className="btn btn-warning"
+          onClick={handleEditContact} // Para editar el contacto seleccionado
+        >
+          Editar
+        </Button>
+        <Button className="btn btn-danger">Borrar</Button>
       </div>
+
+      {/* Modal para añadir o editar contacto */}
+      <AddAgenda
+        show={showAddModal}
+        handleClose={() => setShowAddModal(false)}
+        selectedContact={selectedContact}
+        refreshContacts={fetchContacts}
+        isEditMode={isEditMode}
+      />
     </Container>
   );
 }

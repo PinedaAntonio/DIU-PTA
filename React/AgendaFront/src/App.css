@@ -64,3 +64,10 @@
   background-color: #555454 !important;
   color: white !important;
 }
+
+.tutorial-image.tutorial-image {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
+}

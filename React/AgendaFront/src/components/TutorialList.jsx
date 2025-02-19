@@ -45,6 +45,7 @@ const TutorialList = ({ selectedContact }) => {
                 variant="bottom"
                 src={tutorial.imageUrl}
                 alt={tutorial.title}
+                className="tutorial-image"
               />
             </Card>
           </Carousel.Item>
