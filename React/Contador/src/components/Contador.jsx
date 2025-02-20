@@ -1,15 +1,15 @@
-//import React from 'react';
+import React from 'react';
 
 
 //Código con hooks
-/*
+
 function Contador({ num, incrementar, decrementar, resetear }) {
   return (
     <>
       <div className="counter">{num}</div>
       <div className="buttons">
-        <button className="incButton" onClick={incrementar}>Incre</button>
-        <button onClick={decrementar}>Decre</button>
+        <button className="incButton" onClick={incrementar}>Incrementar</button>
+        <button onClick={decrementar}>Decrementar</button>
         <button onClick={resetear}>Reseteo</button>
       </div>
     </>
@@ -17,7 +17,8 @@ function Contador({ num, incrementar, decrementar, resetear }) {
 }
 
 export default Contador;
-*/
+
+/*
 import React, { Component } from 'react';
 class Contador extends Component {
   render() {
@@ -39,3 +40,4 @@ class Contador extends Component {
 }
 
 export default Contador;
+*/

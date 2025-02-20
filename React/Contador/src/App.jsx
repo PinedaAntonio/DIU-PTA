@@ -1,4 +1,4 @@
-/*
+
 import React, { useState } from 'react';
 import Contador from './components/Contador';
 
@@ -27,8 +27,8 @@ function App() {
 
 export default App;
 
-*/
 
+/*
 import React, { Component } from 'react';
 import Contador from './components/Contador'
 import './components/Contador.css';
@@ -73,3 +73,4 @@ class App extends Component {
 }
 
 export default App;
+*/
