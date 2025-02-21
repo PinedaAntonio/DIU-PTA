@@ -39,7 +39,8 @@ function App() {
   return (
     <div className="app">
       <div className="display">
-        <h1>{expresion || result}</h1> {/* Mostrar la expresión o el resultado */}
+        <h1>{expresion || result}</h1>{" "}
+        {/* Mostrar la expresión o el resultado */}
       </div>
       <Calculadora
         onInput={handleInput}
