@@ -1,7 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { getAllProducts } from "../services/api.services.js";
-import { Container, Row, Col, Table, Button, ProgressBar } from "react-bootstrap";
-import "../App.css"
+import {
+  Container,
+  Row,
+  Col,
+  Table,
+  Button,
+  ProgressBar,
+} from "react-bootstrap";
+import "../App.css";
 
 export default function ProductList() {
   const [products, setProducts] = useState([]); // Estado para los productos
@@ -11,10 +18,30 @@ export default function ProductList() {
 
   function handleCalcularTotal() {
     let newTotal = 0;
-    products.forEach(product => {
+    products.forEach((product) => {
       newTotal += product.price;
     });
     setTotal(newTotal); // Usamos setTotal para actualizar el estado
+  }
+
+  function handleNewProduct() {
+    alert("Función para agregar un nuevo producto");
+  }
+
+  function handleEditProduct() {
+    if (selectedProduct) {
+      alert(`Editando producto: ${selectedProduct.name}`);
+    } else {
+      alert("Selecciona un producto para editar.");
+    }
+  }
+
+  function handleDeleteProduct() {
+    if (selectedProduct) {
+      alert(`Eliminando producto: ${selectedProduct.name}`);
+    } else {
+      alert("Selecciona un producto para borrar.");
+    }
   }
 
   useEffect(() => {
@@ -30,7 +57,10 @@ export default function ProductList() {
 
   useEffect(() => {
     // Calcular el stock total y el progreso
-    const totalStock = products.reduce((acc, product) => acc + product.stock, 0);
+    const totalStock = products.reduce(
+      (acc, product) => acc + product.stock,
+      0
+    );
     const progressValue = Math.min((totalStock / 1000) * 100, 100); // Máximo de 100%
     setProgress(progressValue);
   }, [products]);
@@ -38,8 +68,12 @@ export default function ProductList() {
   return (
     <Container fluid className="app-container">
       {/* Barra de Progreso */}
-      <ProgressBar now={progress} max={100} label={`${Math.round(progress)}%`} />
-      
+      <ProgressBar
+        now={progress}
+        max={100}
+        label={`${Math.round(progress)}%`}
+      />
+
       <Row className="app-row">
         {/* Lista de Productos */}
         <Col md={6} className="product-list">
@@ -56,7 +90,9 @@ export default function ProductList() {
                   <tr
                     key={product.id}
                     onClick={() => setSelectedProduct(product)}
-                    className={selectedProduct?.id === product.id ? "active" : ""}
+                    className={
+                      selectedProduct?.id === product.id ? "active" : ""
+                    }
                   >
                     <td>{product.name}</td>
                     <td>${product.price.toFixed(2)}</td>
@@ -85,21 +121,28 @@ export default function ProductList() {
               <p>
                 <strong>Stock:</strong> {selectedProduct.stock}
               </p>
+
+              {/* Botones */}
+              <div className="buttons">
+                <Button className="btn btn-success" onClick={handleNewProduct}>
+                  Nuevo
+                </Button>
+                <Button className="btn btn-warning" onClick={handleEditProduct}>
+                  Editar
+                </Button>
+                <Button
+                  className="btn btn-danger"
+                  onClick={handleDeleteProduct}
+                >
+                  Borrar
+                </Button>
+              </div>
             </div>
           ) : (
             <p>Selecciona un producto</p>
           )}
         </Col>
       </Row>
-
-      <div className="buttons">
-        <Button
-          className="btn btn-primary"
-          onClick={handleCalcularTotal}
-        >
-          Calcular total
-        </Button>
-      </div>
 
       <h3>Total: ${total.toFixed(2)}</h3>
     </Container>

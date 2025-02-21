@@ -1,0 +1,31 @@
+.progress-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  background: #2c2c2c;
+  border-radius: 8px;
+  padding: 5px;
+  margin-bottom: 20px;
+}
+
+.progress-bar {
+  flex-grow: 1;
+  height: 12px;
+  border-radius: 6px;
+  background: #4caf50;
+}
+
+.progress-bar::-webkit-progress-bar {
+  background: #444;
+}
+
+.progress-bar::-webkit-progress-value {
+  background: #4caf50;
+}
+
+.progress-label {
+  font-size: 14px;
+  font-weight: bold;
+  color: #bbb;
+}

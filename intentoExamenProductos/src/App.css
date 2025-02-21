@@ -11,7 +11,8 @@
   justify-content: space-between;
 }
 
-.product-list, .product-details {
+.product-list,
+.product-details {
   background: #2c2c2c;
   padding: 15px;
   border-radius: 8px;
@@ -61,24 +62,25 @@
   color: white;
 }
 
+/* Ajuste para los botones dentro de la sección de detalles */
 .buttons {
   display: flex;
-  justify-content: flex-end;
-  margin-top: 10px;
+  justify-content: space-between;
+  margin-top: 20px;
 }
 
 .buttons button {
-  margin-left: 10px;
-  padding: 0.8em 1.5em; /* Aumenta el padding para un botón más grande */
-  font-size: 1.2em; /* Aumenta el tamaño de la fuente */
-  min-height: 50px; /* Define una altura mínima para el botón */
+  flex: 1;
+  margin: 5px;
+  padding: 10px;
+  font-size: 1.1em;
+  border-radius: 5px;
 }
 
 .btn {
   background-color: #2c2c2c !important;
   color: white !important;
   border: #2c2c2c !important;
-  border-radius: 5px; /* Asegura bordes redondeados */
 }
 
 .btn:hover {
@@ -89,11 +91,4 @@
 h3 {
   color: #fff;
   margin-top: 20px;
-}
-
-/* Barra de progreso */
-.progress-bar {
-  height: 20px;
-  background-color: #555454;
-  margin-bottom: 20px;
 }

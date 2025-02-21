@@ -1,0 +1,81 @@
+.app-container {
+  background: #181818;
+  color: #fff;
+  height: 100vh;
+  padding: 20px;
+}
+
+.list {
+  text-align: left;
+  max-width: 750px;
+  margin: auto;
+  background: #252525;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
+}
+
+.submit-form,
+.edit-form {
+  max-width: 400px;
+  margin: auto;
+  background: #333;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+}
+
+.navbar {
+  background: #1f1f1f !important;
+}
+
+.nav-link {
+  color: #bbb !important;
+}
+
+.nav-link:hover {
+  color: #fff !important;
+}
+
+.btn {
+  background-color: #444 !important;
+  color: white !important;
+  border: none !important;
+}
+
+.btn:hover {
+  background-color: #666 !important;
+  color: white !important;
+}
+
+.table-dark {
+  background: #2c2c2c;
+  color: white;
+}
+
+.table thead th {
+  background: #333;
+  color: #fff;
+  border-color: #444;
+}
+
+.table tbody tr {
+  background: #2c2c2c;
+  border-color: #444;
+  cursor: pointer;
+}
+
+.table tbody tr:hover {
+  background: #444;
+}
+
+.search-input {
+  background: #333;
+  color: white;
+  border: 1px solid #444;
+}
+
+.search-input:focus {
+  background: #444;
+  color: white;
+}

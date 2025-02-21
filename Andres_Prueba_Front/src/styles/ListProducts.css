@@ -1,0 +1,68 @@
+.background {
+  background-color: #121212;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.list-group-item {
+  padding: 10px;
+  border: 1px solid #444;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.list-group-item:hover {
+  background-color: #444;
+}
+
+.list-group-item.active {
+  background-color: #2196f3;
+  color: white;
+  font-weight: bold;
+}
+
+h4 {
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+}
+
+.badge-success {
+  background-color: #4caf50;
+  color: #fff;
+  border-radius: 5px;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.badge-success:hover {
+  background-color: #218838;
+}
+
+.badge-warning {
+  background-color: #ff9800;
+}
+
+.badge-warning:hover {
+  background-color: #e0a800;
+}
+
+.badge-error {
+  background-color: #f44336;
+}
+
+.badge-error:hover {
+  background-color: #bd2130;
+}
+
+.badge-secondary {
+  background-color: #6c757d;
+}
+
+.badge-secondary:hover {
+  background-color: #5a6268;
+}
