@@ -14,8 +14,13 @@ export const editContact = (contactId, updatedContact) => {
     return axios.put(`${API_URL}/${contactId}`, updatedContact);
 };
 
+export const deleteContact = (contactId) => {
+    return axios.delete(`${API_URL}/${contactId}`);
+};
+
 export default {
     getAllContacts,
     addContact,
     editContact,
+    deleteContact
 };

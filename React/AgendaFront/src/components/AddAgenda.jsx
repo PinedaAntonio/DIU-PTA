@@ -68,7 +68,6 @@ const AddAgenda = ({
 
   const handleSubmit = () => {
     if (isEditMode) {
-      // Actualizar el contacto con el id
       const updatedContactData = {
         id: selectedContact.id,
         ...contactData,
@@ -76,19 +75,26 @@ const AddAgenda = ({
       contactService
         .editContact(selectedContact.id, updatedContactData)
         .then(() => {
-          refreshContacts(); // Refrescar la lista de contactos
-          handleClose(); // Cerrar el modal
+          refreshContacts();
+          handleClose();
         })
-        .catch((error) => console.error("Error al editar contacto:", error));
+        .catch(
+          (error) =>
+            console.error("Error al editar contacto:", error) +
+            alert("Valores erróneos en el contacto")
+        );
     } else {
-      // Crear un nuevo contacto sin id
       contactService
         .addContact(contactData)
         .then(() => {
-          refreshContacts(); // Refrescar la lista de contactos
-          handleClose(); // Cerrar el modal
+          refreshContacts();
+          handleClose();
         })
-        .catch((error) => console.error("Error al agregar contacto:", error));
+        .catch(
+          (error) =>
+            console.error("Error al agregar contacto:", error) +
+            alert("Valores erróneos en el contacto")
+        );
     }
   };
 

@@ -1,17 +1,22 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Container, Row, Col, ListGroup, Button } from "react-bootstrap";
+import { Container, Row, Col, ListGroup, Button, Modal } from "react-bootstrap";
 import AgendaList from "./components/AgendaList";
 import TutorialList from "./components/TutorialList";
 import AddAgenda from "./components/AddAgenda";
+import SignIn from "./components/SignIn";
 import contactService from "./services/http-agenda";
+import { UserContext } from "./providers/UserProvider";
+import { auth } from "./firebase";
 
 function App() {
   const [contacts, setContacts] = useState([]);
   const [selectedContact, setSelectedContact] = useState(null);
   const [showAddModal, setShowAddModal] = useState(false);
-  const [isEditMode, setIsEditMode] = useState(false); // Nuevo estado para determinar si es edición
+  const [showSignInModal, setShowSignInModal] = useState(false);
+  const [isEditMode, setIsEditMode] = useState(false);
+  const { user } = useContext(UserContext);
 
   const fetchContacts = () => {
     contactService
@@ -25,26 +30,91 @@ function App() {
   }, []);
 
   const handleEditContact = () => {
-    if (selectedContact) {
-      setIsEditMode(true); // Activar el modo de edición
-      setShowAddModal(true); // Abrir el modal para editar
+    if (user && selectedContact) {
+      setIsEditMode(true);
+      setShowAddModal(true);
+      fetchContacts();
     } else {
-      alert("Por favor, selecciona un contacto para editar.");
+      alert("Debes iniciar sesión y seleccionar un contacto para editar.");
     }
   };
 
   const handleNewContact = () => {
-    setSelectedContact(null); // Asegúrate de que no haya contacto seleccionado
-    setIsEditMode(false); // Desactivar el modo de edición
-    setShowAddModal(true); // Abrir el modal para un nuevo contacto
+    if (user) {
+      setSelectedContact(null);
+      setIsEditMode(false);
+      setShowAddModal(true);
+      fetchContacts();
+    } else {
+      alert("Debes iniciar sesión para crear un contacto.");
+    }
+  };
+
+  const handleDeleteContact = () => {
+    if (user && selectedContact) {
+      contactService
+        .deleteContact(selectedContact.id)
+        .then(() => {
+          setContacts(
+            contacts.filter((contact) => contact.id !== selectedContact.id)
+          );
+          setSelectedContact(null);
+          fetchContacts();
+        })
+        .catch((error) => console.error("Error al borrar contacto:", error));
+    } else {
+      alert("Debes iniciar sesión y seleccionar un contacto para borrar.");
+    }
   };
 
   return (
     <Container fluid className="app-container">
+      <div
+        className="auth-container"
+        style={{ position: "absolute", top: 10, right: 10 }}
+      >
+        {user ? (
+          <div className="d-flex align-items-center">
+            <img
+              src={user.photoURL}
+              alt="User Avatar"
+              style={{
+                width: 40,
+                height: 40,
+                borderRadius: "50%",
+                marginRight: 10,
+              }}
+            />
+            <span>
+              {user.displayName} ({user.name})
+            </span>
+            <Button
+              onClick={() => auth.signOut()}
+              variant="danger"
+              size="sm"
+              className="ms-2"
+            >
+              Cerrar sesión
+            </Button>
+          </div>
+        ) : (
+          <Button onClick={() => setShowSignInModal(true)} variant="primary">
+            Iniciar sesión
+          </Button>
+        )}
+      </div>
       <Row className="app-row">
         <Col md={4} className="agenda-list">
           <ListGroup>
-            <ListGroup.Item className="header-item">
+            <ListGroup.Item
+              className="header-item"
+              style={{
+                position: "sticky",
+                top: 0,
+                zIndex: 1,
+                background: "white",
+              }}
+            >
               <Row>
                 <Col>
                   <h2 className="list-title">Nombre</h2>
@@ -54,19 +124,21 @@ function App() {
                 </Col>
               </Row>
             </ListGroup.Item>
-            {contacts.map((contact) => (
-              <ListGroup.Item
-                key={contact.id}
-                onClick={() => setSelectedContact(contact)}
-                active={selectedContact && selectedContact.id === contact.id}
-                className="contact-item"
-              >
-                <Row>
-                  <Col className="contact-name">{contact.firstName}</Col>
-                  <Col className="contact-name">{contact.lastName}</Col>
-                </Row>
-              </ListGroup.Item>
-            ))}
+            <div style={{ maxHeight: "65vh", overflowY: "auto" }}>
+              {contacts.map((contact) => (
+                <ListGroup.Item
+                  key={contact.id}
+                  onClick={() => setSelectedContact(contact)}
+                  active={selectedContact && selectedContact.id === contact.id}
+                  className="contact-item"
+                >
+                  <Row>
+                    <Col className="contact-name">{contact.firstName}</Col>
+                    <Col className="contact-name">{contact.lastName}</Col>
+                  </Row>
+                </ListGroup.Item>
+              ))}
+            </div>
           </ListGroup>
         </Col>
 
@@ -85,20 +157,27 @@ function App() {
       <div className="buttons">
         <Button
           className="btn btn-primary"
-          onClick={handleNewContact} // Para añadir un nuevo contacto
+          onClick={handleNewContact}
+          disabled={!user}
         >
           Nuevo
         </Button>
         <Button
           className="btn btn-warning"
-          onClick={handleEditContact} // Para editar el contacto seleccionado
+          onClick={handleEditContact}
+          disabled={!user || !selectedContact}
         >
           Editar
         </Button>
-        <Button className="btn btn-danger">Borrar</Button>
+        <Button
+          className="btn btn-danger"
+          onClick={handleDeleteContact}
+          disabled={!user || !selectedContact}
+        >
+          Borrar
+        </Button>
       </div>
 
-      {/* Modal para añadir o editar contacto */}
       <AddAgenda
         show={showAddModal}
         handleClose={() => setShowAddModal(false)}
@@ -106,6 +185,12 @@ function App() {
         refreshContacts={fetchContacts}
         isEditMode={isEditMode}
       />
+
+      <Modal show={showSignInModal} onHide={() => setShowSignInModal(false)}>
+        <Modal.Body>
+          <SignIn onClose={() => setShowSignInModal(false)} />
+        </Modal.Body>
+      </Modal>
     </Container>
   );
 }
