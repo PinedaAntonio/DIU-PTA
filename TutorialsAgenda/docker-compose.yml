@@ -1,30 +1,37 @@
-version: '2' #Versión del fichero Docker-compose (si no se pone la etiqueta, se cogerá la versión 1 automáticamente
-networks: #Define la/s redes que usarán los contenedores
-  mired: #Nombre de la red
-    ipam: #Administra las direcciones ips
-      config: #Etiqueta usada para definir la configuración de la red
-        - subnet: 182.28.0.0/16 #Aquí definimos la subred a usar
-          gateway: 182.28.0.1 #Aquí definimos la puerta de enlace de la red
-services: #Esta etiqueta es usada para definir los contenedores que instalaremos en Docker
-  db: #Nombre del servicio
-    image: bitnami/mongodb:latest #Especificamos la imagen a usar.
-    container_name: mongo_DB #Nombre del contenedor en nuestro Docker
+version: '3.8'
+
+networks:
+  mired:
+    ipam:
+      config:
+        - subnet: 182.28.0.0/16
+          gateway: 182.28.0.1
+
+services:
+  dbmongo:
+    image: bitnami/mongodb:latest
+    container_name: mongo_DB
     networks:
       mired:
-        ipv4_address: 182.28.0.11 #Dirección ip del contenedor
+        ipv4_address: 182.28.0.11
     ports:
-      - "27017:27017" #Especificamos los puertos
-    expose:
-      - 27017 #Expone los puertos sin publicarlos al host.
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_DATABASE: shared-db
+    restart: always
+
   app-tutorials:
-    image: apintor2906/tutorialsdocker:tutorialsimagen
-    container_name: tutorialsdocker
+    image: apintor2906/tutorials:1  # Imagen corregida con tu usuario de Docker Hub
+    container_name: tutorialsapp
     networks:
       mired:
-        ipv4_address: 182.28.0.12
-    expose:
-      - 80
+        ipv4_address: 182.28.0.13
     ports:
-      - "80:8080"
-    depends_on: #En esta etiqueta colocamos de qué servicio depende este contenedor
-      - db
+      - "8098:8098"
+    depends_on:
+      - dbmongo
+    environment:
+      SPRING_DATA_MONGODB_HOST: mongo_DB
+      SPRING_DATA_MONGODB_PORT: 27017
+      SPRING_DATA_MONGODB_DATABASE: shared-db
+    restart: always

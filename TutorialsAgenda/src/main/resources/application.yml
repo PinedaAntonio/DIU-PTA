@@ -8,5 +8,6 @@ spring:
 data:
   mongodb:
     #host: mongo_DB # Usa el nombre del contenedor en Docker en lugar de la IP
+    database: agendareact_db
     port: 27017
-    database: tutorialsservice_db # Asegúrate de usar el nombre correcto de la base de datos
+  # Asegúrate de usar el nombre correcto de la base de datos
