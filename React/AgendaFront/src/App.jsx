@@ -1,7 +1,15 @@
 import { useState, useEffect, useContext } from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Container, Row, Col, ListGroup, Button, Modal } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Col,
+  ListGroup,
+  Button,
+  Modal,
+  ProgressBar,
+} from "react-bootstrap";
 import AgendaList from "./components/AgendaList";
 import TutorialList from "./components/TutorialList";
 import AddAgenda from "./components/AddAgenda";
@@ -17,6 +25,8 @@ function App() {
   const [showSignInModal, setShowSignInModal] = useState(false);
   const [isEditMode, setIsEditMode] = useState(false);
   const { user } = useContext(UserContext);
+
+  const MAX_CONTACTS = 50;
 
   const fetchContacts = () => {
     contactService
@@ -103,6 +113,7 @@ function App() {
           </Button>
         )}
       </div>
+
       <Row className="app-row">
         <Col md={4} className="agenda-list">
           <ListGroup>
@@ -154,29 +165,48 @@ function App() {
         </Col>
       </Row>
 
-      <div className="buttons">
-        <Button
-          className="btn btn-primary"
-          onClick={handleNewContact}
-          disabled={!user}
-        >
-          Nuevo
-        </Button>
-        <Button
-          className="btn btn-warning"
-          onClick={handleEditContact}
-          disabled={!user || !selectedContact}
-        >
-          Editar
-        </Button>
-        <Button
-          className="btn btn-danger"
-          onClick={handleDeleteContact}
-          disabled={!user || !selectedContact}
-        >
-          Borrar
-        </Button>
-      </div>
+      {/* Row que contiene la barra de progreso y los botones */}
+      <Row className="align-items-center mt-3">
+        {/* Barra de progreso alineada a la izquierda */}
+        <Col md={6}>
+          <ProgressBar
+            now={(contacts.length / MAX_CONTACTS) * 100}
+            label={`${contacts.length}/${MAX_CONTACTS}`}
+            variant={
+              contacts.length < MAX_CONTACTS * 0.7
+                ? "success"
+                : contacts.length < MAX_CONTACTS * 0.9
+                ? "warning"
+                : "danger"
+            }
+          />
+        </Col>
+
+        {/* Botones alineados a la derecha */}
+        <Col md={6} className="d-flex justify-content-end">
+          <Button
+            className="btn btn-primary me-2"
+            onClick={handleNewContact}
+            disabled={!user}
+          >
+            Nuevo
+          </Button>
+          <Button
+            className="btn btn-warning me-2"
+            onClick={handleEditContact}
+            disabled={!user || !selectedContact}
+          >
+            Editar
+          </Button>
+          <Button
+            className="btn btn-danger"
+            onClick={handleDeleteContact}
+            disabled={!user || !selectedContact}
+          >
+            Borrar
+          </Button>
+        </Col>
+      </Row>
 
       <AddAgenda
         show={showAddModal}
