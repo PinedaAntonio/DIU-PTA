@@ -1,0 +1,13 @@
+server:
+  port: 8098
+spring:
+    application:
+      name:tutorialsService
+#main:
+#      allow-bean-definition-overriding: true
+data:
+  mongodb:
+    #host: mongo_DB # Usa el nombre del contenedor en Docker en lugar de la IP
+    database: agendareact_db
+    port: 27017
+  # Asegúrate de usar el nombre correcto de la base de datos

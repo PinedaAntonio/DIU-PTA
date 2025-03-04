@@ -1,0 +1,4 @@
+AWS: http://AgendaPTA-env.eba-aehmaihv.us-east-1.elasticbeanstalk.com
+	Agenda: https://AgendaPTA-env.eba-aehmaihv.us-east-1.elasticbeanstalk.com:8099/api/v1/Agenda
+	Tutorials: https://AgendaPTA-env.eba-aehmaihv.us-east-1.elasticbeanstalk.com:8099/api/v1/tutorials
+Firebase: https://agendareact-d0dbd.web.app
